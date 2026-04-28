@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Logistik — Talungan.id</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../shared.css"/>
+</head>
+<body>
+  <div class="blob-bg"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <div class="sidebar-logo-icon"><img src="../assets/logo.png" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/><svg viewBox="0 0 60 60" width="24" height="24" style="display:none"><circle cx="30" cy="30" r="28" fill="rgba(255,255,255,0.2)"/><rect x="22" y="18" width="4" height="18" rx="2" fill="white"/><rect x="29" y="14" width="4" height="22" rx="2" fill="white"/><rect x="36" y="18" width="4" height="18" rx="2" fill="white"/></svg></div>
+      <div><div class="sidebar-brand">Talungan.id</div><div class="sidebar-role">Petani</div></div>
+    </div>
+    <div class="sidebar-user">
+      <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZgSlafW9-9bp2CtuNc_-84duckOPOFLkJ_1VX_XH4iZJju339wMLuJOSLI96HDTqOEv5UrxkkJLiFr7gSYaAj9mO4AmSGUcFA3tD2pF7Xs6TWk-UoJvQSfWFETuMPKo6bOn8hnrHhq9O9jnqQjmYti5HljvFjH4OATc82GV7FuENCGrUtQoohpibu4gJKUgxvkzij1VKiiHThBFuPy_-YGhmrWopXQu-mpS93ws33II9sgQ0gdSdP4dFU_HtfitqndkpGys5zLmI" alt="Budi"/>
+      <div><div class="name">Budi Santoso</div><div class="role">Petani Terverifikasi</div></div>
+      <div class="dot"></div>
+    </div>
+    <span class="nav-section-title">Menu Petani</span>
+    <a href="dashboard.html" class="nav-item"><span class="material-symbols-outlined text-[20px]">dashboard</span>Beranda</a>
+    <a href="stok.html" class="nav-item"><span class="material-symbols-outlined text-[20px]">inventory_2</span>Stok Komoditas</a>
+    <a href="pasar.html" class="nav-item"><span class="material-symbols-outlined text-[20px]">trending_up</span>Harga Pasar</a>
+    <a href="transaksi.html" class="nav-item"><span class="material-symbols-outlined text-[20px]">receipt_long</span>Transaksi</a>
+    <a href="logistik.html" class="nav-item active"><span class="material-symbols-outlined text-[20px]" style="font-variation-settings:'FILL' 1">local_shipping</span>Logistik</a>
+    <a href="statistik.html" class="nav-item"><span class="material-symbols-outlined text-[20px]">bar_chart</span>Statistik</a>
+    <a href="forum.html" class="nav-item"><span class="material-symbols-outlined text-[20px]">forum</span>Forum Tani</a>
+    <a href="edukasi.html" class="nav-item"><span class="material-symbols-outlined text-[20px]">school</span>Edukasi</a>
+    <div class="nav-spacer"></div>
+    <div class="nav-divider"></div>
+    <a href="profil.html" class="nav-item"><span class="material-symbols-outlined text-[20px]">account_circle</span>Profil Saya</a>
+    <a href="../konsumen/login.html" class="nav-item danger"><span class="material-symbols-outlined text-[20px]">logout</span>Keluar</a>
+  </aside>
+
+  <main class="main-content p-6">
+    <div class="flex items-center justify-between mb-6 su d1">
+      <div><p class="text-xs font-bold uppercase tracking-widest mb-1" style="color:#9ca3af">Pengiriman</p><h1 class="text-2xl font-black" style="color:#1a1a2e;letter-spacing:-0.5px">Manajemen Logistik</h1></div>
+      <button class="flex items-center gap-2 font-bold text-sm px-5 py-2.5 rounded-2xl text-white" style="background:linear-gradient(135deg,#00aa5b,#006d38);box-shadow:0 4px 14px rgba(0,170,91,0.25)"><span class="material-symbols-outlined text-[18px]">add</span>Jadwal Pengiriman</button>
+    </div>
+
+    <div class="grid grid-cols-4 gap-4 mb-6 su d1">
+      <div class="card p-5"><p class="text-xs font-bold uppercase tracking-wider mb-2" style="color:#9ca3af">Aktif</p><p class="text-3xl font-black" style="color:#1a1a2e">3</p><p class="text-xs font-semibold mt-1" style="color:#fe6a34">Sedang dikirim</p></div>
+      <div class="card p-5"><p class="text-xs font-bold uppercase tracking-wider mb-2" style="color:#9ca3af">Selesai Bulan Ini</p><p class="text-3xl font-black" style="color:#1a1a2e">12</p><p class="text-xs font-semibold mt-1" style="color:#22c55e">Semua tiba selamat</p></div>
+      <div class="card p-5"><p class="text-xs font-bold uppercase tracking-wider mb-2" style="color:#9ca3af">Total Volume</p><p class="text-3xl font-black" style="color:#1a1a2e">38 Ton</p><p class="text-xs font-semibold mt-1" style="color:#9ca3af">April 2026</p></div>
+      <div class="card p-5"><p class="text-xs font-bold uppercase tracking-wider mb-2" style="color:#9ca3af">Biaya Logistik</p><p class="text-3xl font-black" style="color:#1a1a2e">Rp 4,2jt</p><p class="text-xs font-semibold mt-1" style="color:#22c55e">↓ -8% vs bulan lalu</p></div>
+    </div>
+
+    <div class="flex flex-col gap-4 su d2">
+      <!-- Shipment Card 1 -->
+      <div class="card p-5">
+        <div class="flex items-start justify-between mb-4">
+          <div>
+            <div class="flex items-center gap-2 mb-1">
+              <span class="text-[11px] font-black px-2.5 py-1 rounded-full" style="background:#fff7ed;color:#c2410c;border:1px solid #fed7aa">🚛 Dalam Perjalanan</span>
+              <span class="text-xs font-semibold" style="color:#9ca3af">ID: TLG-LOG-2026-089</span>
+            </div>
+            <h3 class="font-black text-base" style="color:#1a1a2e">Beras Cianjur 5.000 kg</h3>
+            <p class="text-xs mt-0.5" style="color:#9ca3af">Kepada: PT Surya Maju · Jakarta Pusat</p>
+          </div>
+          <div class="text-right">
+            <p class="text-xs font-semibold" style="color:#9ca3af">ETA</p>
+            <p class="font-black" style="color:#1a1a2e">30 Apr 2026</p>
+          </div>
+        </div>
+        <div class="h-2 rounded-full mb-2" style="background:#e5e7eb"><div class="h-full rounded-full" style="width:65%;background:linear-gradient(90deg,#00aa5b,#fbbf24)"></div></div>
+        <div class="flex justify-between text-[10px] font-bold" style="color:#9ca3af">
+          <span>Berangkat: 28 Apr · Demak</span><span>65% — Checkpoint Purwokerto</span><span>Tujuan: Jakarta</span>
+        </div>
+        <div class="flex gap-2 mt-4">
+          <button class="flex items-center gap-1 text-xs font-bold px-3 py-2 rounded-xl" style="background:rgba(0,170,91,0.08);color:#00aa5b;border:1.5px solid rgba(0,170,91,0.15)"><span class="material-symbols-outlined text-[14px]">share_location</span>Live Track</button>
+          <button class="flex items-center gap-1 text-xs font-bold px-3 py-2 rounded-xl" style="background:rgba(0,170,91,0.08);color:#00aa5b;border:1.5px solid rgba(0,170,91,0.15)"><span class="material-symbols-outlined text-[14px]">phone</span>Hubungi Driver</button>
+        </div>
+      </div>
+
+      <!-- Shipment Card 2 -->
+      <div class="card p-5">
+        <div class="flex items-start justify-between mb-4">
+          <div>
+            <div class="flex items-center gap-2 mb-1">
+              <span class="text-[11px] font-black px-2.5 py-1 rounded-full" style="background:#fef3c7;color:#92400e;border:1px solid #fde68a">⏳ Menunggu Pickup</span>
+              <span class="text-xs font-semibold" style="color:#9ca3af">ID: TLG-LOG-2026-091</span>
+            </div>
+            <h3 class="font-black text-base" style="color:#1a1a2e">Jagung Pipil 3.400 kg</h3>
+            <p class="text-xs mt-0.5" style="color:#9ca3af">Kepada: CV Agro Nusantara · Semarang</p>
+          </div>
+          <div class="text-right"><p class="text-xs font-semibold" style="color:#9ca3af">Pickup</p><p class="font-black" style="color:#1a1a2e">30 Apr 2026</p></div>
+        </div>
+        <div class="flex items-center gap-3 p-3 rounded-xl" style="background:#fefce8;border:1px solid #fde68a">
+          <span class="material-symbols-outlined text-[18px]" style="color:#d97706">info</span>
+          <p class="text-xs font-semibold" style="color:#92400e">Truk tiba di gudang Anda besok pukul 07:00 WIB. Pastikan stok sudah siap muat.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+</body>
+</html>

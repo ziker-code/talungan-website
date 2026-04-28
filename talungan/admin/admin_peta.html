@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Peta Distribusi — Talungan.id</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../shared.css"/>
+  <style>
+    .map-container { background: #e8f5e9; border-radius: 20px; overflow: hidden; position: relative; }
+    .map-point { position:absolute; cursor:pointer; transform:translate(-50%,-50%); }
+    .map-pulse { width:14px;height:14px;border-radius:50%;position:relative;display:inline-block; }
+    .map-pulse::after { content:'';position:absolute;inset:-4px;border-radius:50%;border:2px solid currentColor;opacity:0.5;animation:ringPulse 1.5s ease-out infinite; }
+    @keyframes ringPulse { 0%{transform:scale(0.8);opacity:0.8} 100%{transform:scale(2);opacity:0} }
+    .legend-dot { width:10px;height:10px;border-radius:50%;display:inline-block; }
+
+    /* Zoom controls */
+    .zoom-btn { width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.9);border:1px solid rgba(0,0,0,0.08);cursor:pointer;font-size:18px;font-weight:900;transition:.15s; }
+    .zoom-btn:hover { background:white;box-shadow:0 2px 8px rgba(0,0,0,0.1); }
+  </style>
+</head>
+<body>
+  <div class="blob-bg"><div class="blob b1"></div><div class="blob b2"></div></div>
+
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <div class="sidebar-logo-icon">
+        <svg viewBox="0 0 60 60" width="24" height="24"><circle cx="30" cy="30" r="28" fill="rgba(255,255,255,0.2)"/><rect x="22" y="18" width="4" height="18" rx="2" fill="white"/><rect x="29" y="14" width="4" height="22" rx="2" fill="white"/><rect x="36" y="18" width="4" height="18" rx="2" fill="white"/><ellipse cx="20" cy="38" rx="8" ry="5" fill="rgba(255,255,255,0.7)" transform="rotate(-25,20,38)"/><ellipse cx="40" cy="38" rx="8" ry="5" fill="rgba(255,255,255,0.5)" transform="rotate(25,40,38)"/></svg>
+      </div>
+      <div><div class="sidebar-brand">Talungan.id</div><div class="sidebar-role">Administrator</div></div>
+    </div>
+    <div class="sidebar-user">
+      <div style="width:36px;height:36px;background:linear-gradient(135deg,#00aa5b,#006d38);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;color:white;font-size:14px;flex-shrink:0">A</div>
+      <div><div class="name">Admin Pusat</div><div class="role">Super Admin</div></div>
+      <div class="dot"></div>
+    </div>
+    <span class="nav-section-title">Manajemen</span>
+    <a href="admin_dashboard.html" class="nav-item"><span class="material-symbols-outlined text-[20px]">dashboard</span>Dashboard</a>
+    <a href="admin_verifikasi.html" class="nav-item"><span class="material-symbols-outlined text-[20px]">verified_user</span>Verifikasi Petani</a>
+    <a href="admin_gudang.html" class="nav-item"><span class="material-symbols-outlined text-[20px]">warehouse</span>Manajemen Gudang</a>
+    <span class="nav-section-title">Operasional</span>
+    <a href="admin_peta.html" class="nav-item active"><span class="material-symbols-outlined text-[20px]" style="font-variation-settings:'FILL' 1">map</span>Peta Distribusi</a>
+    <a href="admin_logistik.html" class="nav-item"><span class="material-symbols-outlined text-[20px]">local_shipping</span>Logistik</a>
+    <a href="admin_laporan.html" class="nav-item"><span class="material-symbols-outlined text-[20px]">bar_chart</span>Laporan & Analitik</a>
+    <div class="nav-spacer"></div>
+    <div class="nav-divider"></div>
+    <a href="../konsumen/login.html" class="nav-item danger"><span class="material-symbols-outlined text-[20px]">logout</span>Keluar</a>
+  </aside>
+
+  <main class="main-content p-6">
+    <div class="flex items-center justify-between mb-5 su d1">
+      <div>
+        <p class="text-xs font-bold uppercase tracking-widest mb-1" style="color:#9ca3af">Visualisasi</p>
+        <h1 class="text-2xl font-black" style="color:#1a1a2e;letter-spacing:-0.5px">Peta Distribusi Indonesia</h1>
+      </div>
+      <div class="flex items-center gap-3">
+        <div class="flex items-center gap-4 text-xs font-semibold">
+          <span class="flex items-center gap-1"><span class="legend-dot" style="background:#00aa5b"></span>Gudang Aktif</span>
+          <span class="flex items-center gap-1"><span class="legend-dot" style="background:#fe6a34"></span>Pengiriman Aktif</span>
+          <span class="flex items-center gap-1"><span class="legend-dot" style="background:#3b82f6"></span>Pusat Distribusi</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-4 gap-4 mb-5 su d2">
+      <div class="card p-4">
+        <p class="text-xs font-bold uppercase tracking-wider mb-2" style="color:#9ca3af">Total Gudang Aktif</p>
+        <p class="text-3xl font-black" style="color:#1a1a2e">12</p>
+        <p class="text-xs font-semibold mt-1" style="color:#22c55e">Tersebar 8 provinsi</p>
+      </div>
+      <div class="card p-4">
+        <p class="text-xs font-bold uppercase tracking-wider mb-2" style="color:#9ca3af">Pengiriman Aktif</p>
+        <p class="text-3xl font-black" style="color:#1a1a2e">34</p>
+        <p class="text-xs font-semibold mt-1" style="color:#fe6a34">Dalam perjalanan</p>
+      </div>
+      <div class="card p-4">
+        <p class="text-xs font-bold uppercase tracking-wider mb-2" style="color:#9ca3af">Petani Aktif</p>
+        <p class="text-3xl font-black" style="color:#1a1a2e">1.284</p>
+        <p class="text-xs font-semibold mt-1" style="color:#22c55e">11 provinsi</p>
+      </div>
+      <div class="card p-4">
+        <p class="text-xs font-bold uppercase tracking-wider mb-2" style="color:#9ca3af">Food Loss Rate</p>
+        <p class="text-3xl font-black" style="color:#1a1a2e">3,2%</p>
+        <p class="text-xs font-semibold mt-1" style="color:#22c55e">↓ Dari 4,8%</p>
+      </div>
+    </div>
+
+    <!-- Map Area -->
+    <div class="map-container su d3" id="mapHolder" style="height:calc(100vh - 280px);min-height:380px">
+      <!-- Indonesia SVG Map -->
+      <div id="mapContent" style="width:100%;height:100%;position:relative;overflow:hidden;cursor:grab;user-select:none" onmousedown="startDrag(event)" onmousemove="doDrag(event)" onmouseup="endDrag()" onmouseleave="endDrag()">
+
+        <!-- Stylized Indonesia SVG (simplified) -->
+        <svg id="mapSvg" viewBox="0 0 900 400" style="width:100%;height:100%;position:absolute;inset:0;transition:transform .1s" preserveAspectRatio="xMidYMid meet">
+          <!-- Ocean background -->
+          <rect width="900" height="400" fill="#c8e6f0"/>
+          <!-- Sumatra -->
+          <path d="M 60,100 L 100,80 L 160,90 L 220,110 L 260,130 L 270,160 L 250,190 L 210,210 L 160,220 L 110,200 L 70,170 L 50,140 Z" fill="#a5d6a7" stroke="#81c784" stroke-width="1.5"/>
+          <!-- Java & Madura -->
+          <path d="M 290,180 L 360,170 L 430,175 L 480,185 L 510,200 L 490,215 L 420,220 L 350,215 L 290,205 Z" fill="#a5d6a7" stroke="#81c784" stroke-width="1.5"/>
+          <!-- Kalimantan -->
+          <path d="M 430,60 L 510,50 L 580,65 L 620,90 L 640,130 L 620,170 L 580,190 L 530,185 L 470,170 L 440,140 L 420,100 Z" fill="#a5d6a7" stroke="#81c784" stroke-width="1.5"/>
+          <!-- Sulawesi -->
+          <path d="M 640,80 L 660,70 L 680,80 L 690,110 L 680,140 L 660,160 L 650,140 L 640,120 Z M 680,110 L 720,100 L 740,120 L 720,140 L 700,130 Z" fill="#a5d6a7" stroke="#81c784" stroke-width="1.5"/>
+          <!-- Papua -->
+          <path d="M 780,100 L 850,90 L 890,110 L 880,160 L 840,190 L 790,180 L 760,150 L 760,120 Z" fill="#a5d6a7" stroke="#81c784" stroke-width="1.5"/>
+          <!-- Bali & NTT -->
+          <path d="M 510,205 L 530,200 L 540,210 L 530,220 L 510,218 Z M 540,205 L 580,200 L 600,210 L 580,220 L 545,215 Z" fill="#a5d6a7" stroke="#81c784" stroke-width="1.5"/>
+          <!-- Maluku -->
+          <path d="M 730,130 L 750,120 L 760,135 L 748,148 L 732,142 Z M 755,110 L 770,105 L 775,120 L 760,125 Z" fill="#a5d6a7" stroke="#81c784" stroke-width="1.5"/>
+        </svg>
+
+        <!-- Map Points -->
+        <!-- Jawa Tengah (Demak) -->
+        <div class="map-point" style="left:44%;top:50%" onclick="showMarkerInfo('Gudang Jawa Tengah','Demak','Beras, Jagung','860 Ton','Aktif','#00aa5b')">
+          <div class="map-pulse" style="background:#00aa5b;color:#00aa5b"></div>
+          <div class="absolute top-5 left-1/2 -translate-x-1/2 whitespace-nowrap bg-white/90 backdrop-blur text-[10px] font-black px-2 py-0.5 rounded" style="color:#006d38;border:1px solid #bbf7d0">Gudang Jateng</div>
+        </div>
+
+        <!-- Jawa Barat (Karawang) -->
+        <div class="map-point" style="left:36%;top:48%" onclick="showMarkerInfo('Gudang Jawa Barat','Karawang','Beras Premium','720 Ton','Hampir Penuh','#d97706')">
+          <div class="map-pulse" style="background:#d97706;color:#d97706"></div>
+          <div class="absolute top-5 left-1/2 -translate-x-1/2 whitespace-nowrap bg-white/90 backdrop-blur text-[10px] font-black px-2 py-0.5 rounded" style="color:#92400e;border:1px solid #fde68a">Gudang Jabar ⚠</div>
+        </div>
+
+        <!-- Sumatera (Medan) -->
+        <div class="map-point" style="left:16%;top:38%" onclick="showMarkerInfo('Gudang Sumatera Utara','Medan','Cabai, Sayuran','420 Ton','Aktif','#00aa5b')">
+          <div class="map-pulse" style="background:#00aa5b;color:#00aa5b"></div>
+          <div class="absolute top-5 left-1/2 -translate-x-1/2 whitespace-nowrap bg-white/90 backdrop-blur text-[10px] font-black px-2 py-0.5 rounded" style="color:#006d38;border:1px solid #bbf7d0">Gudang Sumut</div>
+        </div>
+
+        <!-- Pengiriman trucks (orange) -->
+        <div class="map-point" style="left:40%;top:52%" title="Pengiriman #X89B — Di Jalan">
+          <div style="background:#fe6a34;color:white;border-radius:8px;padding:2px 6px;font-size:9px;font-weight:900;white-space:nowrap;border:1px solid white;box-shadow:0 2px 6px rgba(254,106,52,0.4);animation:drift 3s ease-in-out infinite">🚛 X89B</div>
+        </div>
+        <div class="map-point" style="left:47%;top:54%">
+          <div style="background:#fe6a34;color:white;border-radius:8px;padding:2px 6px;font-size:9px;font-weight:900;white-space:nowrap;border:1px solid white;box-shadow:0 2px 6px rgba(254,106,52,0.4);animation:drift 4s ease-in-out infinite 1s">🚛 X90A</div>
+        </div>
+
+        <!-- Pusat Distribusi Jakarta -->
+        <div class="map-point" style="left:35%;top:52%">
+          <div style="background:#3b82f6;color:white;border-radius:50%;width:18px;height:18px;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:900;box-shadow:0 2px 10px rgba(59,130,246,0.4);border:2px solid white">★</div>
+          <div class="absolute top-5 left-1/2 -translate-x-1/2 whitespace-nowrap bg-white/90 backdrop-blur text-[10px] font-black px-2 py-0.5 rounded" style="color:#1d4ed8;border:1px solid #bfdbfe">Jakarta Hub</div>
+        </div>
+      </div>
+
+      <!-- Zoom Controls -->
+      <div class="absolute bottom-4 right-4 flex flex-col gap-2 z-10">
+        <div class="zoom-btn" onclick="zoom(1.2)" title="Zoom In">+</div>
+        <div class="zoom-btn" onclick="zoom(0.83)" title="Zoom Out">−</div>
+        <div class="zoom-btn" onclick="resetZoom()" title="Reset" style="font-size:13px">⌂</div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Marker Info Panel -->
+  <div id="markerPanel" class="hidden" style="position:fixed;bottom:24px;left:290px;z-index:100;background:rgba(255,255,255,0.95);backdrop-filter:blur(16px);border-radius:20px;padding:20px;border:1px solid rgba(0,170,91,0.15);box-shadow:0 8px 30px rgba(0,0,0,0.08);width:300px">
+    <div class="flex justify-between items-start mb-3">
+      <h3 id="marker-title" class="font-black text-base" style="color:#1a1a2e"></h3>
+      <button onclick="document.getElementById('markerPanel').classList.add('hidden')" class="text-gray-400 hover:text-gray-600"><span class="material-symbols-outlined text-[18px]">close</span></button>
+    </div>
+    <div id="marker-body"></div>
+  </div>
+
+<style>
+  @keyframes drift { 0%,100%{transform:translate(-50%,-50%) translateY(0)} 50%{transform:translate(-50%,-50%) translateY(-4px)} }
+</style>
+<script>
+  let scale = 1, tx = 0, ty = 0, dragging = false, ox = 0, oy = 0;
+  const svg = document.getElementById('mapContent');
+
+  function applyTransform() {
+    document.getElementById('mapSvg').style.transform = `translate(${tx}px,${ty}px) scale(${scale})`;
+    document.getElementById('mapSvg').style.transformOrigin = 'center center';
+    // also move points
+    document.querySelectorAll('.map-point').forEach(p => {
+      p.style.transform = `translate(-50%, -50%) scale(${1/scale})`;
+    });
+  }
+
+  function zoom(factor) {
+    scale = Math.min(4, Math.max(0.8, scale * factor));
+    applyTransform();
+  }
+  function resetZoom() { scale=1; tx=0; ty=0; applyTransform(); }
+
+  function startDrag(e) { dragging=true; ox=e.clientX-tx; oy=e.clientY-ty; svg.style.cursor='grabbing'; }
+  function doDrag(e) { if(!dragging) return; tx=e.clientX-ox; ty=e.clientY-oy; applyTransform(); }
+  function endDrag() { dragging=false; svg.style.cursor='grab'; }
+
+  function showMarkerInfo(name, loc, kom, stok, status, color) {
+    document.getElementById('marker-title').textContent = name;
+    document.getElementById('marker-body').innerHTML = `
+      <p class="text-xs font-medium mb-3" style="color:#9ca3af">📍 ${loc}</p>
+      <div class="grid grid-cols-2 gap-2 text-xs mb-3">
+        <div class="p-2 rounded-lg" style="background:#f8fafc"><p class="font-semibold text-gray-500">Status</p><p class="font-black" style="color:${color}">${status}</p></div>
+        <div class="p-2 rounded-lg" style="background:#f8fafc"><p class="font-semibold text-gray-500">Stok</p><p class="font-black" style="color:#1a1a2e">${stok}</p></div>
+        <div class="p-2 rounded-lg col-span-2" style="background:#f8fafc"><p class="font-semibold text-gray-500">Komoditas</p><p class="font-black" style="color:#1a1a2e">${kom}</p></div>
+      </div>
+      <a href="admin_gudang.html" class="block w-full text-center font-bold text-sm py-2 rounded-xl text-white" style="background:linear-gradient(135deg,#00aa5b,#006d38)">Detail Gudang</a>`;
+    document.getElementById('markerPanel').classList.remove('hidden');
+  }
+</script>
+</body>
+</html>

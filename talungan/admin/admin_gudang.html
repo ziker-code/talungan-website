@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Manajemen Gudang — Talungan.id</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../shared.css"/>
+  <style>
+    .gudang-card { background:rgba(255,255,255,0.9);backdrop-filter:blur(12px);border:1px solid rgba(0,0,0,0.04);border-radius:20px;padding:20px;box-shadow:0 2px 12px rgba(0,0,0,0.03);transition:transform .2s,box-shadow .2s;cursor:pointer; }
+    .gudang-card:hover { transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,0.06); }
+    .cap-bar { height:8px;border-radius:99px;overflow:hidden;background:#e5e7eb; }
+    .cap-fill { height:100%;border-radius:99px;transition:width .6s cubic-bezier(0.34,1.2,0.64,1); }
+  </style>
+</head>
+<body>
+  <div class="blob-bg"><div class="blob b1"></div><div class="blob b2"></div></div>
+
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <div class="sidebar-logo-icon">
+        <svg viewBox="0 0 60 60" width="24" height="24"><circle cx="30" cy="30" r="28" fill="rgba(255,255,255,0.2)"/><rect x="22" y="18" width="4" height="18" rx="2" fill="white"/><rect x="29" y="14" width="4" height="22" rx="2" fill="white"/><rect x="36" y="18" width="4" height="18" rx="2" fill="white"/><ellipse cx="20" cy="38" rx="8" ry="5" fill="rgba(255,255,255,0.7)" transform="rotate(-25,20,38)"/><ellipse cx="40" cy="38" rx="8" ry="5" fill="rgba(255,255,255,0.5)" transform="rotate(25,40,38)"/></svg>
+      </div>
+      <div><div class="sidebar-brand">Talungan.id</div><div class="sidebar-role">Administrator</div></div>
+    </div>
+    <div class="sidebar-user">
+      <div style="width:36px;height:36px;background:linear-gradient(135deg,#00aa5b,#006d38);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;color:white;font-size:14px;flex-shrink:0">A</div>
+      <div><div class="name">Admin Pusat</div><div class="role">Super Admin</div></div>
+      <div class="dot"></div>
+    </div>
+    <span class="nav-section-title">Manajemen</span>
+    <a href="admin_dashboard.html" class="nav-item"><span class="material-symbols-outlined text-[20px]">dashboard</span>Dashboard</a>
+    <a href="admin_verifikasi.html" class="nav-item"><span class="material-symbols-outlined text-[20px]">verified_user</span>Verifikasi Petani</a>
+    <a href="admin_gudang.html" class="nav-item active"><span class="material-symbols-outlined text-[20px]" style="font-variation-settings:'FILL' 1">warehouse</span>Manajemen Gudang</a>
+    <span class="nav-section-title">Operasional</span>
+    <a href="admin_peta.html" class="nav-item"><span class="material-symbols-outlined text-[20px]">map</span>Peta Distribusi</a>
+    <a href="admin_logistik.html" class="nav-item"><span class="material-symbols-outlined text-[20px]">local_shipping</span>Logistik</a>
+    <a href="admin_laporan.html" class="nav-item"><span class="material-symbols-outlined text-[20px]">bar_chart</span>Laporan & Analitik</a>
+    <div class="nav-spacer"></div>
+    <div class="nav-divider"></div>
+    <a href="../konsumen/login.html" class="nav-item danger"><span class="material-symbols-outlined text-[20px]">logout</span>Keluar</a>
+  </aside>
+
+  <main class="main-content p-6">
+    <div class="flex items-center justify-between mb-6 su d1">
+      <div>
+        <p class="text-xs font-bold uppercase tracking-widest mb-1" style="color:#9ca3af">Infrastruktur</p>
+        <h1 class="text-2xl font-black" style="color:#1a1a2e;letter-spacing:-0.5px">Manajemen Gudang</h1>
+      </div>
+      <button onclick="document.getElementById('addGudangModal').classList.add('open')" class="flex items-center gap-2 font-bold text-sm px-5 py-2.5 rounded-2xl text-white transition-all active:scale-95" style="background:linear-gradient(135deg,#00aa5b,#006d38)">
+        <span class="material-symbols-outlined text-[18px]">add</span>Tambah Gudang
+      </button>
+    </div>
+
+    <!-- Stats -->
+    <div class="grid grid-cols-4 gap-4 mb-6 su d1">
+      <div class="card p-4">
+        <p class="text-xs font-bold uppercase tracking-wider mb-2" style="color:#9ca3af">Total Gudang</p>
+        <p class="text-3xl font-black" style="color:#1a1a2e">12</p>
+        <p class="text-xs font-semibold mt-1" style="color:#22c55e">10 Aktif • 2 Maintenance</p>
+      </div>
+      <div class="card p-4">
+        <p class="text-xs font-bold uppercase tracking-wider mb-2" style="color:#9ca3af">Kapasitas Total</p>
+        <p class="text-3xl font-black" style="color:#1a1a2e">4.800 Ton</p>
+        <p class="text-xs font-semibold mt-1" style="color:#9ca3af">Tersebar 8 provinsi</p>
+      </div>
+      <div class="card p-4">
+        <p class="text-xs font-bold uppercase tracking-wider mb-2" style="color:#9ca3af">Stok Tersimpan</p>
+        <p class="text-3xl font-black" style="color:#1a1a2e">3.240 Ton</p>
+        <p class="text-xs font-semibold mt-1" style="color:#d97706">67,5% kapasitas</p>
+      </div>
+      <div class="card p-4">
+        <p class="text-xs font-bold uppercase tracking-wider mb-2" style="color:#9ca3af">Gudang Hampir Penuh</p>
+        <p class="text-3xl font-black" style="color:#1a1a2e">3</p>
+        <p class="text-xs font-semibold mt-1" style="color:#d97706">≥ 85% kapasitas</p>
+      </div>
+    </div>
+
+    <!-- Search & Filter -->
+    <div class="flex items-center justify-between mb-4 su d2">
+      <div class="relative">
+        <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-[16px]">search</span>
+        <input type="text" placeholder="Cari gudang..." style="background:rgba(255,255,255,0.9);border:1px solid rgba(0,0,0,0.08);border-radius:14px;padding:9px 16px 9px 36px;font-size:13px;font-family:'Inter',sans-serif;outline:none;width:260px"/>
+      </div>
+      <div class="flex gap-2">
+        <button class="px-3 py-1.5 rounded-full text-sm font-bold" style="background:#00aa5b;color:white">Semua</button>
+        <button class="px-3 py-1.5 rounded-full text-sm font-bold border border-gray-200" style="background:white;color:#6b7280">Aktif</button>
+        <button class="px-3 py-1.5 rounded-full text-sm font-bold border border-gray-200" style="background:white;color:#6b7280">Maintenance</button>
+      </div>
+    </div>
+
+    <!-- Gudang Cards Grid -->
+    <div class="grid grid-cols-3 gap-4 su d3">
+
+      <!-- Gudang 1 -->
+      <div class="gudang-card" onclick="showDetail('Gudang Jawa Tengah','Demak, Jawa Tengah','1.200 Ton','860 Ton',72,'Beras, Jagung, Kedelai','Aktif')">
+        <div class="flex items-start justify-between mb-3">
+          <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:rgba(0,170,91,0.1)">
+            <span class="material-symbols-outlined text-[20px]" style="color:#00aa5b;font-variation-settings:'FILL' 1">warehouse</span>
+          </div>
+          <span class="text-[10px] font-black px-2.5 py-1 rounded-full" style="background:#dcfce7;color:#166534">✓ Aktif</span>
+        </div>
+        <h3 class="font-black text-base mb-1" style="color:#1a1a2e">Gudang Jawa Tengah</h3>
+        <p class="text-xs font-medium mb-3" style="color:#9ca3af">📍 Demak, Jawa Tengah</p>
+        <div class="cap-bar mb-1"><div class="cap-fill" style="width:72%;background:linear-gradient(90deg,#00aa5b,#006d38)"></div></div>
+        <div class="flex justify-between text-xs font-semibold" style="color:#6b7280">
+          <span>860 Ton tersimpan</span><span>72% / 1.200 Ton</span>
+        </div>
+        <div class="mt-3 pt-3 border-t border-gray-100 flex items-center justify-between">
+          <span class="text-[10px] font-semibold" style="color:#9ca3af">Beras, Jagung, Kedelai</span>
+          <span class="text-[10px] font-black" style="color:#00aa5b">Lihat Detail →</span>
+        </div>
+      </div>
+
+      <!-- Gudang 2 -->
+      <div class="gudang-card" onclick="showDetail('Gudang Jawa Barat','Karawang, Jawa Barat','800 Ton','720 Ton',90,'Beras Premium','Hampir Penuh')">
+        <div class="flex items-start justify-between mb-3">
+          <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:rgba(251,191,36,0.1)">
+            <span class="material-symbols-outlined text-[20px]" style="color:#d97706;font-variation-settings:'FILL' 1">warehouse</span>
+          </div>
+          <span class="text-[10px] font-black px-2.5 py-1 rounded-full" style="background:#fef3c7;color:#92400e">⚠ Hampir Penuh</span>
+        </div>
+        <h3 class="font-black text-base mb-1" style="color:#1a1a2e">Gudang Jawa Barat</h3>
+        <p class="text-xs font-medium mb-3" style="color:#9ca3af">📍 Karawang, Jawa Barat</p>
+        <div class="cap-bar mb-1"><div class="cap-fill" style="width:90%;background:linear-gradient(90deg,#f59e0b,#d97706)"></div></div>
+        <div class="flex justify-between text-xs font-semibold" style="color:#6b7280">
+          <span>720 Ton tersimpan</span><span>90% / 800 Ton</span>
+        </div>
+        <div class="mt-3 pt-3 border-t border-gray-100 flex items-center justify-between">
+          <span class="text-[10px] font-semibold" style="color:#9ca3af">Beras Premium</span>
+          <span class="text-[10px] font-black" style="color:#00aa5b">Lihat Detail →</span>
+        </div>
+      </div>
+
+      <!-- Gudang 3 -->
+      <div class="gudang-card" onclick="showDetail('Gudang Sumatera Utara','Medan, Sumatera Utara','1.000 Ton','420 Ton',42,'Cabai, Sayuran','Aktif')">
+        <div class="flex items-start justify-between mb-3">
+          <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:rgba(0,170,91,0.1)">
+            <span class="material-symbols-outlined text-[20px]" style="color:#00aa5b;font-variation-settings:'FILL' 1">warehouse</span>
+          </div>
+          <span class="text-[10px] font-black px-2.5 py-1 rounded-full" style="background:#dcfce7;color:#166534">✓ Aktif</span>
+        </div>
+        <h3 class="font-black text-base mb-1" style="color:#1a1a2e">Gudang Sumatera Utara</h3>
+        <p class="text-xs font-medium mb-3" style="color:#9ca3af">📍 Medan, Sumatera Utara</p>
+        <div class="cap-bar mb-1"><div class="cap-fill" style="width:42%;background:linear-gradient(90deg,#00aa5b,#006d38)"></div></div>
+        <div class="flex justify-between text-xs font-semibold" style="color:#6b7280">
+          <span>420 Ton tersimpan</span><span>42% / 1.000 Ton</span>
+        </div>
+        <div class="mt-3 pt-3 border-t border-gray-100 flex items-center justify-between">
+          <span class="text-[10px] font-semibold" style="color:#9ca3af">Cabai, Sayuran</span>
+          <span class="text-[10px] font-black" style="color:#00aa5b">Lihat Detail →</span>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Detail Modal -->
+  <div class="modal-bg" id="detailModal" onclick="if(event.target===this)this.classList.remove('open')">
+    <div class="modal-box p-7" id="modal-gudang-body"></div>
+  </div>
+
+  <!-- Add Gudang Modal -->
+  <div class="modal-bg" id="addGudangModal" onclick="if(event.target===this)this.classList.remove('open')">
+    <div class="modal-box p-7">
+      <div class="flex items-center justify-between mb-5">
+        <h2 class="text-xl font-black" style="color:#1a1a2e">Tambah Gudang Baru</h2>
+        <button onclick="document.getElementById('addGudangModal').classList.remove('open')" class="w-8 h-8 rounded-full flex items-center justify-center hover:bg-gray-100 text-gray-400"><span class="material-symbols-outlined text-[18px]">close</span></button>
+      </div>
+      <div class="flex flex-col gap-4">
+        <div><label class="block text-xs font-bold uppercase tracking-wide mb-2" style="color:#6b7280">Nama Gudang</label><input type="text" placeholder="cth: Gudang Sulawesi Selatan" style="width:100%;background:#f8fafc;border:2px solid #e2e8f0;border-radius:12px;padding:11px 14px;font-size:14px;font-family:'Inter',sans-serif;outline:none"/></div>
+        <div><label class="block text-xs font-bold uppercase tracking-wide mb-2" style="color:#6b7280">Lokasi</label><input type="text" placeholder="Kota, Provinsi" style="width:100%;background:#f8fafc;border:2px solid #e2e8f0;border-radius:12px;padding:11px 14px;font-size:14px;font-family:'Inter',sans-serif;outline:none"/></div>
+        <div><label class="block text-xs font-bold uppercase tracking-wide mb-2" style="color:#6b7280">Kapasitas (Ton)</label><input type="number" placeholder="1000" style="width:100%;background:#f8fafc;border:2px solid #e2e8f0;border-radius:12px;padding:11px 14px;font-size:14px;font-family:'Inter',sans-serif;outline:none"/></div>
+        <button onclick="document.getElementById('addGudangModal').classList.remove('open');showToast('✅ Gudang berhasil ditambahkan!')" class="w-full font-bold py-3.5 rounded-2xl text-white transition-all active:scale-95 mt-2" style="background:linear-gradient(135deg,#00aa5b,#006d38)">Simpan Gudang</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+<script>
+  function showDetail(name, loc, cap, stok, pct, kom, status) {
+    const fill = pct > 85 ? '#f59e0b' : '#00aa5b';
+    document.getElementById('modal-gudang-body').innerHTML = `
+      <div class="flex items-center justify-between mb-5"><h2 class="text-xl font-black" style="color:#1a1a2e">${name}</h2><button onclick="document.getElementById('detailModal').classList.remove('open')" class="w-8 h-8 rounded-full flex items-center justify-center hover:bg-gray-100 text-gray-400"><span class="material-symbols-outlined text-[18px]">close</span></button></div>
+      <div class="grid grid-cols-2 gap-3 mb-5">
+        <div class="p-4 rounded-xl" style="background:#f8fafc"><p class="text-[10px] font-bold uppercase tracking-wide mb-1" style="color:#9ca3af">Lokasi</p><p class="font-bold text-sm" style="color:#1a1a2e">${loc}</p></div>
+        <div class="p-4 rounded-xl" style="background:#f8fafc"><p class="text-[10px] font-bold uppercase tracking-wide mb-1" style="color:#9ca3af">Status</p><p class="font-bold text-sm" style="color:#00aa5b">${status}</p></div>
+        <div class="p-4 rounded-xl" style="background:#f8fafc"><p class="text-[10px] font-bold uppercase tracking-wide mb-1" style="color:#9ca3af">Kapasitas Total</p><p class="font-bold text-sm" style="color:#1a1a2e">${cap}</p></div>
+        <div class="p-4 rounded-xl" style="background:#f8fafc"><p class="text-[10px] font-bold uppercase tracking-wide mb-1" style="color:#9ca3af">Stok Saat Ini</p><p class="font-bold text-sm" style="color:#1a1a2e">${stok}</p></div>
+      </div>
+      <div class="mb-5"><p class="text-xs font-bold mb-2" style="color:#6b7280">Utilisasi Kapasitas</p><div class="cap-bar"><div style="height:100%;width:${pct}%;background:${fill};border-radius:99px;transition:.6s"></div></div><p class="text-right text-xs font-bold mt-1" style="color:${fill}">${pct}%</p></div>
+      <div class="mb-5 p-3 rounded-xl" style="background:#f8fafc"><p class="text-xs font-bold mb-1" style="color:#6b7280">Komoditas Tersimpan</p><p class="font-semibold text-sm" style="color:#1a1a2e">${kom}</p></div>
+      <div class="flex gap-3"><button onclick="document.getElementById('detailModal').classList.remove('open')" class="flex-1 border-2 border-gray-200 font-bold py-3 rounded-2xl text-sm" style="color:#6b7280">Tutup</button><button class="flex-1 font-bold py-3 rounded-2xl text-sm text-white" style="background:linear-gradient(135deg,#00aa5b,#006d38)">Edit Gudang</button></div>`;
+    document.getElementById('detailModal').classList.add('open');
+  }
+
+  function showToast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg; t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 2500);
+  }
+</script>
+</body>
+</html>

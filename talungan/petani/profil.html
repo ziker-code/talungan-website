@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Profil Petani — Talungan.id</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../shared.css"/>
+  <style>
+    .cover-grad { background: linear-gradient(135deg, #006d38 0%, #00aa5b 50%, #78db96 100%); height: 140px; border-radius: 20px 20px 0 0; position: relative; overflow: hidden; }
+    .badge-chip { display:inline-flex;align-items:center;gap:4px;padding:4px 10px;border-radius:99px;font-size:11px;font-weight:700; }
+  </style>
+</head>
+<body>
+  <div class="blob-bg"><div class="blob b1"></div><div class="blob b2"></div></div>
+
+  <!-- SIDEBAR PETANI -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <div class="sidebar-logo-icon">
+        <svg viewBox="0 0 60 60" width="24" height="24"><circle cx="30" cy="30" r="28" fill="rgba(255,255,255,0.2)"/><rect x="22" y="18" width="4" height="18" rx="2" fill="white"/><rect x="29" y="14" width="4" height="22" rx="2" fill="white"/><rect x="36" y="18" width="4" height="18" rx="2" fill="white"/><ellipse cx="20" cy="38" rx="8" ry="5" fill="rgba(255,255,255,0.7)" transform="rotate(-25,20,38)"/><ellipse cx="40" cy="38" rx="8" ry="5" fill="rgba(255,255,255,0.5)" transform="rotate(25,40,38)"/></svg>
+      </div>
+      <div><div class="sidebar-brand">Talungan.id</div><div class="sidebar-role">Petani</div></div>
+    </div>
+    <div class="sidebar-user">
+      <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZgSlafW9-9bp2CtuNc_-84duckOPOFLkJ_1VX_XH4iZJju339wMLuJOSLI96HDTqOEv5UrxkkJLiFr7gSYaAj9mO4AmSGUcFA3tD2pF7Xs6TWk-UoJvQSfWFETuMPKo6bOn8hnrHhq9O9jnqQjmYti5HljvFjH4OATc82GV7FuENCGrUtQoohpibu4gJKUgxvkzij1VKiiHThBFuPy_-YGhmrWopXQu-mpS93ws33II9sgQ0gdSdP4dFU_HtfitqndkpGys5zLmI" alt="User"/>
+      <div><div class="name">Budi Santoso</div><div class="role">Petani Terverifikasi</div></div>
+      <div class="dot"></div>
+    </div>
+    <span class="nav-section-title">Menu Petani</span>
+    <a href="dashboard.html" class="nav-item"><span class="material-symbols-outlined text-[20px]">dashboard</span>Beranda</a>
+    <a href="stok.html" class="nav-item"><span class="material-symbols-outlined text-[20px]">inventory_2</span>Stok Komoditas</a>
+    <a href="pasar.html" class="nav-item"><span class="material-symbols-outlined text-[20px]">trending_up</span>Harga Pasar</a>
+    <a href="transaksi.html" class="nav-item"><span class="material-symbols-outlined text-[20px]">receipt_long</span>Transaksi</a>
+    <a href="logistik.html" class="nav-item"><span class="material-symbols-outlined text-[20px]">local_shipping</span>Logistik</a>
+    <a href="statistik.html" class="nav-item"><span class="material-symbols-outlined text-[20px]">bar_chart</span>Statistik</a>
+    <a href="forum.html" class="nav-item"><span class="material-symbols-outlined text-[20px]">forum</span>Forum Tani</a>
+    <a href="edukasi.html" class="nav-item"><span class="material-symbols-outlined text-[20px]">school</span>Edukasi</a>
+    <div class="nav-spacer"></div>
+    <div class="nav-divider"></div>
+    <a href="profil.html" class="nav-item active"><span class="material-symbols-outlined text-[20px]" style="font-variation-settings:'FILL' 1">account_circle</span>Profil Saya</a>
+    <a href="../konsumen/login.html" class="nav-item danger"><span class="material-symbols-outlined text-[20px]">logout</span>Keluar</a>
+  </aside>
+
+  <main class="main-content p-6">
+    <div class="max-w-3xl mx-auto">
+
+      <!-- Profile Card -->
+      <div class="card overflow-hidden mb-5 su d1">
+        <div class="cover-grad">
+          <div class="absolute inset-0 opacity-10">
+            <div class="absolute right-8 top-4 w-32 h-32 border-4 border-white rounded-full"></div>
+            <div class="absolute right-20 bottom-0 w-20 h-20 border-4 border-white rounded-full"></div>
+          </div>
+          <!-- Edit cover button -->
+          <button class="absolute top-4 right-4 flex items-center gap-1 text-xs font-bold text-white/80 hover:text-white bg-white/20 hover:bg-white/30 px-3 py-1.5 rounded-full transition-all">
+            <span class="material-symbols-outlined text-[14px]">edit</span>Edit Cover
+          </button>
+        </div>
+
+        <div class="px-6 pb-6">
+          <div class="flex items-end justify-between -mt-10 mb-4">
+            <div class="relative">
+              <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZgSlafW9-9bp2CtuNc_-84duckOPOFLkJ_1VX_XH4iZJju339wMLuJOSLI96HDTqOEv5UrxkkJLiFr7gSYaAj9mO4AmSGUcFA3tD2pF7Xs6TWk-UoJvQSfWFETuMPKo6bOn8hnrHhq9O9jnqQjmYti5HljvFjH4OATc82GV7FuENCGrUtQoohpibu4gJKUgxvkzij1VKiiHThBFuPy_-YGhmrWopXQu-mpS93ws33II9sgQ0gdSdP4dFU_HtfitqndkpGys5zLmI" class="w-24 h-24 rounded-2xl object-cover border-4 border-white shadow-lg" alt="Avatar"/>
+              <button class="absolute -bottom-1 -right-1 w-7 h-7 rounded-xl flex items-center justify-center border-2 border-white" style="background:#00aa5b"><span class="material-symbols-outlined text-white text-[14px]">photo_camera</span></button>
+            </div>
+            <button class="flex items-center gap-2 font-bold text-sm px-5 py-2.5 rounded-2xl" style="background:rgba(0,170,91,0.1);color:#00aa5b;border:1.5px solid rgba(0,170,91,0.2)">
+              <span class="material-symbols-outlined text-[18px]">edit</span>Edit Profil
+            </button>
+          </div>
+          <h2 class="text-xl font-black mb-1" style="color:#1a1a2e">Budi Santoso</h2>
+          <div class="flex items-center flex-wrap gap-2 mb-3">
+            <span class="badge-chip text-white" style="background:#00aa5b"><span class="material-symbols-outlined text-[12px]">verified</span>Terverifikasi</span>
+            <span class="badge-chip" style="background:#f0fdf4;color:#166534;border:1px solid #bbf7d0">🌾 Petani Padi</span>
+            <span class="badge-chip" style="background:#fef3c7;color:#92400e;border:1px solid #fde68a">⭐ Grade A Supplier</span>
+          </div>
+          <p class="text-sm font-medium mb-2" style="color:#9ca3af">📍 Desa Sukamaju, Demak, Jawa Tengah &nbsp;·&nbsp; Bergabung Oktober 2023</p>
+
+          <!-- Quick Stats Row -->
+          <div class="grid grid-cols-4 gap-3 mt-4 pt-4" style="border-top:1px solid #f1f5f9">
+            <div class="text-center"><p class="text-2xl font-black" style="color:#1a1a2e">12,5 Ha</p><p class="text-[11px] text-gray-400 font-semibold">Lahan</p></div>
+            <div class="text-center"><p class="text-2xl font-black" style="color:#1a1a2e">42</p><p class="text-[11px] text-gray-400 font-semibold">Transaksi</p></div>
+            <div class="text-center"><p class="text-2xl font-black" style="color:#1a1a2e">Rp 284jt</p><p class="text-[11px] text-gray-400 font-semibold">Total Penjualan</p></div>
+            <div class="text-center"><p class="text-2xl font-black" style="color:#00aa5b">4,9 ★</p><p class="text-[11px] text-gray-400 font-semibold">Rating</p></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2 gap-4">
+        <!-- Quick Actions -->
+        <div class="card p-5 su d2">
+          <h3 class="font-black text-base mb-4" style="color:#1a1a2e">Aktivitas</h3>
+          <div class="grid grid-cols-2 gap-3">
+            <a href="stok.html" class="flex flex-col items-center p-3 rounded-xl hover:bg-gray-50 transition-colors gap-2" style="border:1px solid #f1f5f9">
+              <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:rgba(0,170,91,0.1)"><span class="material-symbols-outlined text-[20px]" style="color:#00aa5b">inventory_2</span></div>
+              <p class="text-xs font-bold text-center" style="color:#1a1a2e">Kelola Stok</p>
+            </a>
+            <a href="transaksi.html" class="flex flex-col items-center p-3 rounded-xl hover:bg-gray-50 transition-colors gap-2" style="border:1px solid #f1f5f9">
+              <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:rgba(0,170,91,0.1)"><span class="material-symbols-outlined text-[20px]" style="color:#00aa5b">receipt_long</span></div>
+              <p class="text-xs font-bold text-center" style="color:#1a1a2e">Transaksi</p>
+            </a>
+            <a href="forum.html" class="flex flex-col items-center p-3 rounded-xl hover:bg-gray-50 transition-colors gap-2" style="border:1px solid #f1f5f9">
+              <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:rgba(0,170,91,0.1)"><span class="material-symbols-outlined text-[20px]" style="color:#00aa5b">forum</span></div>
+              <p class="text-xs font-bold text-center" style="color:#1a1a2e">Forum</p>
+            </a>
+            <a href="edukasi.html" class="flex flex-col items-center p-3 rounded-xl hover:bg-gray-50 transition-colors gap-2" style="border:1px solid #f1f5f9">
+              <div class="w-10 h-10 rounded-xl flex items-center justify-center" style="background:rgba(0,170,91,0.1)"><span class="material-symbols-outlined text-[20px]" style="color:#00aa5b">school</span></div>
+              <p class="text-xs font-bold text-center" style="color:#1a1a2e">Edukasi</p>
+            </a>
+          </div>
+        </div>
+
+        <!-- Settings -->
+        <div class="card overflow-hidden su d3">
+          <div class="px-5 py-4" style="border-bottom:1px solid #f1f5f9"><h3 class="font-black text-base" style="color:#1a1a2e">Pengaturan Akun</h3></div>
+          <div class="divide-y divide-gray-50">
+            <div class="flex items-center justify-between px-5 py-3.5 hover:bg-gray-50 cursor-pointer transition-colors">
+              <div class="flex items-center gap-3"><div class="w-8 h-8 rounded-xl flex items-center justify-center" style="background:rgba(0,170,91,0.1)"><span class="material-symbols-outlined text-[16px]" style="color:#00aa5b">person</span></div><span class="text-sm font-semibold" style="color:#1a1a2e">Informasi Pribadi</span></div>
+              <span class="material-symbols-outlined text-gray-300 text-[18px]">chevron_right</span>
+            </div>
+            <div class="flex items-center justify-between px-5 py-3.5 hover:bg-gray-50 cursor-pointer transition-colors">
+              <div class="flex items-center gap-3"><div class="w-8 h-8 rounded-xl flex items-center justify-center" style="background:rgba(0,170,91,0.1)"><span class="material-symbols-outlined text-[16px]" style="color:#00aa5b">shield_lock</span></div><span class="text-sm font-semibold" style="color:#1a1a2e">Keamanan</span></div>
+              <span class="material-symbols-outlined text-gray-300 text-[18px]">chevron_right</span>
+            </div>
+            <div class="flex items-center justify-between px-5 py-3.5 hover:bg-gray-50 cursor-pointer transition-colors">
+              <div class="flex items-center gap-3"><div class="w-8 h-8 rounded-xl flex items-center justify-center" style="background:rgba(0,170,91,0.1)"><span class="material-symbols-outlined text-[16px]" style="color:#00aa5b">notifications</span></div><span class="text-sm font-semibold" style="color:#1a1a2e">Notifikasi</span></div>
+              <span class="material-symbols-outlined text-gray-300 text-[18px]">chevron_right</span>
+            </div>
+            <div class="flex items-center justify-between px-5 py-3.5 hover:bg-gray-50 cursor-pointer transition-colors" onclick="document.getElementById('logoutModal').classList.add('open')">
+              <div class="flex items-center gap-3"><div class="w-8 h-8 rounded-xl flex items-center justify-center" style="background:rgba(186,26,26,0.08)"><span class="material-symbols-outlined text-[16px]" style="color:#ba1a1a">logout</span></div><span class="text-sm font-semibold" style="color:#ba1a1a">Keluar Akun</span></div>
+              <span class="material-symbols-outlined text-gray-300 text-[18px]">chevron_right</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Logout Modal -->
+  <div class="modal-bg" id="logoutModal" onclick="if(event.target===this)this.classList.remove('open')">
+    <div class="modal-box p-8 text-center">
+      <div class="w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-4" style="background:#fee2e2"><span class="material-symbols-outlined text-[28px]" style="color:#ba1a1a">logout</span></div>
+      <h3 class="text-lg font-black mb-2" style="color:#1a1a2e">Keluar dari Akun?</h3>
+      <p class="text-sm font-medium mb-5" style="color:#9ca3af">Anda perlu masuk kembali untuk mengakses data pertanian Anda.</p>
+      <div class="flex gap-3">
+        <button onclick="document.getElementById('logoutModal').classList.remove('open')" class="flex-1 border-2 border-gray-200 font-bold py-3 rounded-2xl text-sm" style="color:#6b7280">Batal</button>
+        <a href="../konsumen/login.html" class="flex-1 font-bold py-3 rounded-2xl text-sm text-center text-white" style="background:#ba1a1a">Ya, Keluar</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

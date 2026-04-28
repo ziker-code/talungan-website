@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Stok Komoditas — Talungan.id</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../shared.css"/>
+  <style>
+    .stok-row { display:flex;align-items:center;gap:16px;padding:14px 20px;border-bottom:1px solid rgba(0,0,0,0.04);transition:background .15s;cursor:pointer; }
+    .stok-row:hover { background:rgba(0,170,91,0.03); }
+    .stok-row:last-child { border-bottom:none; }
+    .cap-bar { height:8px;border-radius:99px;background:#e5e7eb;overflow:hidden; }
+    .cap-fill { height:100%;border-radius:99px;background:linear-gradient(90deg,#00aa5b,#fbbf24); }
+    .form-input { background:#f8fafc;border:2px solid #e2e8f0;border-radius:12px;padding:10px 14px;font-size:13px;font-family:'Inter',sans-serif;outline:none;transition:.2s; }
+    .form-input:focus { border-color:#00aa5b;background:white; }
+  </style>
+</head>
+<body>
+  <div class="blob-bg"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <div class="sidebar-logo-icon">
+        <img src="../assets/logo.png" alt="Talungan" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+        <svg viewBox="0 0 60 60" width="24" height="24" style="display:none"><circle cx="30" cy="30" r="28" fill="rgba(255,255,255,0.2)"/><rect x="22" y="18" width="4" height="18" rx="2" fill="white"/><rect x="29" y="14" width="4" height="22" rx="2" fill="white"/><rect x="36" y="18" width="4" height="18" rx="2" fill="white"/></svg>
+      </div>
+      <div><div class="sidebar-brand">Talungan.id</div><div class="sidebar-role">Petani</div></div>
+    </div>
+    <div class="sidebar-user">
+      <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZgSlafW9-9bp2CtuNc_-84duckOPOFLkJ_1VX_XH4iZJju339wMLuJOSLI96HDTqOEv5UrxkkJLiFr7gSYaAj9mO4AmSGUcFA3tD2pF7Xs6TWk-UoJvQSfWFETuMPKo6bOn8hnrHhq9O9jnqQjmYti5HljvFjH4OATc82GV7FuENCGrUtQoohpibu4gJKUgxvkzij1VKiiHThBFuPy_-YGhmrWopXQu-mpS93ws33II9sgQ0gdSdP4dFU_HtfitqndkpGys5zLmI" alt="Budi"/>
+      <div><div class="name">Budi Santoso</div><div class="role">Petani Terverifikasi</div></div>
+      <div class="dot"></div>
+    </div>
+    <span class="nav-section-title">Menu Petani</span>
+    <a href="dashboard.html" class="nav-item"><span class="material-symbols-outlined text-[20px]">dashboard</span>Beranda</a>
+    <a href="stok.html" class="nav-item active"><span class="material-symbols-outlined text-[20px]" style="font-variation-settings:'FILL' 1">inventory_2</span>Stok Komoditas</a>
+    <a href="pasar.html" class="nav-item"><span class="material-symbols-outlined text-[20px]">trending_up</span>Harga Pasar</a>
+    <a href="transaksi.html" class="nav-item"><span class="material-symbols-outlined text-[20px]">receipt_long</span>Transaksi</a>
+    <a href="logistik.html" class="nav-item"><span class="material-symbols-outlined text-[20px]">local_shipping</span>Logistik</a>
+    <a href="statistik.html" class="nav-item"><span class="material-symbols-outlined text-[20px]">bar_chart</span>Statistik</a>
+    <a href="forum.html" class="nav-item"><span class="material-symbols-outlined text-[20px]">forum</span>Forum Tani</a>
+    <a href="edukasi.html" class="nav-item"><span class="material-symbols-outlined text-[20px]">school</span>Edukasi</a>
+    <div class="nav-spacer"></div>
+    <div class="nav-divider"></div>
+    <a href="profil.html" class="nav-item"><span class="material-symbols-outlined text-[20px]">account_circle</span>Profil Saya</a>
+    <a href="../konsumen/login.html" class="nav-item danger"><span class="material-symbols-outlined text-[20px]">logout</span>Keluar</a>
+  </aside>
+
+  <main class="main-content p-6">
+
+    <!-- Header -->
+    <div class="flex items-center justify-between mb-6 su d1">
+      <div>
+        <p class="text-xs font-bold uppercase tracking-widest mb-1" style="color:#9ca3af">Manajemen</p>
+        <h1 class="text-2xl font-black" style="color:#1a1a2e;letter-spacing:-0.5px">Stok Komoditas</h1>
+      </div>
+      <button onclick="document.getElementById('addStokModal').classList.add('open')" class="flex items-center gap-2 font-bold text-sm px-5 py-2.5 rounded-2xl text-white transition-all active:scale-95" style="background:linear-gradient(135deg,#00aa5b,#006d38);box-shadow:0 4px 14px rgba(0,170,91,0.25)">
+        <span class="material-symbols-outlined text-[18px]">add</span>Tambah Stok
+      </button>
+    </div>
+
+    <!-- Stats -->
+    <div class="grid grid-cols-4 gap-4 mb-6 su d1">
+      <div class="card p-5"><p class="text-xs font-bold uppercase tracking-wider mb-2" style="color:#9ca3af">Total Stok</p><p class="text-3xl font-black" style="color:#1a1a2e">8,4 Ton</p><p class="text-xs font-semibold mt-1" style="color:#22c55e">3 komoditas aktif</p></div>
+      <div class="card p-5"><p class="text-xs font-bold uppercase tracking-wider mb-2" style="color:#9ca3af">Siap Jual</p><p class="text-3xl font-black" style="color:#1a1a2e">6,2 Ton</p><p class="text-xs font-semibold mt-1" style="color:#22c55e">Grade A & B</p></div>
+      <div class="card p-5"><p class="text-xs font-bold uppercase tracking-wider mb-2" style="color:#9ca3af">Dalam Proses</p><p class="text-3xl font-black" style="color:#1a1a2e">2,2 Ton</p><p class="text-xs font-semibold mt-1" style="color:#d97706">Pengeringan/Sortir</p></div>
+      <div class="card p-5"><p class="text-xs font-bold uppercase tracking-wider mb-2" style="color:#9ca3af">Nilai Estimasi</p><p class="text-3xl font-black" style="color:#1a1a2e">Rp 88jt</p><p class="text-xs font-semibold mt-1" style="color:#22c55e">Berdasarkan harga hari ini</p></div>
+    </div>
+
+    <!-- Stok Table -->
+    <div class="card overflow-hidden su d2">
+      <div class="px-5 py-4 flex items-center justify-between" style="border-bottom:1px solid rgba(0,0,0,0.05)">
+        <h2 class="font-black text-base" style="color:#1a1a2e">Daftar Stok</h2>
+        <div class="flex gap-2">
+          <button class="px-3 py-1.5 rounded-full text-xs font-bold" style="background:#00aa5b;color:white">Semua</button>
+          <button class="px-3 py-1.5 rounded-full text-xs font-bold border border-gray-200" style="color:#6b7280">Siap Jual</button>
+          <button class="px-3 py-1.5 rounded-full text-xs font-bold border border-gray-200" style="color:#6b7280">Proses</button>
+        </div>
+      </div>
+
+      <!-- Table Header -->
+      <div class="grid px-5 py-2 text-[10px] font-black uppercase tracking-wider" style="grid-template-columns:2fr 1fr 1fr 1.5fr 1fr 1fr;color:#9ca3af;background:rgba(0,0,0,0.02)">
+        <span>Komoditas</span><span>Jumlah</span><span>Grade</span><span>Kapasitas Gudang</span><span>Status</span><span>Aksi</span>
+      </div>
+
+      <div class="stok-row" style="grid-template-columns:2fr 1fr 1fr 1.5fr 1fr 1fr;display:grid">
+        <div class="flex items-center gap-3"><div class="w-10 h-10 rounded-xl flex items-center justify-center text-xl" style="background:#f0fdf4">🌾</div><div><p class="font-bold text-sm" style="color:#1a1a2e">Beras Cianjur</p><p class="text-xs" style="color:#9ca3af">Padi IR-64</p></div></div>
+        <p class="font-black text-sm self-center" style="color:#1a1a2e">5.000 kg</p>
+        <p class="self-center"><span class="text-[11px] font-black px-2 py-1 rounded-full" style="background:#f0fdf4;color:#166534;border:1px solid #bbf7d0">Grade A</span></p>
+        <div class="self-center pr-4"><div class="cap-bar mb-1"><div class="cap-fill" style="width:72%"></div></div><p class="text-[10px] font-semibold" style="color:#6b7280">72% dari 6.944 kg</p></div>
+        <p class="self-center"><span class="text-[11px] font-black px-2 py-1 rounded-full" style="background:#dcfce7;color:#166534">Siap Jual</span></p>
+        <div class="flex gap-1 self-center">
+          <button onclick="editStok('Beras Cianjur','5000')" class="text-xs font-bold px-2 py-1.5 rounded-lg" style="background:rgba(0,170,91,0.1);color:#00aa5b">Edit</button>
+          <button class="text-xs font-bold px-2 py-1.5 rounded-lg" style="background:rgba(254,106,52,0.1);color:#fe6a34">Hapus</button>
+        </div>
+      </div>
+
+      <div class="stok-row" style="grid-template-columns:2fr 1fr 1fr 1.5fr 1fr 1fr;display:grid">
+        <div class="flex items-center gap-3"><div class="w-10 h-10 rounded-xl flex items-center justify-center text-xl" style="background:#fefce8">🌽</div><div><p class="font-bold text-sm" style="color:#1a1a2e">Jagung Pipil</p><p class="text-xs" style="color:#9ca3af">Jagung Hibrida</p></div></div>
+        <p class="font-black text-sm self-center" style="color:#1a1a2e">3.400 kg</p>
+        <p class="self-center"><span class="text-[11px] font-black px-2 py-1 rounded-full" style="background:#f0fdf4;color:#166534;border:1px solid #bbf7d0">Grade B</span></p>
+        <div class="self-center pr-4"><div class="cap-bar mb-1"><div class="cap-fill" style="width:55%"></div></div><p class="text-[10px] font-semibold" style="color:#6b7280">55% dari 6.181 kg</p></div>
+        <p class="self-center"><span class="text-[11px] font-black px-2 py-1 rounded-full" style="background:#dcfce7;color:#166534">Siap Jual</span></p>
+        <div class="flex gap-1 self-center">
+          <button onclick="editStok('Jagung Pipil','3400')" class="text-xs font-bold px-2 py-1.5 rounded-lg" style="background:rgba(0,170,91,0.1);color:#00aa5b">Edit</button>
+          <button class="text-xs font-bold px-2 py-1.5 rounded-lg" style="background:rgba(254,106,52,0.1);color:#fe6a34">Hapus</button>
+        </div>
+      </div>
+
+      <div class="stok-row" style="grid-template-columns:2fr 1fr 1fr 1.5fr 1fr 1fr;display:grid">
+        <div class="flex items-center gap-3"><div class="w-10 h-10 rounded-xl flex items-center justify-center text-xl" style="background:#fff8f0">🌶</div><div><p class="font-bold text-sm" style="color:#1a1a2e">Cabai Merah</p><p class="text-xs" style="color:#9ca3af">Cabai Keriting</p></div></div>
+        <p class="font-black text-sm self-center" style="color:#1a1a2e">220 kg</p>
+        <p class="self-center"><span class="text-[11px] font-black px-2 py-1 rounded-full" style="background:#fff8f0;color:#c2410c;border:1px solid #fed7aa">Grade C</span></p>
+        <div class="self-center pr-4"><div class="cap-bar mb-1"><div class="cap-fill" style="width:22%"></div></div><p class="text-[10px] font-semibold" style="color:#6b7280">22% dari 1.000 kg</p></div>
+        <p class="self-center"><span class="text-[11px] font-black px-2 py-1 rounded-full" style="background:#fef3c7;color:#92400e">Proses</span></p>
+        <div class="flex gap-1 self-center">
+          <button onclick="editStok('Cabai Merah','220')" class="text-xs font-bold px-2 py-1.5 rounded-lg" style="background:rgba(0,170,91,0.1);color:#00aa5b">Edit</button>
+          <button class="text-xs font-bold px-2 py-1.5 rounded-lg" style="background:rgba(254,106,52,0.1);color:#fe6a34">Hapus</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Add Stok Modal -->
+  <div class="modal-bg" id="addStokModal" onclick="if(event.target===this)this.classList.remove('open')">
+    <div class="modal-box p-7">
+      <div class="flex items-center justify-between mb-5"><h2 class="text-xl font-black" style="color:#1a1a2e">Tambah Stok Komoditas</h2><button onclick="document.getElementById('addStokModal').classList.remove('open')" class="w-8 h-8 rounded-full flex items-center justify-center hover:bg-gray-100 text-gray-400"><span class="material-symbols-outlined text-[18px]">close</span></button></div>
+      <div class="flex flex-col gap-4">
+        <div><label class="block text-xs font-bold uppercase tracking-wide mb-2" style="color:#6b7280">Nama Komoditas</label><input type="text" placeholder="cth: Beras Cianjur" class="form-input w-full"/></div>
+        <div class="grid grid-cols-2 gap-3">
+          <div><label class="block text-xs font-bold uppercase tracking-wide mb-2" style="color:#6b7280">Jumlah (kg)</label><input type="number" placeholder="1000" class="form-input w-full"/></div>
+          <div><label class="block text-xs font-bold uppercase tracking-wide mb-2" style="color:#6b7280">Grade</label>
+            <select class="form-input w-full"><option>Grade A</option><option>Grade B</option><option>Grade C</option></select>
+          </div>
+        </div>
+        <div><label class="block text-xs font-bold uppercase tracking-wide mb-2" style="color:#6b7280">Status</label>
+          <select class="form-input w-full"><option>Siap Jual</option><option>Proses</option><option>Diproses</option></select>
+        </div>
+        <button onclick="document.getElementById('addStokModal').classList.remove('open')" class="w-full font-bold py-3.5 rounded-2xl text-white mt-2 transition-all active:scale-95" style="background:linear-gradient(135deg,#00aa5b,#006d38)">Simpan Stok</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Edit Modal -->
+  <div class="modal-bg" id="editModal" onclick="if(event.target===this)this.classList.remove('open')">
+    <div class="modal-box p-7">
+      <div class="flex items-center justify-between mb-5"><h2 class="text-xl font-black" style="color:#1a1a2e">Edit Stok</h2><button onclick="document.getElementById('editModal').classList.remove('open')" class="w-8 h-8 rounded-full flex items-center justify-center hover:bg-gray-100 text-gray-400"><span class="material-symbols-outlined text-[18px]">close</span></button></div>
+      <div class="flex flex-col gap-4">
+        <div><label class="block text-xs font-bold uppercase tracking-wide mb-2" style="color:#6b7280">Nama Komoditas</label><input type="text" id="edit-nama" class="form-input w-full"/></div>
+        <div><label class="block text-xs font-bold uppercase tracking-wide mb-2" style="color:#6b7280">Jumlah (kg)</label><input type="number" id="edit-jumlah" class="form-input w-full"/></div>
+        <button onclick="document.getElementById('editModal').classList.remove('open')" class="w-full font-bold py-3.5 rounded-2xl text-white mt-2" style="background:linear-gradient(135deg,#00aa5b,#006d38)">Simpan Perubahan</button>
+      </div>
+    </div>
+  </div>
+
+<script>
+  function editStok(nama, jumlah) {
+    document.getElementById('edit-nama').value = nama;
+    document.getElementById('edit-jumlah').value = jumlah;
+    document.getElementById('editModal').classList.add('open');
+  }
+</script>
+</body>
+</html>

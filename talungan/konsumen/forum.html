@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Forum Komunitas — Talungan.id</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#006d38', 'primary-container': '#00aa5b',
+            secondary: '#ab3500', 'secondary-container': '#fe6a34',
+            surface: '#fcf8ff', 'on-surface': '#1a1a2e',
+            error: '#ba1a1a', border: '#e2e8f0'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    * { -webkit-tap-highlight-color: transparent; }
+    body { font-family: 'Inter', sans-serif; background: #f8fafc; }
+
+    /* Glass Panels */
+    .glass-nav { background: rgba(255, 255, 255, 0.85); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(0,0,0,0.05); }
+    .glass-card { background: white; border: 1px solid rgba(0,0,0,0.04); box-shadow: 0 4px 20px rgba(0,0,0,0.02); border-radius: 20px; transition: transform 0.2s, box-shadow 0.2s; }
+    .glass-card:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(0,0,0,0.04); }
+
+    /* Custom Scrollbar */
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+    /* Entry Animations */
+    @keyframes slideUp { from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);} }
+    .su { animation: slideUp 0.4s cubic-bezier(0.34,1.2,0.64,1) both; }
+    .d1{animation-delay:.05s}.d2{animation-delay:.1s}.d3{animation-delay:.15s}.d4{animation-delay:.2s}
+
+    /* Input focus effect */
+    .post-input-wrap:focus-within { outline: 2px solid #00aa5b; outline-offset: -2px; }
+  </style>
+</head>
+<body class="text-on-surface antialiased pb-20 md:pb-0">
+
+  <!-- Desktop Header -->
+  <header class="glass-nav fixed top-0 w-full z-50 h-16 hidden md:flex items-center justify-between px-6 lg:px-10">
+    <div class="flex items-center gap-2 w-64 shrink-0">
+      <div class="w-8 h-8 rounded-lg bg-primary-container flex items-center justify-center">
+        <span class="material-symbols-outlined text-white text-[18px]" style="font-variation-settings:'FILL' 1">forum</span>
+      </div>
+      <span class="text-xl font-black text-primary-container tracking-tight">TalunganForum</span>
+    </div>
+    
+    <div class="flex-1 max-w-2xl mx-6">
+      <div class="relative w-full group">
+        <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-primary-container transition-colors">search</span>
+        <input type="text" placeholder="Cari diskusi, tips panen, atau produk..." class="w-full bg-gray-50/80 border border-gray-200 rounded-full py-2.5 pl-12 pr-4 text-sm focus:outline-none focus:ring-2 focus:ring-primary-container/20 focus:border-primary-container focus:bg-white transition-all"/>
+      </div>
+    </div>
+    
+    <div class="flex items-center gap-3 w-64 justify-end shrink-0">
+      <button class="w-10 h-10 rounded-full hover:bg-gray-100 flex items-center justify-center text-gray-500 transition-colors">
+        <span class="material-symbols-outlined text-[22px]">notifications</span>
+      </button>
+      <button class="w-10 h-10 rounded-full hover:bg-gray-100 flex items-center justify-center text-gray-500 transition-colors">
+        <span class="material-symbols-outlined text-[22px]">mail</span>
+      </button>
+      <div class="h-8 w-[1px] bg-gray-200 mx-1"></div>
+      <button class="w-10 h-10 rounded-full border-2 border-white shadow-sm overflow-hidden border-primary-container flex-shrink-0 cursor-pointer hover:opacity-90 transition-opacity">
+        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDC3Pnhp3-z-UASINeSJvHHNrXzgaDw2mbywAaQvXCMue4mlO6mxNW0As0o-REv9p2IjD0DXZsRoE1ylNH0YP6dzohp68BYRCEUusVb8C0ww8vZc-X-k20MrlvxDE6Ab7NSyYrlotDvLvfJcpPBNuRGWafLHqQ7rX0GmsddKBWVV4qYtpcNoQDSglmZKioIuJql1pejrXs7rTpJxQAwYmCS7qRLeweor8X7wgkM4KaL2ELvRw3wdNfOT9OBXYvOvrjcswNZAoRdl_w" class="w-full h-full object-cover" alt="User"/>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Header -->
+  <header class="glass-nav md:hidden fixed top-0 w-full z-50 h-14 flex items-center justify-between px-4">
+    <div class="flex items-center gap-2">
+      <span class="material-symbols-outlined text-primary-container text-[24px]" style="font-variation-settings:'FILL' 1">forum</span>
+      <span class="text-lg font-black tracking-tight text-on-surface">Forum</span>
+    </div>
+    <div class="flex items-center gap-2">
+      <button class="w-9 h-9 rounded-full flex items-center justify-center hover:bg-gray-100 text-gray-600">
+        <span class="material-symbols-outlined text-[20px]">search</span>
+      </button>
+      <button class="w-9 h-9 rounded-full flex items-center justify-center hover:bg-gray-100 text-gray-600 relative">
+        <span class="material-symbols-outlined text-[20px]">notifications</span>
+        <span class="absolute top-1 right-2 w-2 h-2 bg-red-500 rounded-full border border-white"></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="flex max-w-[1400px] mx-auto pt-14 md:pt-16 min-h-screen">
+    
+    <!-- LEFT SIDEBAR (Desktop) -->
+    <aside class="hidden xl:block w-72 shrink-0 p-6 sticky top-16 h-[calc(100vh-4rem)] overflow-y-auto no-scrollbar su d1">
+      
+      <!-- Profile Card -->
+      <div class="bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl p-5 mb-6 border border-green-100/50 flex flex-col items-center text-center">
+        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDC3Pnhp3-z-UASINeSJvHHNrXzgaDw2mbywAaQvXCMue4mlO6mxNW0As0o-REv9p2IjD0DXZsRoE1ylNH0YP6dzohp68BYRCEUusVb8C0ww8vZc-X-k20MrlvxDE6Ab7NSyYrlotDvLvfJcpPBNuRGWafLHqQ7rX0GmsddKBWVV4qYtpcNoQDSglmZKioIuJql1pejrXs7rTpJxQAwYmCS7qRLeweor8X7wgkM4KaL2ELvRw3wdNfOT9OBXYvOvrjcswNZAoRdl_w" class="w-16 h-16 rounded-full object-cover border-4 border-white shadow-sm mb-3" alt="Profile"/>
+        <h3 class="font-bold text-on-surface">Siti Rahmawati</h3>
+        <p class="text-xs text-gray-500 mb-3">Anggota since 2024</p>
+        <div class="flex gap-4 w-full">
+          <div class="flex-1 bg-white rounded-xl py-2 shadow-sm border border-green-100/30">
+            <p class="text-lg font-black text-primary-container">42</p>
+            <p class="text-[10px] uppercase font-bold text-gray-400">Post</p>
+          </div>
+          <div class="flex-1 bg-white rounded-xl py-2 shadow-sm border border-green-100/30">
+            <p class="text-lg font-black text-primary-container">128</p>
+            <p class="text-[10px] uppercase font-bold text-gray-400">Reputasi</p>
+          </div>
+        </div>
+      </div>
+
+      <h4 class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-3 px-2">Kategori</h4>
+      <nav class="flex flex-col gap-1 mb-8">
+        <a href="#" class="flex items-center gap-3 px-4 py-2.5 rounded-xl bg-primary-container text-white font-bold shadow-md shadow-green-200">
+          <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1">school</span>Edukasi Pangan
+        </a>
+        <a href="#" class="flex items-center gap-3 px-4 py-2.5 rounded-xl text-gray-600 hover:bg-gray-100 font-semibold transition-colors">
+          <span class="material-symbols-outlined text-[20px]">rate_review</span>Review Komoditas
+        </a>
+        <a href="#" class="flex items-center gap-3 px-4 py-2.5 rounded-xl text-gray-600 hover:bg-gray-100 font-semibold transition-colors">
+          <span class="material-symbols-outlined text-[20px]">restaurant</span>Tips Memasak
+        </a>
+        <a href="#" class="flex items-center gap-3 px-4 py-2.5 rounded-xl text-gray-600 hover:bg-gray-100 font-semibold transition-colors">
+          <span class="material-symbols-outlined text-[20px]">groups</span>Komunitas Daerah
+        </a>
+      </nav>
+
+      <div class="bg-gray-50 rounded-2xl p-4 border border-gray-100">
+        <h4 class="text-xs font-bold text-gray-800 tracking-wide mb-3 flex items-center gap-1">
+          <span class="material-symbols-outlined text-[#fe6a34] text-[16px]" style="font-variation-settings:'FILL' 1">local_fire_department</span>Trending Tags
+        </h4>
+        <div class="flex flex-wrap gap-2">
+          <span class="bg-white border border-gray-200 text-gray-600 px-3 py-1 rounded-full text-[11px] font-bold cursor-pointer hover:border-primary-container hover:text-primary-container transition-colors">#BerasOrganik</span>
+          <span class="bg-white border border-gray-200 text-gray-600 px-3 py-1 rounded-full text-[11px] font-bold cursor-pointer hover:border-primary-container hover:text-primary-container transition-colors">#PanenRaya</span>
+          <span class="bg-white border border-gray-200 text-gray-600 px-3 py-1 rounded-full text-[11px] font-bold cursor-pointer hover:border-primary-container hover:text-primary-container transition-colors">#ResepSehat</span>
+          <span class="bg-white border border-gray-200 text-gray-600 px-3 py-1 rounded-full text-[11px] font-bold cursor-pointer hover:border-primary-container hover:text-primary-container transition-colors">#TipsDapur</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- CENTER FEED -->
+    <main class="flex-1 w-full max-w-2xl mx-auto p-4 md:py-8 space-y-5">
+      
+      <!-- Mobile Kategori Chips (Horizontal Scroll) -->
+      <div class="md:hidden flex gap-2 overflow-x-auto no-scrollbar -mx-4 px-4 pb-2 su d1">
+        <button class="bg-primary-container text-white px-4 py-2 rounded-full text-xs font-bold whitespace-nowrap shadow-md shadow-green-200">Edukasi Pangan</button>
+        <button class="bg-white text-gray-600 border border-gray-200 px-4 py-2 rounded-full text-xs font-semibold whitespace-nowrap">Review Komoditas</button>
+        <button class="bg-white text-gray-600 border border-gray-200 px-4 py-2 rounded-full text-xs font-semibold whitespace-nowrap">Tips Memasak</button>
+      </div>
+
+      <!-- Create Post Input -->
+      <div class="bg-white rounded-[20px] p-4 border border-gray-100 shadow-sm post-input-wrap transition-all su d2">
+        <div class="flex gap-3">
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDC3Pnhp3-z-UASINeSJvHHNrXzgaDw2mbywAaQvXCMue4mlO6mxNW0As0o-REv9p2IjD0DXZsRoE1ylNH0YP6dzohp68BYRCEUusVb8C0ww8vZc-X-k20MrlvxDE6Ab7NSyYrlotDvLvfJcpPBNuRGWafLHqQ7rX0GmsddKBWVV4qYtpcNoQDSglmZKioIuJql1pejrXs7rTpJxQAwYmCS7qRLeweor8X7wgkM4KaL2ELvRw3wdNfOT9OBXYvOvrjcswNZAoRdl_w" class="w-10 h-10 rounded-full object-cover shrink-0 border border-gray-100" alt="Avatar"/>
+          <input type="text" placeholder="Bagikan tips atau tanyakan sesuatu..." class="bg-gray-50 hover:bg-gray-100 text-sm font-medium w-full rounded-2xl px-4 outline-none transition-colors cursor-pointer"/>
+        </div>
+        <div class="flex items-center justify-between border-t border-gray-100 mt-3 pt-3">
+          <div class="flex gap-1">
+            <button class="flex items-center gap-2 px-3 py-1.5 rounded-lg hover:bg-green-50 text-gray-500 hover:text-primary-container transition-colors font-semibold text-xs">
+              <span class="material-symbols-outlined text-[18px]">image</span>Foto/Video
+            </button>
+            <button class="flex items-center gap-2 px-3 py-1.5 rounded-lg hover:bg-blue-50 text-gray-500 hover:text-blue-600 transition-colors font-semibold text-xs hidden sm:flex">
+              <span class="material-symbols-outlined text-[18px]">poll</span>Polling
+            </button>
+          </div>
+          <button class="bg-primary-container text-white px-5 py-1.5 rounded-full font-bold text-xs hover:bg-primary transition-colors">Kirim</button>
+        </div>
+      </div>
+
+      <!-- Feed Card 1 -->
+      <article class="glass-card p-5 su d3">
+        <!-- Author Info -->
+        <div class="flex items-start justify-between mb-3">
+          <div class="flex items-center gap-3">
+            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZgSlafW9-9bp2CtuNc_-84duckOPOFLkJ_1VX_XH4iZJju339wMLuJOSLI96HDTqOEv5UrxkkJLiFr7gSYaAj9mO4AmSGUcFA3tD2pF7Xs6TWk-UoJvQSfWFETuMPKo6bOn8hnrHhq9O9jnqQjmYti5HljvFjH4OATc82GV7FuENCGrUtQoohpibu4gJKUgxvkzij1VKiiHThBFuPy_-YGhmrWopXQu-mpS93ws33II9sgQ0gdSdP4dFU_HtfitqndkpGys5zLmI" class="w-10 h-10 rounded-full object-cover border border-gray-100" alt="Avatar"/>
+            <div>
+              <h3 class="font-bold text-sm text-on-surface flex items-center gap-1">
+                Agus Setiawan <span class="material-symbols-outlined text-blue-500 text-[14px]" style="font-variation-settings:'FILL' 1">verified</span>
+              </h3>
+              <p class="text-[11px] text-gray-500 font-medium">5 jam yang lalu • Edukasi Pangan</p>
+            </div>
+          </div>
+          <button class="text-gray-400 hover:text-gray-600 p-1"><span class="material-symbols-outlined text-[20px]">more_horiz</span></button>
+        </div>
+        
+        <!-- Content -->
+        <h2 class="text-lg font-black text-on-surface mb-2 leading-snug">Cara Membedakan Beras Organik Asli dan Palsu</h2>
+        <p class="text-sm text-gray-600 mb-4 leading-relaxed">Halo bapak/ibu semua, belakangan ini banyak beredar beras yang diklaim organik tapi ternyata dicampur. Saya mau share beberapa tips sederhana untuk membedakannya saat kita beli di pasar atau toko. Terutama perhatikan tekstur tepung halusnya di permukaan beras...</p>
+        
+        <!-- Media -->
+        <div class="w-full aspect-video rounded-xl bg-gray-100 overflow-hidden mb-4 border border-gray-100">
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuClb1t4sZO8eTCFB9XJoT4Wbos9HF8eYP842ejojR6hu56hTfyd_YqU9lHKkfPkAPloxK50zFqHVHKY_BfiM1gFVWDDudGPsxTLI4rTIiROjFEVrxrGhHf1Klm998lTLmnRus9LR8SNfhAV0JW1Bv56fS7tNSWlH08Q3yMAp146fEvt0djUtoV3pMXH7qm9O9FDHEcrgwKJJ1eeAnwbNfn8v-TdJaMxG0gUTO0ZKc3KNe3Xqp3VipyRCMTiu4z9TyWoyy6SJ6Xf5dI" class="w-full h-full object-cover" alt="Beras Organik"/>
+        </div>
+
+        <!-- Tags -->
+        <div class="flex items-center gap-2 mb-4">
+          <span class="text-[11px] font-bold text-primary-container bg-green-50 px-2 py-0.5 rounded">#BerasOrganik</span>
+          <span class="text-[11px] font-bold text-primary-container bg-green-50 px-2 py-0.5 rounded">#TipsMemilih</span>
+        </div>
+
+        <!-- Actions -->
+        <div class="flex items-center justify-between border-t border-gray-100 pt-3">
+          <button class="flex items-center gap-1.5 text-gray-500 hover:text-primary-container hover:bg-green-50 px-3 py-1.5 rounded-lg transition-colors font-semibold text-xs">
+            <span class="material-symbols-outlined text-[18px]">thumb_up</span>24 Suka
+          </button>
+          <button class="flex items-center gap-1.5 text-gray-500 hover:text-blue-600 hover:bg-blue-50 px-3 py-1.5 rounded-lg transition-colors font-semibold text-xs">
+            <span class="material-symbols-outlined text-[18px]">chat_bubble_outline</span>12 Balasan
+          </button>
+          <button class="flex items-center gap-1.5 text-gray-500 hover:text-gray-800 hover:bg-gray-100 px-3 py-1.5 rounded-lg transition-colors font-semibold text-xs">
+            <span class="material-symbols-outlined text-[18px]">share</span>Bagikan
+          </button>
+        </div>
+      </article>
+
+      <!-- Feed Card 2 -->
+      <article class="glass-card p-5 su d4">
+        <div class="flex items-start justify-between mb-3">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-orange-100 border border-orange-200 flex items-center justify-center font-bold text-secondary-container">DN</div>
+            <div>
+              <h3 class="font-bold text-sm text-on-surface">Dian Nusantara</h3>
+              <p class="text-[11px] text-gray-500 font-medium">Kemarin • Tips Memasak</p>
+            </div>
+          </div>
+          <button class="text-gray-400 hover:text-gray-600 p-1"><span class="material-symbols-outlined text-[20px]">more_horiz</span></button>
+        </div>
+        
+        <h2 class="text-lg font-black text-on-surface mb-2 leading-snug">Resep Nasi Liwet Menggunakan Beras Premium Talungan</h2>
+        <p class="text-sm text-gray-600 mb-4 leading-relaxed">Kemarin baru coba beli beras premium dari aplikasi ini. Hasilnya luar biasa pulen! Saya coba bikin nasi liwet pakai cast iron, airnya cukup sedikit saja karena berasnya sudah bagus. Ada yang punya rekomendasi resep lauk pelengkapnya? Rencana weekend mau bikin lagi untuk acara keluarga besar.</p>
+        
+        <div class="flex items-center justify-between border-t border-gray-100 pt-3">
+           <button class="flex items-center gap-1.5 text-primary-container bg-green-50 px-3 py-1.5 rounded-lg transition-colors font-bold text-xs border border-green-100">
+            <span class="material-symbols-outlined text-[18px]" style="font-variation-settings:'FILL' 1">thumb_up</span>45 Suka
+          </button>
+          <button class="flex items-center gap-1.5 text-gray-500 hover:text-blue-600 hover:bg-blue-50 px-3 py-1.5 rounded-lg transition-colors font-semibold text-xs">
+            <span class="material-symbols-outlined text-[18px]">chat_bubble_outline</span>28 Balasan
+          </button>
+          <button class="flex items-center gap-1.5 text-gray-500 hover:text-gray-800 hover:bg-gray-100 px-3 py-1.5 rounded-lg transition-colors font-semibold text-xs">
+            <span class="material-symbols-outlined text-[18px]">share</span>Share
+          </button>
+        </div>
+      </article>
+
+    </main>
+
+    <!-- RIGHT SIDEBAR (Desktop) -->
+    <aside class="hidden xl:block w-72 shrink-0 p-6 sticky top-16 h-[calc(100vh-4rem)] overflow-y-auto no-scrollbar su d4">
+      <div class="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm mb-6">
+        <h4 class="text-sm font-black text-on-surface mb-4">Kontributor Teratas</h4>
+        <div class="flex flex-col gap-4">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <div class="relative">
+                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZgSlafW9-9bp2CtuNc_-84duckOPOFLkJ_1VX_XH4iZJju339wMLuJOSLI96HDTqOEv5UrxkkJLiFr7gSYaAj9mO4AmSGUcFA3tD2pF7Xs6TWk-UoJvQSfWFETuMPKo6bOn8hnrHhq9O9jnqQjmYti5HljvFjH4OATc82GV7FuENCGrUtQoohpibu4gJKUgxvkzij1VKiiHThBFuPy_-YGhmrWopXQu-mpS93ws33II9sgQ0gdSdP4dFU_HtfitqndkpGys5zLmI" class="w-8 h-8 rounded-full" alt="User"/>
+                <div class="absolute -bottom-1 -right-1 bg-yellow-400 text-white text-[8px] font-black w-4 h-4 rounded-full flex items-center justify-center border-2 border-white">1</div>
+              </div>
+              <span class="text-xs font-bold text-on-surface">Agus Setiawan</span>
+            </div>
+            <button class="text-[10px] font-bold text-primary-container bg-green-50 hover:bg-green-100 px-3 py-1.5 rounded-full transition-colors">Ikuti</button>
+          </div>
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2">
+               <div class="relative">
+                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDC3Pnhp3-z-UASINeSJvHHNrXzgaDw2mbywAaQvXCMue4mlO6mxNW0As0o-REv9p2IjD0DXZsRoE1ylNH0YP6dzohp68BYRCEUusVb8C0ww8vZc-X-k20MrlvxDE6Ab7NSyYrlotDvLvfJcpPBNuRGWafLHqQ7rX0GmsddKBWVV4qYtpcNoQDSglmZKioIuJql1pejrXs7rTpJxQAwYmCS7qRLeweor8X7wgkM4KaL2ELvRw3wdNfOT9OBXYvOvrjcswNZAoRdl_w" class="w-8 h-8 rounded-full" alt="User"/>
+                <div class="absolute -bottom-1 -right-1 bg-gray-300 text-white text-[8px] font-black w-4 h-4 rounded-full flex items-center justify-center border-2 border-white">2</div>
+              </div>
+              <span class="text-xs font-bold text-on-surface">Siti Rahmawati</span>
+            </div>
+            <button class="text-[10px] font-bold text-primary-container bg-green-50 hover:bg-green-100 px-3 py-1.5 rounded-full transition-colors">Ikuti</button>
+          </div>
+        </div>
+      </div>
+      
+      <p class="text-[10px] text-gray-400 font-semibold text-center mt-3">© 2026 Talungan.id • Privasi • Syarat & Ketentuan</p>
+    </aside>
+
+  </div>
+
+  <!-- Mobile Bottom Nav -->
+  <nav class="md:hidden fixed bottom-0 w-full z-50 bg-white border-t border-gray-100 shadow-[0_-4px_20px_rgba(0,0,0,0.05)] pb-safe">
+    <div class="flex justify-around items-center px-2 h-14">
+      <a href="#" class="flex flex-col items-center justify-center gap-1 text-gray-400 hover:text-primary-container w-16">
+        <span class="material-symbols-outlined text-[20px]">home</span>
+        <span class="text-[10px] font-bold">Home</span>
+      </a>
+      <a href="forum.html" class="flex flex-col items-center justify-center gap-1 text-primary-container relative w-16">
+        <span class="material-symbols-outlined text-[20px]" style="font-variation-settings:'FILL' 1">forum</span>
+        <span class="text-[10px] font-black">Forum</span>
+        <span class="absolute -bottom-[8px] w-1 h-1 bg-primary-container rounded-full"></span>
+      </a>
+      <a href="#" class="flex flex-col items-center justify-center gap-1 text-gray-400 hover:text-primary-container w-16 relative">
+        <span class="material-symbols-outlined text-[20px]">local_shipping</span>
+        <span class="text-[10px] font-bold">Pesanan</span>
+      </a>
+      <a href="#" class="flex flex-col items-center justify-center gap-1 text-gray-400 hover:text-primary-container w-16">
+        <span class="material-symbols-outlined text-[20px]">account_circle</span>
+        <span class="text-[10px] font-bold">Profil</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- Mobile FAB -->
+  <button class="md:hidden fixed bottom-20 right-4 w-12 h-12 bg-primary-container text-white rounded-full flex items-center justify-center shadow-[0_4px_15px_rgba(0,170,91,0.3)] z-40 active:scale-95 transition-transform">
+    <span class="material-symbols-outlined text-[24px]">add</span>
+  </button>
+
+</body>
+</html>

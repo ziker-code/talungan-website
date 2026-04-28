@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Profil — Talungan.id</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../shared.css"/>
+</head>
+<body>
+  <div class="blob-bg"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <div class="sidebar-logo-icon">
+        <img src="../assets/logo.png" alt="Talungan" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+        <svg viewBox="0 0 60 60" width="24" height="24" style="display:none"><circle cx="30" cy="30" r="28" fill="rgba(255,255,255,0.2)"/><rect x="22" y="18" width="4" height="18" rx="2" fill="white"/><rect x="29" y="14" width="4" height="22" rx="2" fill="white"/><rect x="36" y="18" width="4" height="18" rx="2" fill="white"/></svg>
+      </div>
+      <div><div class="sidebar-brand">Talungan.id</div><div class="sidebar-role">Konsumen</div></div>
+    </div>
+    <div class="sidebar-user">
+      <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDC3Pnhp3-z-UASINeSJvHHNrXzgaDw2mbywAaQvXCMue4mlO6mxNW0As0o-REv9p2IjD0DXZsRoE1ylNH0YP6dzohp68BYRCEUusVb8C0ww8vZc-X-k20MrlvxDE6Ab7NSyYrlotDvLvfJcpPBNuRGWafLHqQ7rX0GmsddKBWVV4qYtpcNoQDSglmZKioIuJql1pejrXs7rTpJxQAwYmCS7qRLeweor8X7wgkM4KaL2ELvRw3wdNfOT9OBXYvOvrjcswNZAoRdl_w" alt="User"/>
+      <div><div class="name">Siti Rahmawati</div><div class="role">Gold Member</div></div>
+      <div class="dot"></div>
+    </div>
+    <span class="nav-section-title">Menu Utama</span>
+    <a href="home.html" class="nav-item"><span class="material-symbols-outlined text-[20px]">home</span>Beranda</a>
+    <a href="marketplace.html" class="nav-item"><span class="material-symbols-outlined text-[20px]">storefront</span>Marketplace</a>
+    <a href="tracking.html" class="nav-item"><span class="material-symbols-outlined text-[20px]">local_shipping</span>Pesanan</a>
+    <a href="kontrak.html" class="nav-item"><span class="material-symbols-outlined text-[20px]">description</span>Kontrak</a>
+    <a href="tagihan.html" class="nav-item"><span class="material-symbols-outlined text-[20px]">receipt_long</span>Tagihan</a>
+    <a href="forum.html" class="nav-item"><span class="material-symbols-outlined text-[20px]">forum</span>Forum</a>
+    <div class="nav-spacer"></div>
+    <div class="nav-divider"></div>
+    <a href="profil.html" class="nav-item active"><span class="material-symbols-outlined text-[20px]" style="font-variation-settings:'FILL' 1">account_circle</span>Profil Saya</a>
+    <a href="login.html" class="nav-item danger"><span class="material-symbols-outlined text-[20px]">logout</span>Keluar</a>
+  </aside>
+
+  <main class="main-content p-6">
+    <div class="max-w-3xl mx-auto">
+
+      <!-- Profile Hero Card -->
+      <div class="card overflow-hidden mb-5 su d1">
+        <!-- Cover -->
+        <div style="background:linear-gradient(135deg,#00aa5b,#fbbf24,#006d38);height:130px;position:relative;overflow:hidden">
+          <div class="absolute inset-0 opacity-20" style="background:repeating-linear-gradient(45deg,transparent,transparent 20px,rgba(255,255,255,0.1) 20px,rgba(255,255,255,0.1) 21px)"></div>
+          <button class="absolute top-3 right-3 flex items-center gap-1 text-xs font-bold text-white/80 hover:text-white bg-white/20 hover:bg-white/30 px-3 py-1.5 rounded-full transition-all">
+            <span class="material-symbols-outlined text-[14px]">edit</span>Edit Cover
+          </button>
+        </div>
+        <div class="px-6 pb-6">
+          <div class="flex items-end justify-between -mt-10 mb-4">
+            <div class="relative">
+              <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDC3Pnhp3-z-UASINeSJvHHNrXzgaDw2mbywAaQvXCMue4mlO6mxNW0As0o-REv9p2IjD0DXZsRoE1ylNH0YP6dzohp68BYRCEUusVb8C0ww8vZc-X-k20MrlvxDE6Ab7NSyYrlotDvLvfJcpPBNuRGWafLHqQ7rX0GmsddKBWVV4qYtpcNoQDSglmZKioIuJql1pejrXs7rTpJxQAwYmCS7qRLeweor8X7wgkM4KaL2ELvRw3wdNfOT9OBXYvOvrjcswNZAoRdl_w" class="w-24 h-24 rounded-2xl object-cover border-4 border-white shadow-lg" alt="Avatar"/>
+              <button class="absolute -bottom-1 -right-1 w-7 h-7 rounded-xl flex items-center justify-center border-2 border-white" style="background:#00aa5b"><span class="material-symbols-outlined text-white text-[14px]">photo_camera</span></button>
+            </div>
+            <button class="flex items-center gap-2 font-bold text-sm px-5 py-2.5 rounded-2xl" style="background:rgba(0,170,91,0.1);color:#00aa5b;border:1.5px solid rgba(0,170,91,0.2)">
+              <span class="material-symbols-outlined text-[18px]">edit</span>Edit Profil
+            </button>
+          </div>
+          <h2 class="text-xl font-black mb-1" style="color:#1a1a2e">Siti Rahmawati</h2>
+          <div class="flex flex-wrap gap-2 mb-3">
+            <span class="text-[11px] font-black px-2.5 py-1 rounded-full text-white" style="background:linear-gradient(135deg,#00aa5b,#fbbf24)">🏆 Gold Member</span>
+            <span class="text-[11px] font-bold px-2.5 py-1 rounded-full" style="background:#f0fdf4;color:#166534;border:1px solid #bbf7d0">PT Maju Bersama</span>
+          </div>
+          <p class="text-sm font-medium" style="color:#9ca3af">📍 Jakarta Selatan · Bergabung Maret 2024 · <strong style="color:#00aa5b">B2B Buyer Terverifikasi ✓</strong></p>
+          <div class="grid grid-cols-3 gap-3 mt-5 pt-4" style="border-top:1px solid #f1f5f9">
+            <div class="text-center"><p class="text-2xl font-black" style="color:#1a1a2e">24</p><p class="text-[11px] text-gray-400 font-semibold">Total Order</p></div>
+            <div class="text-center"><p class="text-2xl font-black" style="color:#1a1a2e">Rp 356jt</p><p class="text-[11px] text-gray-400 font-semibold">Total Belanja</p></div>
+            <div class="text-center"><p class="text-2xl font-black" style="color:#fbbf24">Gold ★</p><p class="text-[11px] text-gray-400 font-semibold">Status Member</p></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2 gap-4">
+        <!-- Informasi Perusahaan -->
+        <div class="card p-5 su d2">
+          <h3 class="font-black text-base mb-4" style="color:#1a1a2e">Informasi Perusahaan</h3>
+          <div class="flex flex-col gap-3">
+            <div class="flex items-start gap-3">
+              <div class="w-8 h-8 rounded-xl flex items-center justify-center flex-shrink-0" style="background:rgba(0,170,91,0.1)"><span class="material-symbols-outlined text-[16px]" style="color:#00aa5b">business</span></div>
+              <div><p class="text-xs font-semibold" style="color:#9ca3af">Nama Perusahaan</p><p class="text-sm font-bold" style="color:#1a1a2e">PT Maju Bersama Tbk</p></div>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-8 h-8 rounded-xl flex items-center justify-center flex-shrink-0" style="background:rgba(0,170,91,0.1)"><span class="material-symbols-outlined text-[16px]" style="color:#00aa5b">badge</span></div>
+              <div><p class="text-xs font-semibold" style="color:#9ca3af">NIB / NPWP</p><p class="text-sm font-bold" style="color:#1a1a2e">1234567890</p></div>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-8 h-8 rounded-xl flex items-center justify-center flex-shrink-0" style="background:rgba(0,170,91,0.1)"><span class="material-symbols-outlined text-[16px]" style="color:#00aa5b">phone</span></div>
+              <div><p class="text-xs font-semibold" style="color:#9ca3af">Nomor HP</p><p class="text-sm font-bold" style="color:#1a1a2e">+62 812-XXXX-XXXX</p></div>
+            </div>
+            <div class="flex items-start gap-3">
+              <div class="w-8 h-8 rounded-xl flex items-center justify-center flex-shrink-0" style="background:rgba(0,170,91,0.1)"><span class="material-symbols-outlined text-[16px]" style="color:#00aa5b">mail</span></div>
+              <div><p class="text-xs font-semibold" style="color:#9ca3af">Email</p><p class="text-sm font-bold" style="color:#1a1a2e">siti@majubersama.id</p></div>
+            </div>
+          </div>
+          <button class="w-full mt-4 font-bold text-sm py-3 rounded-xl" style="background:rgba(0,170,91,0.08);color:#00aa5b;border:1.5px solid rgba(0,170,91,0.15)">
+            Edit Informasi
+          </button>
+        </div>
+
+        <!-- Pengaturan & Lainnya -->
+        <div class="card overflow-hidden su d3">
+          <div class="px-5 py-4" style="border-bottom:1px solid #f1f5f9"><h3 class="font-black text-base" style="color:#1a1a2e">Pengaturan Akun</h3></div>
+          <div class="divide-y divide-gray-50">
+            <div class="flex items-center justify-between px-5 py-3.5 hover:bg-gray-50 cursor-pointer transition-colors">
+              <div class="flex items-center gap-3"><div class="w-8 h-8 rounded-xl flex items-center justify-center" style="background:rgba(0,170,91,0.1)"><span class="material-symbols-outlined text-[16px]" style="color:#00aa5b">location_on</span></div><span class="text-sm font-semibold" style="color:#1a1a2e">Alamat Pengiriman</span></div>
+              <span class="material-symbols-outlined text-gray-300 text-[18px]">chevron_right</span>
+            </div>
+            <div class="flex items-center justify-between px-5 py-3.5 hover:bg-gray-50 cursor-pointer transition-colors">
+              <div class="flex items-center gap-3"><div class="w-8 h-8 rounded-xl flex items-center justify-center" style="background:rgba(0,170,91,0.1)"><span class="material-symbols-outlined text-[16px]" style="color:#00aa5b">account_balance</span></div><span class="text-sm font-semibold" style="color:#1a1a2e">Metode Pembayaran</span></div>
+              <span class="material-symbols-outlined text-gray-300 text-[18px]">chevron_right</span>
+            </div>
+            <div class="flex items-center justify-between px-5 py-3.5 hover:bg-gray-50 cursor-pointer transition-colors">
+              <div class="flex items-center gap-3"><div class="w-8 h-8 rounded-xl flex items-center justify-center" style="background:rgba(0,170,91,0.1)"><span class="material-symbols-outlined text-[16px]" style="color:#00aa5b">shield_lock</span></div><span class="text-sm font-semibold" style="color:#1a1a2e">Keamanan & Privasi</span></div>
+              <span class="material-symbols-outlined text-gray-300 text-[18px]">chevron_right</span>
+            </div>
+            <div class="flex items-center justify-between px-5 py-3.5 hover:bg-gray-50 cursor-pointer transition-colors">
+              <div class="flex items-center gap-3"><div class="w-8 h-8 rounded-xl flex items-center justify-center" style="background:rgba(0,170,91,0.1)"><span class="material-symbols-outlined text-[16px]" style="color:#00aa5b">notifications</span></div><span class="text-sm font-semibold" style="color:#1a1a2e">Notifikasi</span></div>
+              <span class="material-symbols-outlined text-gray-300 text-[18px]">chevron_right</span>
+            </div>
+            <div class="flex items-center justify-between px-5 py-3.5 cursor-pointer transition-colors hover:bg-red-50" onclick="document.getElementById('logoutModal').classList.add('open')">
+              <div class="flex items-center gap-3"><div class="w-8 h-8 rounded-xl flex items-center justify-center" style="background:rgba(186,26,26,0.08)"><span class="material-symbols-outlined text-[16px]" style="color:#ba1a1a">logout</span></div><span class="text-sm font-semibold" style="color:#ba1a1a">Keluar Akun</span></div>
+              <span class="material-symbols-outlined text-red-200 text-[18px]">chevron_right</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Logout Modal -->
+  <div class="modal-bg" id="logoutModal" onclick="if(event.target===this)this.classList.remove('open')">
+    <div class="modal-box p-8 text-center">
+      <div class="w-14 h-14 rounded-full flex items-center justify-center mx-auto mb-4" style="background:#fee2e2"><span class="material-symbols-outlined text-[28px]" style="color:#ba1a1a">logout</span></div>
+      <h3 class="text-lg font-black mb-2" style="color:#1a1a2e">Keluar dari Akun?</h3>
+      <p class="text-sm font-medium mb-5" style="color:#9ca3af">Anda perlu masuk kembali untuk melanjutkan belanja.</p>
+      <div class="flex gap-3">
+        <button onclick="document.getElementById('logoutModal').classList.remove('open')" class="flex-1 border-2 border-gray-200 font-bold py-3 rounded-2xl text-sm" style="color:#6b7280">Batal</button>
+        <a href="login.html" class="flex-1 font-bold py-3 rounded-2xl text-sm text-center text-white" style="background:#ba1a1a">Ya, Keluar</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,136 @@
+/* ============================================================
+   TALUNGAN.ID — Design Tokens & CSS Variables
+   Version 1.0 | Tim Pasti Menang | April 2026
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  /* ─── COLOR PALETTE ──────────────────────────────────────── */
+  /* Primary Green (Tokopedia-inspired) */
+  --clr-primary:        #00AA5B;
+  --clr-primary-dark:   #007A40;
+  --clr-primary-darker: #005C30;
+  --clr-primary-light:  #E8F7EF;
+  --clr-primary-pale:   #F0FAF5;
+
+  /* Accent */
+  --clr-accent:         #FF6B35;
+  --clr-accent-light:   #FFF0EB;
+
+  /* Semantic */
+  --clr-warning:        #FFB800;
+  --clr-warning-light:  #FFF8E1;
+  --clr-warning-dark:   #CC8800;
+  --clr-danger:         #FF4444;
+  --clr-danger-light:   #FFF0F0;
+  --clr-danger-dark:    #CC2200;
+  --clr-success:        #00AA5B;
+  --clr-success-light:  #E8F7EF;
+  --clr-info:           #0066CC;
+  --clr-info-light:     #E5F0FF;
+
+  /* Neutral */
+  --clr-text-primary:   #1A1A2E;
+  --clr-text-secondary: #6B7280;
+  --clr-text-muted:     #9CA3AF;
+  --clr-text-inverse:   #FFFFFF;
+  --clr-bg:             #F8FAF9;
+  --clr-bg-card:        #FFFFFF;
+  --clr-border:         #E5E7EB;
+  --clr-border-light:   #F3F4F6;
+
+  /* ─── GLASSMORPHISM ─────────────────────────────────────── */
+  --glass-bg:           rgba(255, 255, 255, 0.72);
+  --glass-bg-strong:    rgba(255, 255, 255, 0.88);
+  --glass-bg-subtle:    rgba(255, 255, 255, 0.45);
+  --glass-border:       rgba(255, 255, 255, 0.4);
+  --glass-border-green: rgba(0, 170, 91, 0.25);
+  --glass-blur:         blur(16px) saturate(180%);
+  --glass-blur-light:   blur(8px) saturate(150%);
+
+  /* ─── GRADIENTS ─────────────────────────────────────────── */
+  --grad-primary:       linear-gradient(135deg, #00AA5B 0%, #007A40 100%);
+  --grad-hero:          linear-gradient(160deg, #005C30 0%, #00AA5B 45%, #33CC7A 100%);
+  --grad-card:          linear-gradient(135deg, rgba(0,170,91,0.08) 0%, rgba(0,122,64,0.04) 100%);
+  --grad-overlay:       linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.5) 100%);
+  --grad-warning:       linear-gradient(135deg, #FFB800 0%, #FF8C00 100%);
+  --grad-danger:        linear-gradient(135deg, #FF4444 0%, #CC2200 100%);
+
+  /* ─── TYPOGRAPHY ─────────────────────────────────────────── */
+  --font-family:        'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-xs:            0.75rem;    /* 12px — caption, metadata */
+  --font-sm:            0.875rem;   /* 14px — body small */
+  --font-md:            1rem;       /* 16px — body */
+  --font-lg:            1.125rem;   /* 18px — sub-heading */
+  --font-xl:            1.25rem;    /* 20px — heading 3 */
+  --font-2xl:           1.5rem;     /* 24px — heading 2 */
+  --font-3xl:           1.875rem;   /* 30px — heading 1 */
+  --font-4xl:           2.25rem;    /* 36px — hero */
+  --font-5xl:           3rem;       /* 48px — hero large */
+
+  --fw-light:           300;
+  --fw-regular:         400;
+  --fw-medium:          500;
+  --fw-semibold:        600;
+  --fw-bold:            700;
+  --fw-extrabold:       800;
+
+  --lh-tight:           1.2;
+  --lh-snug:            1.375;
+  --lh-normal:          1.5;
+  --lh-relaxed:         1.625;
+
+  /* ─── SPACING ────────────────────────────────────────────── */
+  --sp-1:   0.25rem;   /* 4px */
+  --sp-2:   0.5rem;    /* 8px */
+  --sp-3:   0.75rem;   /* 12px */
+  --sp-4:   1rem;      /* 16px */
+  --sp-5:   1.25rem;   /* 20px */
+  --sp-6:   1.5rem;    /* 24px */
+  --sp-8:   2rem;      /* 32px */
+  --sp-10:  2.5rem;    /* 40px */
+  --sp-12:  3rem;      /* 48px */
+  --sp-16:  4rem;      /* 64px */
+  --sp-20:  5rem;      /* 80px */
+
+  /* ─── BORDER RADIUS ─────────────────────────────────────── */
+  --radius-sm:    8px;
+  --radius-md:    12px;
+  --radius-lg:    16px;
+  --radius-xl:    20px;
+  --radius-2xl:   24px;
+  --radius-3xl:   32px;
+  --radius-full:  9999px;
+
+  /* ─── SHADOWS ────────────────────────────────────────────── */
+  --shadow-xs:    0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-sm:    0 2px 8px rgba(0, 0, 0, 0.06);
+  --shadow-md:    0 4px 16px rgba(0, 0, 0, 0.08);
+  --shadow-lg:    0 8px 32px rgba(0, 0, 0, 0.10);
+  --shadow-xl:    0 16px 48px rgba(0, 0, 0, 0.12);
+  --shadow-green: 0 4px 20px rgba(0, 170, 91, 0.25);
+  --shadow-green-sm: 0 2px 10px rgba(0, 170, 91, 0.15);
+  --shadow-card:  0 2px 12px rgba(0, 170, 91, 0.08), 0 1px 4px rgba(0,0,0,0.04);
+
+  /* ─── TRANSITIONS ────────────────────────────────────────── */
+  --transition-fast:    all 0.15s ease;
+  --transition-base:    all 0.2s ease;
+  --transition-slow:    all 0.3s ease;
+  --transition-spring:  all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* ─── Z-INDEX ────────────────────────────────────────────── */
+  --z-base:       1;
+  --z-dropdown:   100;
+  --z-sticky:     200;
+  --z-modal:      300;
+  --z-toast:      400;
+  --z-nav:        500;
+
+  /* ─── LAYOUT ─────────────────────────────────────────────── */
+  --max-width:        480px;
+  --max-width-tablet: 768px;
+  --max-width-desktop:1200px;
+  --bottom-nav-h:     72px;
+  --top-nav-h:        60px;
+}

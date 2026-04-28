@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+  <title>Transaksi — Talungan.id</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#006d38', 'primary-container': '#00aa5b', 'on-primary': '#ffffff',
+            'on-primary-container': '#003518',
+            secondary: '#ab3500', 'secondary-container': '#fe6a34',
+            'secondary-fixed': '#ffdbd0', 'secondary-fixed-dim': '#ffb59d',
+            'tertiary-fixed': '#94f8b0', surface: '#fcf8ff',
+            'surface-container': '#efecff', 'surface-container-low': '#f5f2ff',
+            'surface-container-high': '#e8e5ff', 'surface-variant': '#e2e0fc',
+            'on-surface': '#1a1a2e', 'on-surface-variant': '#3d4a3f',
+            outline: '#6d7b6e', 'outline-variant': '#bccabc',
+            error: '#ba1a1a', 'error-container': '#ffdad6',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    * { -webkit-tap-highlight-color: transparent; }
+    body { font-family: 'Inter', sans-serif; }
+    .glass { background:rgba(255,255,255,0.75);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);border:1px solid rgba(255,255,255,0.5); }
+    .bg-page { background-color:#f0faf5;background-image:radial-gradient(at 0% 0%,hsla(146,100%,85%,0.4) 0,transparent 50%),radial-gradient(at 100% 0%,hsla(146,80%,90%,0.3) 0,transparent 50%);min-height:100vh; }
+    @keyframes slideUp { from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);} }
+    .su{animation:slideUp 0.4s cubic-bezier(0.34,1.2,0.64,1) both;}
+    .d1{animation-delay:.04s}.d2{animation-delay:.08s}.d3{animation-delay:.12s}
+    .d4{animation-delay:.16s}.d5{animation-delay:.2s}.d6{animation-delay:.24s}
+    .d7{animation-delay:.28s}.d8{animation-delay:.32s}
+
+    .tab-active { background:#006d38;color:white; }
+    .tab-inactive { background:rgba(255,255,255,0.5);color:#6d7b6e; }
+    .status-badge { display:inline-flex;align-items:center;gap:3px;padding:3px 10px;border-radius:9999px;font-size:11px;font-weight:700; }
+    .badge-sukses  { background:rgba(148,248,176,0.35);color:#006d38;border:1px solid #94f8b0; }
+    .badge-proses  { background:rgba(120,180,255,0.25);color:#1565c0;border:1px solid rgba(120,180,255,0.5); }
+    .badge-pending { background:rgba(255,219,208,0.5);color:#ab3500;border:1px solid #ffb59d; }
+    .badge-batal   { background:rgba(255,218,214,0.5);color:#ba1a1a;border:1px solid #ffdad6; }
+
+    /* detail modal */
+    .modal-overlay{position:fixed;inset:0;z-index:100;background:rgba(26,26,46,0.5);backdrop-filter:blur(4px);display:flex;align-items:flex-end;opacity:0;pointer-events:none;transition:opacity .3s ease;}
+    .modal-overlay.open{opacity:1;pointer-events:all;}
+    .modal-sheet{width:100%;max-width:460px;margin:0 auto;background:white;border-radius:28px 28px 0 0;padding:24px 20px 40px;transform:translateY(100%);transition:transform .4s cubic-bezier(0.34,1.2,0.64,1);}
+    .modal-overlay.open .modal-sheet{transform:translateY(0);}
+
+    /* Timeline */
+    .timeline-dot { width:10px;height:10px;border-radius:50%;flex-shrink:0;margin-top:4px; }
+    .timeline-line { width:2px;flex-shrink:0;background:#e2e0fc;margin-left:4px; }
+  </style>
+</head>
+<body class="bg-page text-on-surface antialiased pb-24">
+
+<!-- HEADER -->
+<header class="sticky top-0 z-40 bg-white/60 backdrop-blur-[20px] border-b border-white/40 shadow-sm">
+  <div class="max-w-md mx-auto px-4 h-14 flex items-center justify-between">
+    <div class="flex items-center gap-2">
+      <a href="dashboard.html" class="w-9 h-9 flex items-center justify-center rounded-full hover:bg-surface-container transition-colors">
+        <span class="material-symbols-outlined text-[22px] text-on-surface">arrow_back</span>
+      </a>
+      <h1 class="text-lg font-extrabold text-on-surface">Transaksi</h1>
+    </div>
+    <button class="w-9 h-9 flex items-center justify-center rounded-full hover:bg-surface-container transition-colors">
+      <span class="material-symbols-outlined text-[20px] text-on-surface-variant">tune</span>
+    </button>
+  </div>
+  <!-- Tabs -->
+  <div class="max-w-md mx-auto px-4 pb-3 flex gap-2">
+    <button onclick="filterTx(this,'semua')" data-tx="semua" class="tab-active text-xs font-bold px-3 py-1.5 rounded-full transition-all">Semua</button>
+    <button onclick="filterTx(this,'masuk')" data-tx="masuk" class="tab-inactive text-xs font-bold px-3 py-1.5 rounded-full glass transition-all">Pemasukan</button>
+    <button onclick="filterTx(this,'keluar')" data-tx="keluar" class="tab-inactive text-xs font-bold px-3 py-1.5 rounded-full glass transition-all">Pengeluaran</button>
+    <button onclick="filterTx(this,'proses')" data-tx="proses" class="tab-inactive text-xs font-bold px-3 py-1.5 rounded-full glass transition-all">Proses</button>
+  </div>
+</header>
+
+<main class="max-w-md mx-auto px-4 pt-4">
+
+  <!-- SUMMARY -->
+  <div class="glass rounded-[20px] p-4 mb-5 su d1">
+    <p class="text-xs font-semibold text-outline mb-3 uppercase tracking-wider">Ringkasan Bulan Ini</p>
+    <div class="grid grid-cols-3 gap-3 text-center">
+      <div>
+        <p class="text-xl font-extrabold text-green-600">+8.4jt</p>
+        <p class="text-[10px] text-outline font-semibold mt-0.5">Pemasukan</p>
+      </div>
+      <div class="border-x border-outline-variant/20">
+        <p class="text-xl font-extrabold text-red-500">-1.2jt</p>
+        <p class="text-[10px] text-outline font-semibold mt-0.5">Pengeluaran</p>
+      </div>
+      <div>
+        <p class="text-xl font-extrabold text-primary-container">7.2jt</p>
+        <p class="text-[10px] text-outline font-semibold mt-0.5">Bersih</p>
+      </div>
+    </div>
+    <!-- Mini income bar -->
+    <div class="mt-3">
+      <div class="flex justify-between text-xs text-outline mb-1">
+        <span>Target bulanan</span><span class="font-semibold text-primary">86%</span>
+      </div>
+      <div class="h-2 rounded-full bg-surface-container-low overflow-hidden">
+        <div class="h-full rounded-full bg-gradient-to-r from-primary-container to-primary" style="width:86%"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TRANSACTION LIST -->
+  <div class="flex flex-col gap-2.5" id="tx-list">
+
+    <!-- TX 1: Sukses Masuk -->
+    <div class="glass rounded-[20px] overflow-hidden su d2" data-type="masuk">
+      <div class="p-4 flex items-center gap-3" onclick="openDetail('tx1')">
+        <div class="w-11 h-11 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0">
+          <span class="material-symbols-outlined text-green-600 text-[22px]">arrow_upward</span>
+        </div>
+        <div class="flex-1">
+          <div class="flex items-start justify-between">
+            <div>
+              <p class="font-bold text-sm text-on-surface">Jual Padi ke Lumbung Sukamaju</p>
+              <p class="text-xs text-outline mt-0.5">200 kg · Grade A</p>
+            </div>
+            <div class="text-right ml-2">
+              <p class="font-extrabold text-sm text-green-600">+Rp 2.900.000</p>
+              <span class="badge-sukses status-badge mt-0.5">
+                <span class="material-symbols-outlined text-[12px]">check_circle</span>Sukses
+              </span>
+            </div>
+          </div>
+          <p class="text-xs text-outline mt-2">23 Okt 2026 · 14:32</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- TX 2: Proses -->
+    <div class="glass rounded-[20px] overflow-hidden su d3" data-type="proses">
+      <div class="p-4 flex items-center gap-3" onclick="openDetail('tx2')">
+        <div class="w-11 h-11 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0">
+          <span class="material-symbols-outlined text-blue-600 text-[22px]">sync</span>
+        </div>
+        <div class="flex-1">
+          <div class="flex items-start justify-between">
+            <div>
+              <p class="font-bold text-sm text-on-surface">Transfer Jagung Antar Lumbung</p>
+              <p class="text-xs text-outline mt-0.5">50 kg · Grade B</p>
+            </div>
+            <div class="text-right ml-2">
+              <p class="font-extrabold text-sm text-on-surface">260.000</p>
+              <span class="badge-proses status-badge mt-0.5">
+                <span class="animate-pulse w-1.5 h-1.5 rounded-full bg-blue-500 inline-block"></span>Proses
+              </span>
+            </div>
+          </div>
+          <p class="text-xs text-outline mt-2">21 Okt 2026 · 09:15</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- TX 3: Sukses Masuk -->
+    <div class="glass rounded-[20px] overflow-hidden su d4" data-type="masuk">
+      <div class="p-4 flex items-center gap-3" onclick="openDetail('tx3')">
+        <div class="w-11 h-11 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0">
+          <span class="material-symbols-outlined text-green-600 text-[22px]">arrow_upward</span>
+        </div>
+        <div class="flex-1">
+          <div class="flex items-start justify-between">
+            <div>
+              <p class="font-bold text-sm text-on-surface">Kontrak Beli Beras Bulog</p>
+              <p class="text-xs text-outline mt-0.5">500 kg · Grade A</p>
+            </div>
+            <div class="text-right ml-2">
+              <p class="font-extrabold text-sm text-green-600">+Rp 7.250.000</p>
+              <span class="badge-sukses status-badge mt-0.5">
+                <span class="material-symbols-outlined text-[12px]">check_circle</span>Sukses
+              </span>
+            </div>
+          </div>
+          <p class="text-xs text-outline mt-2">18 Okt 2026 · 11:00</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- TX 4: Pending -->
+    <div class="glass rounded-[20px] overflow-hidden su d5" data-type="masuk">
+      <div class="p-4 flex items-center gap-3" onclick="openDetail('tx4')">
+        <div class="w-11 h-11 rounded-full bg-orange-100 flex items-center justify-center flex-shrink-0">
+          <span class="material-symbols-outlined text-orange-500 text-[22px]">hourglass_top</span>
+        </div>
+        <div class="flex-1">
+          <div class="flex items-start justify-between">
+            <div>
+              <p class="font-bold text-sm text-on-surface">Jual Cabai ke Pasar Desa</p>
+              <p class="text-xs text-outline mt-0.5">30 kg · Grade B</p>
+            </div>
+            <div class="text-right ml-2">
+              <p class="font-extrabold text-sm text-on-surface">1.350.000</p>
+              <span class="badge-pending status-badge mt-0.5">
+                <span class="material-symbols-outlined text-[12px]">schedule</span>Pending
+              </span>
+            </div>
+          </div>
+          <p class="text-xs text-outline mt-2">15 Okt 2026 · 16:45</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- TX 5: Pengeluaran -->
+    <div class="glass rounded-[20px] overflow-hidden su d6" data-type="keluar">
+      <div class="p-4 flex items-center gap-3" onclick="openDetail('tx5')">
+        <div class="w-11 h-11 rounded-full bg-red-100 flex items-center justify-center flex-shrink-0">
+          <span class="material-symbols-outlined text-red-500 text-[22px]">arrow_downward</span>
+        </div>
+        <div class="flex-1">
+          <div class="flex items-start justify-between">
+            <div>
+              <p class="font-bold text-sm text-on-surface">Biaya Simpan Lumbung</p>
+              <p class="text-xs text-outline mt-0.5">Oktober 2026</p>
+            </div>
+            <div class="text-right ml-2">
+              <p class="font-extrabold text-sm text-red-500">-Rp 350.000</p>
+              <span class="badge-sukses status-badge mt-0.5">
+                <span class="material-symbols-outlined text-[12px]">check_circle</span>Lunas
+              </span>
+            </div>
+          </div>
+          <p class="text-xs text-outline mt-2">10 Okt 2026 · 08:00</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- TX 6: Dibatalkan -->
+    <div class="glass rounded-[20px] overflow-hidden su d7" data-type="masuk">
+      <div class="p-4 flex items-center gap-3">
+        <div class="w-11 h-11 rounded-full bg-gray-100 flex items-center justify-center flex-shrink-0">
+          <span class="material-symbols-outlined text-gray-400 text-[22px]">cancel</span>
+        </div>
+        <div class="flex-1">
+          <div class="flex items-start justify-between">
+            <div>
+              <p class="font-bold text-sm text-on-surface line-through opacity-60">Jual Jagung ke Agen</p>
+              <p class="text-xs text-outline mt-0.5">80 kg</p>
+            </div>
+            <div class="text-right ml-2">
+              <p class="font-extrabold text-sm text-outline line-through">416.000</p>
+              <span class="badge-batal status-badge mt-0.5">
+                <span class="material-symbols-outlined text-[12px]">close</span>Batal
+              </span>
+            </div>
+          </div>
+          <p class="text-xs text-outline mt-2">5 Okt 2026 · 13:20</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</main>
+
+<!-- BOTTOM NAV -->
+<nav class="fixed bottom-0 left-0 w-full z-50">
+  <div class="max-w-md mx-auto">
+    <div class="glass border-t border-white/40 shadow-[0_-10px_30px_rgba(0,0,0,0.06)] rounded-t-[24px] flex justify-around items-center px-2 h-[70px]">
+      <a href="dashboard.html" class="flex flex-col items-center gap-0.5 text-outline">
+        <span class="material-symbols-outlined text-[24px]">home</span>
+        <span class="text-[10px] font-semibold">Beranda</span>
+      </a>
+      <a href="stok.html" class="flex flex-col items-center gap-0.5 text-outline">
+        <span class="material-symbols-outlined text-[24px]">inventory_2</span>
+        <span class="text-[10px] font-semibold">Stok</span>
+      </a>
+      <a href="pasar.html" class="flex flex-col items-center gap-0.5 text-outline">
+        <span class="material-symbols-outlined text-[24px]">storefront</span>
+        <span class="text-[10px] font-semibold">Pasar</span>
+      </a>
+      <a href="transaksi.html" class="relative flex flex-col items-center gap-0.5 text-primary-container">
+        <span class="material-symbols-outlined text-[24px]" style="font-variation-settings:'FILL' 1">receipt_long</span>
+        <span class="text-[10px] font-bold">Transaksi</span>
+        <span class="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-primary-container"></span>
+      </a>
+      <a href="#" class="flex flex-col items-center gap-0.5 text-outline">
+        <span class="material-symbols-outlined text-[24px]">person</span>
+        <span class="text-[10px] font-semibold">Akun</span>
+      </a>
+    </div>
+  </div>
+</nav>
+
+<!-- DETAIL MODAL -->
+<div class="modal-overlay" id="detailModal" onclick="closeModal(event)">
+  <div class="modal-sheet" id="modal-content">
+    <div class="w-10 h-1 bg-gray-200 rounded-full mx-auto mb-5"></div>
+
+    <!-- TX1 detail -->
+    <div id="detail-tx1" class="hidden">
+      <div class="flex items-center gap-3 mb-4">
+        <div class="w-12 h-12 rounded-full bg-green-100 flex items-center justify-center">
+          <span class="material-symbols-outlined text-green-600">arrow_upward</span>
+        </div>
+        <div>
+          <h2 class="font-extrabold text-lg text-on-surface">Jual Padi ke Lumbung Sukamaju</h2>
+          <span class="badge-sukses status-badge">
+            <span class="material-symbols-outlined text-[12px]">check_circle</span>Transaksi Sukses
+          </span>
+        </div>
+      </div>
+      <div class="bg-green-50 rounded-[16px] p-4 text-center mb-4">
+        <p class="text-sm text-outline">Total Diterima</p>
+        <p class="text-3xl font-black text-green-600 mt-1">Rp 2.900.000</p>
+      </div>
+      <div class="space-y-3 text-sm">
+        <div class="flex justify-between py-2 border-b border-outline-variant/20">
+          <span class="text-outline">Komoditas</span><span class="font-semibold">Padi IR-64</span>
+        </div>
+        <div class="flex justify-between py-2 border-b border-outline-variant/20">
+          <span class="text-outline">Jumlah</span><span class="font-semibold">200 kg</span>
+        </div>
+        <div class="flex justify-between py-2 border-b border-outline-variant/20">
+          <span class="text-outline">Grade</span><span class="font-semibold text-primary-container">Grade A</span>
+        </div>
+        <div class="flex justify-between py-2 border-b border-outline-variant/20">
+          <span class="text-outline">Harga/kg</span><span class="font-semibold">Rp 14.500</span>
+        </div>
+        <div class="flex justify-between py-2 border-b border-outline-variant/20">
+          <span class="text-outline">Lumbung Tujuan</span><span class="font-semibold">Lumbung Sukamaju</span>
+        </div>
+        <div class="flex justify-between py-2">
+          <span class="text-outline">ID Transaksi</span><span class="font-mono text-xs font-semibold">TLG-202610-0023</span>
+        </div>
+      </div>
+      <!-- Timeline -->
+      <div class="mt-4 bg-surface-container-low rounded-[14px] p-3">
+        <p class="text-xs font-bold text-outline uppercase tracking-wider mb-3">Riwayat Status</p>
+        <div class="flex gap-3">
+          <div class="flex flex-col items-center">
+            <div class="timeline-dot bg-green-500"></div>
+            <div class="timeline-line h-5"></div>
+            <div class="timeline-dot bg-green-500"></div>
+            <div class="timeline-line h-5"></div>
+            <div class="timeline-dot bg-green-500"></div>
+          </div>
+          <div class="flex flex-col gap-3 text-xs">
+            <div><p class="font-semibold text-on-surface">Pengajuan Diterima</p><p class="text-outline">23 Okt, 14:30</p></div>
+            <div><p class="font-semibold text-on-surface">Stok Dikonfirmasi Lumbung</p><p class="text-outline">23 Okt, 14:31</p></div>
+            <div><p class="font-semibold text-green-600">✅ Dana Masuk ke Dompet</p><p class="text-outline">23 Okt, 14:32</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TX2 detail -->
+    <div id="detail-tx2" class="hidden">
+      <div class="flex items-center gap-3 mb-4">
+        <div class="w-12 h-12 rounded-full bg-blue-100 flex items-center justify-center">
+          <span class="material-symbols-outlined text-blue-600">sync</span>
+        </div>
+        <div>
+          <h2 class="font-extrabold text-lg text-on-surface">Transfer Jagung Antar Lumbung</h2>
+          <span class="badge-proses status-badge">
+            <span class="animate-pulse w-1.5 h-1.5 rounded-full bg-blue-500 inline-block"></span>Sedang Diproses
+          </span>
+        </div>
+      </div>
+      <div class="bg-blue-50 rounded-[16px] p-4 text-center mb-4">
+        <p class="text-sm text-outline">Estimasi Nilai</p>
+        <p class="text-3xl font-black text-blue-600 mt-1">Rp 260.000</p>
+        <p class="text-xs text-outline mt-1">50 kg × Rp 5.200</p>
+      </div>
+      <div class="bg-blue-50 rounded-[12px] p-3 flex items-center gap-2 text-sm text-blue-700 mb-3">
+        <span class="material-symbols-outlined text-[18px]">info</span>
+        <span>Lumbung sedang verifikasi stok. Estimasi selesai 2–4 jam.</span>
+      </div>
+      <div class="space-y-3 text-sm">
+        <div class="flex justify-between py-2 border-b border-outline-variant/20">
+          <span class="text-outline">Komoditas</span><span class="font-semibold">Jagung Pipil</span>
+        </div>
+        <div class="flex justify-between py-2 border-b border-outline-variant/20">
+          <span class="text-outline">Jumlah</span><span class="font-semibold">50 kg</span>
+        </div>
+        <div class="flex justify-between py-2 border-b border-outline-variant/20">
+          <span class="text-outline">Dari Lumbung</span><span class="font-semibold">Sukamaju</span>
+        </div>
+        <div class="flex justify-between py-2">
+          <span class="text-outline">Ke Lumbung</span><span class="font-semibold">Ciawi Barat</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Generic close -->
+    <button onclick="closeDetailModal()" class="w-full mt-5 border-2 border-outline-variant text-outline font-bold py-3 rounded-[14px]">
+      Tutup
+    </button>
+  </div>
+</div>
+
+<script>
+  function filterTx(btn, type) {
+    document.querySelectorAll('[data-tx]').forEach(b => {
+      b.className = 'tab-inactive text-xs font-bold px-3 py-1.5 rounded-full glass transition-all';
+    });
+    btn.className = 'tab-active text-xs font-bold px-3 py-1.5 rounded-full transition-all';
+    document.querySelectorAll('#tx-list > div').forEach(card => {
+      if (type === 'semua' || card.dataset.type === type) {
+        card.style.display = 'block';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  }
+
+  function openDetail(id) {
+    document.querySelectorAll('[id^="detail-"]').forEach(d => d.classList.add('hidden'));
+    const el = document.getElementById('detail-' + id);
+    if (el) el.classList.remove('hidden');
+    document.getElementById('detailModal').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeDetailModal() {
+    document.getElementById('detailModal').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function closeModal(e) {
+    if (e.target === document.getElementById('detailModal')) closeDetailModal();
+  }
+</script>
+</body>
+</html>

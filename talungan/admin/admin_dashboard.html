@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard Admin — Talungan.id</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../shared.css"/>
+  <style>
+    .chart-bar { border-radius: 6px 6px 0 0; transition: filter .2s; background: linear-gradient(to top, #006d38, #00aa5b); }
+    .chart-bar:hover { filter: brightness(1.1); }
+    @keyframes barGrow { from{height:0} to{height:var(--h)} }
+    .chart-bar { animation: barGrow .6s cubic-bezier(0.34,1.2,0.64,1) both; }
+  </style>
+</head>
+<body>
+  <div class="blob-bg"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+
+  <!-- SIDEBAR ADMIN -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <div class="sidebar-logo-icon">
+        <svg viewBox="0 0 60 60" width="24" height="24"><circle cx="30" cy="30" r="28" fill="rgba(255,255,255,0.2)"/><rect x="22" y="18" width="4" height="18" rx="2" fill="white"/><rect x="29" y="14" width="4" height="22" rx="2" fill="white"/><rect x="36" y="18" width="4" height="18" rx="2" fill="white"/><ellipse cx="20" cy="38" rx="8" ry="5" fill="rgba(255,255,255,0.7)" transform="rotate(-25,20,38)"/><ellipse cx="40" cy="38" rx="8" ry="5" fill="rgba(255,255,255,0.5)" transform="rotate(25,40,38)"/></svg>
+      </div>
+      <div><div class="sidebar-brand">Talungan.id</div><div class="sidebar-role">Administrator</div></div>
+    </div>
+    <div class="sidebar-user">
+      <div style="width:36px;height:36px;background:linear-gradient(135deg,#00aa5b,#006d38);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;color:white;font-size:14px;flex-shrink:0">A</div>
+      <div><div class="name">Admin Pusat</div><div class="role">Super Admin</div></div>
+      <div class="dot"></div>
+    </div>
+    <span class="nav-section-title">Manajemen</span>
+    <a href="admin_dashboard.html" class="nav-item active"><span class="material-symbols-outlined text-[20px]" style="font-variation-settings:'FILL' 1">dashboard</span>Dashboard</a>
+    <a href="admin_verifikasi.html" class="nav-item"><span class="material-symbols-outlined text-[20px]">verified_user</span>Verifikasi Petani<span class="badge">8</span></a>
+    <a href="admin_gudang.html" class="nav-item"><span class="material-symbols-outlined text-[20px]">warehouse</span>Manajemen Gudang</a>
+    <span class="nav-section-title">Operasional</span>
+    <a href="admin_peta.html" class="nav-item"><span class="material-symbols-outlined text-[20px]">map</span>Peta Distribusi</a>
+    <a href="admin_logistik.html" class="nav-item"><span class="material-symbols-outlined text-[20px]">local_shipping</span>Logistik</a>
+    <a href="admin_laporan.html" class="nav-item"><span class="material-symbols-outlined text-[20px]">bar_chart</span>Laporan & Analitik</a>
+    <div class="nav-spacer"></div>
+    <div class="nav-divider"></div>
+    <a href="../konsumen/login.html" class="nav-item danger"><span class="material-symbols-outlined text-[20px]">logout</span>Keluar</a>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main-content p-6">
+
+    <!-- Header -->
+    <div class="flex items-center justify-between mb-6 su d1">
+      <div>
+        <p class="text-sm font-semibold" style="color:#9ca3af">Selamat datang, Admin 👋</p>
+        <h1 class="text-2xl font-black" style="color:#1a1a2e;letter-spacing:-0.5px">Dashboard Pusat</h1>
+      </div>
+      <div class="flex items-center gap-2 text-sm font-semibold" style="color:#9ca3af">
+        <span class="material-symbols-outlined text-[16px]">schedule</span>
+        <span id="live-time"></span>
+      </div>
+    </div>
+
+    <!-- Stats Grid — ALL GREEN -->
+    <div class="grid grid-cols-4 gap-4 mb-6">
+      <div class="card p-5 su d1">
+        <div class="flex justify-between items-start mb-3">
+          <p class="text-xs font-bold uppercase tracking-wider" style="color:#9ca3af">Total Petani</p>
+          <div class="w-9 h-9 rounded-xl flex items-center justify-center" style="background:rgba(0,170,91,0.1)"><span class="material-symbols-outlined text-[18px]" style="color:#00aa5b">agriculture</span></div>
+        </div>
+        <p class="text-3xl font-black mb-1" style="color:#1a1a2e">1.284</p>
+        <p class="text-xs font-semibold" style="color:#22c55e">↑ +42 bulan ini</p>
+      </div>
+      <div class="card p-5 su d2">
+        <div class="flex justify-between items-start mb-3">
+          <p class="text-xs font-bold uppercase tracking-wider" style="color:#9ca3af">Menunggu Verifikasi</p>
+          <div class="w-9 h-9 rounded-xl flex items-center justify-center" style="background:rgba(0,170,91,0.1)"><span class="material-symbols-outlined text-[18px]" style="color:#00aa5b">pending</span></div>
+        </div>
+        <p class="text-3xl font-black mb-1" style="color:#1a1a2e">8</p>
+        <a href="admin_verifikasi.html" class="text-xs font-bold" style="color:#00aa5b">Proses sekarang →</a>
+      </div>
+      <div class="card p-5 su d2">
+        <div class="flex justify-between items-start mb-3">
+          <p class="text-xs font-bold uppercase tracking-wider" style="color:#9ca3af">Transaksi Hari Ini</p>
+          <div class="w-9 h-9 rounded-xl flex items-center justify-center" style="background:rgba(0,170,91,0.1)"><span class="material-symbols-outlined text-[18px]" style="color:#00aa5b">payments</span></div>
+        </div>
+        <p class="text-3xl font-black mb-1" style="color:#1a1a2e">Rp 2,4M</p>
+        <p class="text-xs font-semibold" style="color:#22c55e">↑ +8.2% vs kemarin</p>
+      </div>
+      <div class="card p-5 su d3">
+        <div class="flex justify-between items-start mb-3">
+          <p class="text-xs font-bold uppercase tracking-wider" style="color:#9ca3af">Pengiriman Aktif</p>
+          <div class="w-9 h-9 rounded-xl flex items-center justify-center" style="background:rgba(0,170,91,0.1)"><span class="material-symbols-outlined text-[18px]" style="color:#00aa5b">local_shipping</span></div>
+        </div>
+        <p class="text-3xl font-black mb-1" style="color:#1a1a2e">34</p>
+        <a href="admin_logistik.html" class="text-xs font-bold" style="color:#00aa5b">Pantau logistik →</a>
+      </div>
+    </div>
+
+    <!-- Charts & Tables Row -->
+    <div class="grid grid-cols-3 gap-5 mb-5">
+      <!-- Bar Chart -->
+      <div class="col-span-2 card p-5 su d3">
+        <div class="flex items-center justify-between mb-4">
+          <h2 class="font-black text-base" style="color:#1a1a2e">Transaksi Platform (Rp Juta)</h2>
+          <div class="flex gap-1">
+            <button class="px-3 py-1 rounded-full text-xs font-bold" style="background:#00aa5b;color:white">Mingguan</button>
+            <button class="px-3 py-1 rounded-full text-xs font-bold" style="background:#f1f5f9;color:#6b7280">Bulanan</button>
+          </div>
+        </div>
+        <div class="flex items-end gap-3 h-36 mt-4">
+          <div class="flex flex-col items-center gap-1 flex-1">
+            <span class="text-[10px] font-bold" style="color:#9ca3af">340</span>
+            <div class="chart-bar w-full" style="--h:68%;height:68%"></div>
+            <span class="text-[10px] font-bold" style="color:#9ca3af">Sen</span>
+          </div>
+          <div class="flex flex-col items-center gap-1 flex-1">
+            <span class="text-[10px] font-bold" style="color:#9ca3af">410</span>
+            <div class="chart-bar w-full" style="--h:82%;height:82%;animation-delay:.1s"></div>
+            <span class="text-[10px] font-bold" style="color:#9ca3af">Sel</span>
+          </div>
+          <div class="flex flex-col items-center gap-1 flex-1">
+            <span class="text-[10px] font-bold" style="color:#9ca3af">380</span>
+            <div class="chart-bar w-full" style="--h:76%;height:76%;animation-delay:.2s"></div>
+            <span class="text-[10px] font-bold" style="color:#9ca3af">Rab</span>
+          </div>
+          <div class="flex flex-col items-center gap-1 flex-1">
+            <span class="text-[10px] font-bold" style="color:#9ca3af">500</span>
+            <div class="chart-bar w-full" style="--h:100%;height:100%;animation-delay:.3s"></div>
+            <span class="text-[10px] font-bold" style="color:#9ca3af">Kam</span>
+          </div>
+          <div class="flex flex-col items-center gap-1 flex-1">
+            <span class="text-[10px] font-bold" style="color:#9ca3af">460</span>
+            <div class="chart-bar w-full" style="--h:92%;height:92%;animation-delay:.4s"></div>
+            <span class="text-[10px] font-bold" style="color:#9ca3af">Jum</span>
+          </div>
+          <div class="flex flex-col items-center gap-1 flex-1">
+            <span class="text-[10px] font-bold" style="color:#9ca3af">390</span>
+            <div class="chart-bar w-full" style="--h:78%;height:78%;animation-delay:.5s"></div>
+            <span class="text-[10px] font-bold" style="color:#9ca3af">Sab</span>
+          </div>
+          <div class="flex flex-col items-center gap-1 flex-1">
+            <span class="text-[10px] font-bold" style="color:#9ca3af">280</span>
+            <div class="chart-bar w-full" style="--h:56%;height:56%;animation-delay:.6s"></div>
+            <span class="text-[10px] font-bold" style="color:#9ca3af">Min</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Actions -->
+      <div class="card p-5 su d4">
+        <h2 class="font-black text-base mb-4" style="color:#1a1a2e">Aksi Cepat</h2>
+        <div class="flex flex-col gap-2">
+          <a href="admin_verifikasi.html" class="flex items-center gap-3 p-3 rounded-xl transition-all hover:opacity-90" style="background:rgba(0,170,91,0.08);border:1px solid rgba(0,170,91,0.15)">
+            <span class="material-symbols-outlined text-[20px]" style="color:#00aa5b">verified_user</span>
+            <div><p class="text-sm font-bold" style="color:#1a1a2e">Verifikasi Petani</p><p class="text-[10px]" style="color:#9ca3af">8 menunggu</p></div>
+            <span class="ml-auto material-symbols-outlined text-gray-300 text-[16px]">chevron_right</span>
+          </a>
+          <a href="admin_gudang.html" class="flex items-center gap-3 p-3 rounded-xl hover:bg-gray-50 transition-colors" style="border:1px solid #f1f5f9">
+            <span class="material-symbols-outlined text-[20px]" style="color:#00aa5b">warehouse</span>
+            <div><p class="text-sm font-bold" style="color:#1a1a2e">Kelola Gudang</p><p class="text-[10px]" style="color:#9ca3af">12 gudang aktif</p></div>
+            <span class="ml-auto material-symbols-outlined text-gray-300 text-[16px]">chevron_right</span>
+          </a>
+          <a href="admin_logistik.html" class="flex items-center gap-3 p-3 rounded-xl hover:bg-gray-50 transition-colors" style="border:1px solid #f1f5f9">
+            <span class="material-symbols-outlined text-[20px]" style="color:#00aa5b">local_shipping</span>
+            <div><p class="text-sm font-bold" style="color:#1a1a2e">Monitor Logistik</p><p class="text-[10px]" style="color:#9ca3af">34 pengiriman aktif</p></div>
+            <span class="ml-auto material-symbols-outlined text-gray-300 text-[16px]">chevron_right</span>
+          </a>
+          <a href="admin_laporan.html" class="flex items-center gap-3 p-3 rounded-xl hover:bg-gray-50 transition-colors" style="border:1px solid #f1f5f9">
+            <span class="material-symbols-outlined text-[20px]" style="color:#00aa5b">bar_chart</span>
+            <div><p class="text-sm font-bold" style="color:#1a1a2e">Laporan Analitik</p><p class="text-[10px]" style="color:#9ca3af">Update harian</p></div>
+            <span class="ml-auto material-symbols-outlined text-gray-300 text-[16px]">chevron_right</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Recent Activity -->
+    <div class="card p-5 su d4">
+      <div class="flex items-center justify-between mb-4">
+        <h2 class="font-black text-base" style="color:#1a1a2e">Aktivitas Terbaru</h2>
+        <button class="text-xs font-bold" style="color:#00aa5b">Lihat Semua</button>
+      </div>
+      <div class="space-y-3">
+        <div class="flex items-center gap-4 p-3 rounded-xl" style="background:#f0fdf4">
+          <div class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0" style="background:#00aa5b"><span class="material-symbols-outlined text-white text-[16px]">person_add</span></div>
+          <div class="flex-1"><p class="text-sm font-bold" style="color:#1a1a2e">Petani baru terdaftar: Ahmad Basri (Brebes)</p><p class="text-xs" style="color:#9ca3af">2 menit yang lalu</p></div>
+          <a href="admin_verifikasi.html" class="text-xs font-bold px-3 py-1.5 rounded-full" style="background:#00aa5b;color:white">Verifikasi</a>
+        </div>
+        <div class="flex items-center gap-4 p-3 rounded-xl" style="background:#f8fafc">
+          <div class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0" style="background:#e5e7eb"><span class="material-symbols-outlined text-[16px]" style="color:#6b7280">local_shipping</span></div>
+          <div class="flex-1"><p class="text-sm font-bold" style="color:#1a1a2e">Pengiriman #TLG-2026-X89B tiba di checkpoint Jakarta</p><p class="text-xs" style="color:#9ca3af">15 menit yang lalu</p></div>
+          <a href="admin_logistik.html" class="text-xs font-bold" style="color:#00aa5b">Detail →</a>
+        </div>
+        <div class="flex items-center gap-4 p-3 rounded-xl" style="background:#f8fafc">
+          <div class="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0" style="background:#e5e7eb"><span class="material-symbols-outlined text-[16px]" style="color:#6b7280">payments</span></div>
+          <div class="flex-1"><p class="text-sm font-bold" style="color:#1a1a2e">Invoice INV-2026-041 dibayar: Rp 62.500.000</p><p class="text-xs" style="color:#9ca3af">1 jam yang lalu</p></div>
+          <a href="admin_laporan.html" class="text-xs font-bold" style="color:#00aa5b">Detail →</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+<script>
+  function updateTime() {
+    const now = new Date();
+    document.getElementById('live-time').textContent = now.toLocaleString('id-ID', {
+      weekday:'long', day:'numeric', month:'long', year:'numeric',
+      hour:'2-digit', minute:'2-digit'
+    });
+  }
+  updateTime();
+  setInterval(updateTime, 60000);
+</script>
+</body>
+</html>

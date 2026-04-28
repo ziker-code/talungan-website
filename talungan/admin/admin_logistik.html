@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Logistik — Talungan.id</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../shared.css"/>
+  <style>
+    .ship-row { display:flex;align-items:center;gap:16px;padding:14px 20px;border-bottom:1px solid #f1f5f9;transition:background .15s;cursor:pointer; }
+    .ship-row:hover { background:#f8fffe; }
+    .ship-row:last-child { border-bottom:none; }
+    .progress-mini { height:4px;border-radius:99px;background:#e5e7eb;overflow:hidden; }
+    .progress-fill { height:100%;border-radius:99px; }
+  </style>
+</head>
+<body>
+  <div class="blob-bg"><div class="blob b1"></div><div class="blob b2"></div></div>
+
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <div class="sidebar-logo-icon">
+        <svg viewBox="0 0 60 60" width="24" height="24"><circle cx="30" cy="30" r="28" fill="rgba(255,255,255,0.2)"/><rect x="22" y="18" width="4" height="18" rx="2" fill="white"/><rect x="29" y="14" width="4" height="22" rx="2" fill="white"/><rect x="36" y="18" width="4" height="18" rx="2" fill="white"/><ellipse cx="20" cy="38" rx="8" ry="5" fill="rgba(255,255,255,0.7)" transform="rotate(-25,20,38)"/><ellipse cx="40" cy="38" rx="8" ry="5" fill="rgba(255,255,255,0.5)" transform="rotate(25,40,38)"/></svg>
+      </div>
+      <div><div class="sidebar-brand">Talungan.id</div><div class="sidebar-role">Administrator</div></div>
+    </div>
+    <div class="sidebar-user">
+      <div style="width:36px;height:36px;background:linear-gradient(135deg,#00aa5b,#006d38);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;color:white;font-size:14px;flex-shrink:0">A</div>
+      <div><div class="name">Admin Pusat</div><div class="role">Super Admin</div></div>
+      <div class="dot"></div>
+    </div>
+    <span class="nav-section-title">Manajemen</span>
+    <a href="admin_dashboard.html" class="nav-item"><span class="material-symbols-outlined text-[20px]">dashboard</span>Dashboard</a>
+    <a href="admin_verifikasi.html" class="nav-item"><span class="material-symbols-outlined text-[20px]">verified_user</span>Verifikasi Petani</a>
+    <a href="admin_gudang.html" class="nav-item"><span class="material-symbols-outlined text-[20px]">warehouse</span>Manajemen Gudang</a>
+    <span class="nav-section-title">Operasional</span>
+    <a href="admin_peta.html" class="nav-item"><span class="material-symbols-outlined text-[20px]">map</span>Peta Distribusi</a>
+    <a href="admin_logistik.html" class="nav-item active"><span class="material-symbols-outlined text-[20px]" style="font-variation-settings:'FILL' 1">local_shipping</span>Logistik</a>
+    <a href="admin_laporan.html" class="nav-item"><span class="material-symbols-outlined text-[20px]">bar_chart</span>Laporan & Analitik</a>
+    <div class="nav-spacer"></div>
+    <div class="nav-divider"></div>
+    <a href="../konsumen/login.html" class="nav-item danger"><span class="material-symbols-outlined text-[20px]">logout</span>Keluar</a>
+  </aside>
+
+  <main class="main-content p-6">
+    <div class="flex items-center justify-between mb-6 su d1">
+      <div>
+        <p class="text-xs font-bold uppercase tracking-widest mb-1" style="color:#9ca3af">Operasional</p>
+        <h1 class="text-2xl font-black" style="color:#1a1a2e;letter-spacing:-0.5px">Manajemen Logistik</h1>
+      </div>
+      <div class="flex items-center gap-3">
+        <div class="relative">
+          <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-[16px]">search</span>
+          <input type="text" placeholder="Cari resi atau nama pengemudi..." style="background:rgba(255,255,255,0.9);border:1px solid rgba(0,0,0,0.08);border-radius:14px;padding:9px 16px 9px 36px;font-size:13px;font-family:'Inter',sans-serif;outline:none;width:280px"/>
+        </div>
+        <button class="flex items-center gap-2 font-bold text-sm px-5 py-2.5 rounded-2xl" style="background:rgba(0,170,91,0.1);color:#00aa5b">
+          <span class="material-symbols-outlined text-[18px]">filter_list</span>Filter
+        </button>
+      </div>
+    </div>
+
+    <!-- Stats Row -->
+    <div class="grid grid-cols-4 gap-4 mb-6 su d1">
+      <div class="card p-4">
+        <p class="text-xs font-bold uppercase tracking-wider mb-2" style="color:#9ca3af">Pengiriman Aktif</p>
+        <p class="text-3xl font-black" style="color:#1a1a2e">34</p>
+        <p class="text-xs font-semibold mt-1" style="color:#22c55e">Dalam perjalanan</p>
+      </div>
+      <div class="card p-4">
+        <p class="text-xs font-bold uppercase tracking-wider mb-2" style="color:#9ca3af">Selesai Hari Ini</p>
+        <p class="text-3xl font-black" style="color:#1a1a2e">18</p>
+        <p class="text-xs font-semibold mt-1" style="color:#22c55e">↑ 6 lebih banyak</p>
+      </div>
+      <div class="card p-4">
+        <p class="text-xs font-bold uppercase tracking-wider mb-2" style="color:#9ca3af">Rata-rata ETA</p>
+        <p class="text-3xl font-black" style="color:#1a1a2e">4,2 Jam</p>
+        <p class="text-xs font-semibold mt-1" style="color:#22c55e">Tepat waktu 94%</p>
+      </div>
+      <div class="card p-4">
+        <p class="text-xs font-bold uppercase tracking-wider mb-2" style="color:#9ca3af">Armada Tersedia</p>
+        <p class="text-3xl font-black" style="color:#1a1a2e">12</p>
+        <p class="text-xs font-semibold mt-1" style="color:#9ca3af">dari 46 armada</p>
+      </div>
+    </div>
+
+    <!-- Filter Tabs -->
+    <div class="flex gap-2 mb-4 su d2">
+      <button class="px-4 py-1.5 rounded-full text-sm font-bold" style="background:#00aa5b;color:white">Semua</button>
+      <button class="px-4 py-1.5 rounded-full text-sm font-bold border border-gray-200" style="background:white;color:#6b7280">Di Jalan</button>
+      <button class="px-4 py-1.5 rounded-full text-sm font-bold border border-gray-200" style="background:white;color:#6b7280">Menunggu Muat</button>
+      <button class="px-4 py-1.5 rounded-full text-sm font-bold border border-gray-200" style="background:white;color:#6b7280">Selesai</button>
+      <button class="px-4 py-1.5 rounded-full text-sm font-bold border border-gray-200" style="background:white;color:#6b7280">Bermasalah</button>
+    </div>
+
+    <!-- Shipment Table -->
+    <div class="card overflow-hidden su d3">
+      <div class="px-5 py-4 border-b border-gray-100">
+        <h2 class="font-black text-base" style="color:#1a1a2e">Daftar Pengiriman Aktif</h2>
+      </div>
+
+      <div class="ship-row" onclick="showShipDetail('#TLG-2026-X89B','Beras Cianjur Pandan Wangi','5 Ton','Lumbung Demak → Pabrik Jakarta','Agus Salim','F 8492 JK','65','14:30 WIB','Di Jalan')">
+        <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style="background:rgba(254,106,52,0.1)">
+          <span class="material-symbols-outlined text-[18px]" style="color:#fe6a34">airport_shuttle</span>
+        </div>
+        <div class="flex-1">
+          <div class="flex items-center gap-2 mb-1">
+            <p class="font-bold text-sm" style="color:#1a1a2e">#TLG-2026-X89B</p>
+            <span class="text-[10px] font-bold px-2 py-0.5 rounded-full" style="background:#fff7ed;color:#c2410c;border:1px solid #fed7aa">🚛 Di Jalan</span>
+          </div>
+          <p class="text-xs font-medium" style="color:#9ca3af">Beras Cianjur 5 Ton · Lumbung Demak → Pabrik Jakarta</p>
+        </div>
+        <div class="text-center w-32">
+          <div class="progress-mini mb-1"><div class="progress-fill" style="width:65%;background:linear-gradient(90deg,#00aa5b,#006d38)"></div></div>
+          <p class="text-xs font-semibold" style="color:#9ca3af">ETA 14:30 WIB</p>
+        </div>
+        <div class="text-right w-28">
+          <p class="text-xs font-bold" style="color:#1a1a2e">Agus Salim</p>
+          <p class="text-[10px]" style="color:#9ca3af">F 8492 JK</p>
+        </div>
+      </div>
+
+      <div class="ship-row" onclick="showShipDetail('#TLG-2026-X90A','Jagung Pipil Kering','200 kg','Gudang Karawang → Pabrik Bekasi','Dedi Kurnia','D 1234 ZC','40','16:00 WIB','Di Jalan')">
+        <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style="background:rgba(254,106,52,0.1)">
+          <span class="material-symbols-outlined text-[18px]" style="color:#fe6a34">local_shipping</span>
+        </div>
+        <div class="flex-1">
+          <div class="flex items-center gap-2 mb-1">
+            <p class="font-bold text-sm" style="color:#1a1a2e">#TLG-2026-X90A</p>
+            <span class="text-[10px] font-bold px-2 py-0.5 rounded-full" style="background:#fff7ed;color:#c2410c;border:1px solid #fed7aa">🚛 Di Jalan</span>
+          </div>
+          <p class="text-xs font-medium" style="color:#9ca3af">Jagung Pipil 200 kg · Gudang Karawang → Pabrik Bekasi</p>
+        </div>
+        <div class="text-center w-32">
+          <div class="progress-mini mb-1"><div class="progress-fill" style="width:40%;background:linear-gradient(90deg,#00aa5b,#006d38)"></div></div>
+          <p class="text-xs font-semibold" style="color:#9ca3af">ETA 16:00 WIB</p>
+        </div>
+        <div class="text-right w-28">
+          <p class="text-xs font-bold" style="color:#1a1a2e">Dedi Kurnia</p>
+          <p class="text-[10px]" style="color:#9ca3af">D 1234 ZC</p>
+        </div>
+      </div>
+
+      <div class="ship-row">
+        <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style="background:rgba(0,170,91,0.1)">
+          <span class="material-symbols-outlined text-[18px]" style="color:#00aa5b">check_circle</span>
+        </div>
+        <div class="flex-1">
+          <div class="flex items-center gap-2 mb-1">
+            <p class="font-bold text-sm" style="color:#1a1a2e">#TLG-2026-X88Z</p>
+            <span class="text-[10px] font-bold px-2 py-0.5 rounded-full" style="background:#dcfce7;color:#166534;border:1px solid #bbf7d0">✓ Selesai</span>
+          </div>
+          <p class="text-xs font-medium" style="color:#9ca3af">Cabai Merah 80 kg · Gudang Magelang → Resto Jakarta Selatan</p>
+        </div>
+        <div class="text-center w-32">
+          <div class="progress-mini mb-1"><div class="progress-fill" style="width:100%;background:#22c55e"></div></div>
+          <p class="text-xs font-semibold" style="color:#22c55e">Arrive 11:15 WIB ✓</p>
+        </div>
+        <div class="text-right w-28">
+          <p class="text-xs font-bold" style="color:#1a1a2e">Samsul Hadi</p>
+          <p class="text-[10px]" style="color:#9ca3af">B 9987 XY</p>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Shipment Detail Modal -->
+  <div class="modal-bg" id="shipModal" onclick="if(event.target===this)this.classList.remove('open')">
+    <div class="modal-box p-7" id="modal-ship-body"></div>
+  </div>
+
+<script>
+  function showShipDetail(id, prod, vol, route, driver, plate, progress, eta, status) {
+    document.getElementById('modal-ship-body').innerHTML = `
+      <div class="flex items-center justify-between mb-5"><h2 class="text-xl font-black" style="color:#1a1a2e">Detail Pengiriman</h2><button onclick="document.getElementById('shipModal').classList.remove('open')" class="w-8 h-8 rounded-full flex items-center justify-center hover:bg-gray-100 text-gray-400"><span class="material-symbols-outlined text-[18px]">close</span></button></div>
+      <p class="text-lg font-black mb-4" style="color:#1a1a2e">${id}</p>
+      <div class="grid grid-cols-2 gap-3 mb-4">
+        <div class="p-3 rounded-xl" style="background:#f8fafc"><p class="text-[10px] font-bold uppercase mb-1" style="color:#9ca3af">Produk</p><p class="font-bold text-sm" style="color:#1a1a2e">${prod}</p></div>
+        <div class="p-3 rounded-xl" style="background:#f8fafc"><p class="text-[10px] font-bold uppercase mb-1" style="color:#9ca3af">Volume</p><p class="font-bold text-sm" style="color:#1a1a2e">${vol}</p></div>
+        <div class="p-3 rounded-xl col-span-2" style="background:#f8fafc"><p class="text-[10px] font-bold uppercase mb-1" style="color:#9ca3af">Rute</p><p class="font-bold text-sm" style="color:#1a1a2e">${route}</p></div>
+        <div class="p-3 rounded-xl" style="background:#f8fafc"><p class="text-[10px] font-bold uppercase mb-1" style="color:#9ca3af">Pengemudi</p><p class="font-bold text-sm" style="color:#1a1a2e">${driver}</p></div>
+        <div class="p-3 rounded-xl" style="background:#f8fafc"><p class="text-[10px] font-bold uppercase mb-1" style="color:#9ca3af">Plat Kendaraan</p><p class="font-bold text-sm" style="color:#1a1a2e">${plate}</p></div>
+      </div>
+      <div class="mb-5"><p class="text-xs font-bold mb-2" style="color:#6b7280">Progress Pengiriman (${progress}%)</p><div style="height:8px;border-radius:99px;background:#e5e7eb;overflow:hidden"><div style="height:100%;width:${progress}%;background:linear-gradient(90deg,#00aa5b,#006d38);border-radius:99px"></div></div><p class="text-right text-xs font-bold mt-1" style="color:#00aa5b">ETA: ${eta}</p></div>
+      <div class="flex gap-3"><button onclick="document.getElementById('shipModal').classList.remove('open')" class="flex-1 border-2 border-gray-200 font-bold py-3 rounded-2xl text-sm" style="color:#6b7280">Tutup</button><button class="flex-1 font-bold py-3 rounded-2xl text-sm text-white" style="background:linear-gradient(135deg,#00aa5b,#006d38)">Hubungi Pengemudi</button></div>`;
+    document.getElementById('shipModal').classList.add('open');
+  }
+</script>
+</body>
+</html>

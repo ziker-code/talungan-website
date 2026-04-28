@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Beranda Petani — Talungan.id</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../shared.css"/>
+  <style>
+    /* Glass cards with more depth */
+    .glass-card { background:rgba(255,255,255,0.88);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.9);border-radius:20px;box-shadow:0 4px 20px rgba(0,0,0,0.04); }
+
+    /* Chart bars */
+    .bar-in  { background:linear-gradient(to top,#00aa5b,#78db96); border-radius:6px 6px 0 0; }
+    .bar-out { background:linear-gradient(to top,#fe6a34,#fca574); border-radius:6px 6px 0 0; }
+    @keyframes barGrow { from{height:0}to{height:var(--h)} }
+    .chart-bar-anim { animation:barGrow .6s cubic-bezier(0.34,1.2,0.64,1) both; }
+
+    /* Floating 3D decorative orbs */
+    @keyframes floatOrb {
+      0%,100%{transform:translateY(0) rotate(0deg);}
+      50%{transform:translateY(-15px) rotate(8deg);}
+    }
+    .orb { position:absolute;border-radius:50%;pointer-events:none;opacity:0.06; }
+
+    /* Tab active */
+    .period-tab.active { background:#00aa5b;color:white; }
+    .period-tab { background:transparent;color:#6b7280;border-radius:10px;padding:6px 12px;font-size:12px;font-weight:700;cursor:pointer;transition:.15s; }
+    .period-tab:hover:not(.active) { background:#f0fdf4; color:#00aa5b; }
+  </style>
+</head>
+<body>
+  <div class="blob-bg">
+    <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+  </div>
+  <!-- Extra 3D orbs -->
+  <div class="orb" style="width:400px;height:400px;background:radial-gradient(circle,#00aa5b,transparent);top:10%;right:5%;animation:floatOrb 8s ease-in-out infinite;"></div>
+  <div class="orb" style="width:200px;height:200px;background:radial-gradient(circle,#78db96,transparent);bottom:20%;left:30%;animation:floatOrb 12s ease-in-out infinite reverse;animation-delay:-4s;"></div>
+
+  <!-- SIDEBAR PETANI -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <div class="sidebar-logo-icon">
+        <svg viewBox="0 0 60 60" width="24" height="24"><circle cx="30" cy="30" r="28" fill="rgba(255,255,255,0.2)"/><rect x="22" y="18" width="4" height="18" rx="2" fill="white"/><rect x="29" y="14" width="4" height="22" rx="2" fill="white"/><rect x="36" y="18" width="4" height="18" rx="2" fill="white"/><ellipse cx="20" cy="38" rx="8" ry="5" fill="rgba(255,255,255,0.7)" transform="rotate(-25,20,38)"/><ellipse cx="40" cy="38" rx="8" ry="5" fill="rgba(255,255,255,0.5)" transform="rotate(25,40,38)"/></svg>
+      </div>
+      <div><div class="sidebar-brand">Talungan.id</div><div class="sidebar-role">Petani</div></div>
+    </div>
+    <div class="sidebar-user">
+      <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZgSlafW9-9bp2CtuNc_-84duckOPOFLkJ_1VX_XH4iZJju339wMLuJOSLI96HDTqOEv5UrxkkJLiFr7gSYaAj9mO4AmSGUcFA3tD2pF7Xs6TWk-UoJvQSfWFETuMPKo6bOn8hnrHhq9O9jnqQjmYti5HljvFjH4OATc82GV7FuENCGrUtQoohpibu4gJKUgxvkzij1VKiiHThBFuPy_-YGhmrWopXQu-mpS93ws33II9sgQ0gdSdP4dFU_HtfitqndkpGys5zLmI" alt="User"/>
+      <div><div class="name">Budi Santoso</div><div class="role">Petani Terverifikasi</div></div>
+      <div class="dot"></div>
+    </div>
+    <span class="nav-section-title">Menu Petani</span>
+    <a href="dashboard.html" class="nav-item active"><span class="material-symbols-outlined text-[20px]" style="font-variation-settings:'FILL' 1">dashboard</span>Beranda</a>
+    <a href="stok.html" class="nav-item"><span class="material-symbols-outlined text-[20px]">inventory_2</span>Stok Komoditas</a>
+    <a href="pasar.html" class="nav-item"><span class="material-symbols-outlined text-[20px]">trending_up</span>Harga Pasar</a>
+    <a href="transaksi.html" class="nav-item"><span class="material-symbols-outlined text-[20px]">receipt_long</span>Transaksi</a>
+    <a href="logistik.html" class="nav-item"><span class="material-symbols-outlined text-[20px]">local_shipping</span>Logistik</a>
+    <a href="statistik.html" class="nav-item"><span class="material-symbols-outlined text-[20px]">bar_chart</span>Statistik</a>
+    <a href="forum.html" class="nav-item"><span class="material-symbols-outlined text-[20px]">forum</span>Forum Tani</a>
+    <a href="edukasi.html" class="nav-item"><span class="material-symbols-outlined text-[20px]">school</span>Edukasi</a>
+    <div class="nav-spacer"></div>
+    <div class="nav-divider"></div>
+    <a href="profil.html" class="nav-item"><span class="material-symbols-outlined text-[20px]">account_circle</span>Profil Saya</a>
+    <a href="../konsumen/login.html" class="nav-item danger"><span class="material-symbols-outlined text-[20px]">logout</span>Keluar</a>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="main-content p-6">
+
+    <!-- Header Row -->
+    <div class="flex items-center justify-between mb-6 su d1">
+      <div>
+        <p class="text-sm font-semibold" style="color:#9ca3af">Selamat datang kembali, Pak 👨‍🌾</p>
+        <h1 class="text-2xl font-black" style="color:#1a1a2e;letter-spacing:-0.5px">Budi Santoso</h1>
+      </div>
+      <div class="flex items-center gap-3">
+        <div class="relative">
+          <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-[16px]">search</span>
+          <input type="text" placeholder="Cari..." style="background:rgba(255,255,255,0.9);border:1px solid rgba(0,0,0,0.08);border-radius:14px;padding:9px 16px 9px 36px;font-size:13px;font-family:'Inter',sans-serif;outline:none;width:220px"/>
+        </div>
+        <button class="relative w-10 h-10 rounded-full flex items-center justify-center" style="background:rgba(255,255,255,0.9);border:1px solid rgba(0,0,0,0.08)">
+          <span class="material-symbols-outlined text-gray-500 text-[20px]">notifications</span>
+          <span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-red-500 border border-white"></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Stats Row -->
+    <div class="grid grid-cols-4 gap-4 mb-5 su d1">
+      <div class="glass-card p-5">
+        <div class="flex justify-between items-start mb-3">
+          <p class="text-xs font-bold uppercase tracking-wider" style="color:#9ca3af">Pendapatan Bulan Ini</p>
+          <div class="w-9 h-9 rounded-xl flex items-center justify-center" style="background:rgba(0,170,91,0.12)"><span class="material-symbols-outlined text-[18px]" style="color:#00aa5b">payments</span></div>
+        </div>
+        <p class="text-2xl font-black mb-1" style="color:#1a1a2e">Rp 48,2jt</p>
+        <p class="text-xs font-semibold" style="color:#22c55e">↑ +14,3% vs bulan lalu</p>
+      </div>
+      <div class="glass-card p-5">
+        <div class="flex justify-between items-start mb-3">
+          <p class="text-xs font-bold uppercase tracking-wider" style="color:#9ca3af">Stok Tersedia</p>
+          <div class="w-9 h-9 rounded-xl flex items-center justify-center" style="background:rgba(0,170,91,0.12)"><span class="material-symbols-outlined text-[18px]" style="color:#00aa5b">inventory_2</span></div>
+        </div>
+        <p class="text-2xl font-black mb-1" style="color:#1a1a2e">8,4 Ton</p>
+        <p class="text-xs font-semibold" style="color:#9ca3af">Beras: 5 Ton · Jagung: 3,4 Ton</p>
+      </div>
+      <div class="glass-card p-5">
+        <div class="flex justify-between items-start mb-3">
+          <p class="text-xs font-bold uppercase tracking-wider" style="color:#9ca3af">Pesanan Aktif</p>
+          <div class="w-9 h-9 rounded-xl flex items-center justify-center" style="background:rgba(0,170,91,0.12)"><span class="material-symbols-outlined text-[18px]" style="color:#00aa5b">local_shipping</span></div>
+        </div>
+        <p class="text-2xl font-black mb-1" style="color:#1a1a2e">3</p>
+        <a href="transaksi.html" class="text-xs font-bold" style="color:#00aa5b">Lihat detail →</a>
+      </div>
+      <div class="glass-card p-5">
+        <div class="flex justify-between items-start mb-3">
+          <p class="text-xs font-bold uppercase tracking-wider" style="color:#9ca3af">Rating</p>
+          <div class="w-9 h-9 rounded-xl flex items-center justify-center" style="background:rgba(251,191,36,0.15)"><span class="material-symbols-outlined text-[18px]" style="color:#d97706">star</span></div>
+        </div>
+        <p class="text-2xl font-black mb-1" style="color:#1a1a2e">4,9 ★</p>
+        <p class="text-xs font-semibold" style="color:#d97706">Dari 42 ulasan konsumen</p>
+      </div>
+    </div>
+
+    <!-- Chart + Market Prices Row -->
+    <div class="grid grid-cols-3 gap-5 mb-5">
+      <!-- Income/Expense Chart -->
+      <div class="col-span-2 glass-card p-5 su d2">
+        <div class="flex items-center justify-between mb-4">
+          <h2 class="font-black text-base" style="color:#1a1a2e">Laporan Keuangan</h2>
+          <div class="flex items-center gap-1 p-1 rounded-xl" style="background:#f1f5f9">
+            <button class="period-tab active" id="tab-harian" onclick="switchPeriod('harian')">Harian</button>
+            <button class="period-tab" id="tab-mingguan" onclick="switchPeriod('mingguan')">Mingguan</button>
+            <button class="period-tab" id="tab-bulanan" onclick="switchPeriod('bulanan')">Bulanan</button>
+            <button class="period-tab" id="tab-tahunan" onclick="switchPeriod('tahunan')">Tahunan</button>
+          </div>
+        </div>
+
+        <!-- Legend -->
+        <div class="flex items-center gap-4 mb-4">
+          <span class="flex items-center gap-1.5 text-xs font-semibold" style="color:#6b7280"><span style="width:10px;height:10px;border-radius:3px;background:#00aa5b;display:inline-block"></span>Pemasukan</span>
+          <span class="flex items-center gap-1.5 text-xs font-semibold" style="color:#6b7280"><span style="width:10px;height:10px;border-radius:3px;background:#fe6a34;display:inline-block"></span>Pengeluaran</span>
+        </div>
+
+        <!-- Chart -->
+        <div id="chart-area" class="flex items-end gap-1.5 overflow-x-auto pb-2" style="height:140px;min-height:140px">
+          <!-- populated by JS -->
+        </div>
+        <div id="chart-labels" class="flex gap-1.5 mt-1" style="overflow:hidden"></div>
+
+        <!-- Totals -->
+        <div class="flex gap-4 mt-4 pt-4" style="border-top:1px solid #f1f5f9">
+          <div><p class="text-[10px] font-bold uppercase tracking-wide" style="color:#9ca3af">Total Pemasukan</p><p class="font-black text-lg" style="color:#00aa5b" id="total-in">-</p></div>
+          <div><p class="text-[10px] font-bold uppercase tracking-wide" style="color:#9ca3af">Total Pengeluaran</p><p class="font-black text-lg" style="color:#fe6a34" id="total-out">-</p></div>
+          <div><p class="text-[10px] font-bold uppercase tracking-wide" style="color:#9ca3af">Keuntungan Bersih</p><p class="font-black text-lg" style="color:#1a1a2e" id="total-net">-</p></div>
+        </div>
+      </div>
+
+      <!-- Market Prices -->
+      <div class="glass-card p-5 su d3">
+        <div class="flex items-center justify-between mb-4">
+          <h2 class="font-black text-base" style="color:#1a1a2e">Harga Pasar Hari Ini</h2>
+          <a href="pasar.html" class="text-xs font-bold" style="color:#00aa5b">Selengkapnya</a>
+        </div>
+        <div class="flex flex-col gap-3">
+          <div class="flex items-center justify-between p-3 rounded-xl" style="background:#f8fafc">
+            <div class="flex items-center gap-2"><span class="text-lg">🌾</span><span class="text-sm font-bold" style="color:#1a1a2e">Beras Cianjur</span></div>
+            <div class="text-right"><p class="font-black text-sm" style="color:#1a1a2e">Rp 14.200/kg</p><p class="text-[10px] font-bold" style="color:#22c55e">↑ +2,1%</p></div>
+          </div>
+          <div class="flex items-center justify-between p-3 rounded-xl" style="background:#f8fafc">
+            <div class="flex items-center gap-2"><span class="text-lg">🌽</span><span class="text-sm font-bold" style="color:#1a1a2e">Jagung Pipil</span></div>
+            <div class="text-right"><p class="font-black text-sm" style="color:#1a1a2e">Rp 6.500/kg</p><p class="text-[10px] font-bold" style="color:#ef4444">↓ -0,5%</p></div>
+          </div>
+          <div class="flex items-center justify-between p-3 rounded-xl" style="background:#f8fafc">
+            <div class="flex items-center gap-2"><span class="text-lg">🌶</span><span class="text-sm font-bold" style="color:#1a1a2e">Cabai Merah</span></div>
+            <div class="text-right"><p class="font-black text-sm" style="color:#1a1a2e">Rp 45.000/kg</p><p class="text-[10px] font-bold" style="color:#22c55e">↑ +8,3%</p></div>
+          </div>
+          <div class="flex items-center justify-between p-3 rounded-xl" style="background:#f8fafc">
+            <div class="flex items-center gap-2"><span class="text-lg">🫘</span><span class="text-sm font-bold" style="color:#1a1a2e">Kedelai</span></div>
+            <div class="text-right"><p class="font-black text-sm" style="color:#1a1a2e">Rp 11.200/kg</p><p class="text-[10px] font-bold" style="color:#22c55e">↑ +1,2%</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Recent Transactions + Forum Teaser -->
+    <div class="grid grid-cols-3 gap-5 su d4">
+      <div class="col-span-2 glass-card p-5">
+        <div class="flex items-center justify-between mb-4"><h2 class="font-black text-base" style="color:#1a1a2e">Transaksi Terbaru</h2><a href="transaksi.html" class="text-xs font-bold" style="color:#00aa5b">Lihat Semua</a></div>
+        <div class="space-y-2">
+          <div class="flex items-center gap-3 p-3 rounded-xl" style="background:#f0fdf4"><div class="w-9 h-9 rounded-xl flex items-center justify-center" style="background:#00aa5b"><span class="material-symbols-outlined text-white text-[16px]">payments</span></div><div class="flex-1"><p class="text-sm font-bold" style="color:#1a1a2e">Penjualan Beras Cianjur 2 Ton</p><p class="text-xs" style="color:#9ca3af">Kepada: PT Surya Maju · 27 Apr</p></div><p class="font-black" style="color:#00aa5b">+Rp 28.400.000</p></div>
+          <div class="flex items-center gap-3 p-3 rounded-xl" style="background:#fff8f0"><div class="w-9 h-9 rounded-xl flex items-center justify-center" style="background:#fe6a34"><span class="material-symbols-outlined text-white text-[16px]">shopping_cart</span></div><div class="flex-1"><p class="text-sm font-bold" style="color:#1a1a2e">Pembelian Bibit Unggul 50 kg</p><p class="text-xs" style="color:#9ca3af">Toko Tani Makmur · 25 Apr</p></div><p class="font-black" style="color:#fe6a34">-Rp 1.500.000</p></div>
+          <div class="flex items-center gap-3 p-3 rounded-xl" style="background:#f0fdf4"><div class="w-9 h-9 rounded-xl flex items-center justify-center" style="background:#00aa5b"><span class="material-symbols-outlined text-white text-[16px]">payments</span></div><div class="flex-1"><p class="text-sm font-bold" style="color:#1a1a2e">Penjualan Jagung Pipil 3,4 Ton</p><p class="text-xs" style="color:#9ca3af">Kepada: CV Agro Nusantara · 22 Apr</p></div><p class="font-black" style="color:#00aa5b">+Rp 22.100.000</p></div>
+        </div>
+      </div>
+
+      <!-- Forum Snippet -->
+      <div class="glass-card p-5">
+        <div class="flex items-center justify-between mb-4"><h2 class="font-black text-base" style="color:#1a1a2e">Forum Diskusi</h2><a href="forum.html" class="text-xs font-bold" style="color:#00aa5b">Lihat Semua</a></div>
+        <div class="flex flex-col gap-3">
+          <a href="forum.html" class="block p-3 rounded-xl hover:bg-gray-50 transition-colors" style="border:1px solid #f1f5f9">
+            <p class="text-sm font-bold mb-1" style="color:#1a1a2e">Harga cabai naik drastis, bagaimana strategi tanam?</p>
+            <p class="text-xs" style="color:#9ca3af">💬 24 balasan · 2 jam lalu</p>
+          </a>
+          <a href="forum.html" class="block p-3 rounded-xl hover:bg-gray-50 transition-colors" style="border:1px solid #f1f5f9">
+            <p class="text-sm font-bold mb-1" style="color:#1a1a2e">Tips mengatasi hama wereng di musim hujan</p>
+            <p class="text-xs" style="color:#9ca3af">💬 12 balasan · 5 jam lalu</p>
+          </a>
+          <button onclick="window.location.href='forum.html'" class="w-full font-bold text-sm py-2.5 rounded-xl transition-all" style="background:rgba(0,170,91,0.08);color:#00aa5b;border:1.5px solid rgba(0,170,91,0.15)">
+            + Buat Diskusi Baru
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+<script>
+  const chartData = {
+    harian: {
+      labels:['Sen','Sel','Rab','Kam','Jum','Sab','Min'],
+      income:[8.2,12.4,6.5,15.8,9.1,11.3,3.2],
+      expense:[2.1,3.5,1.8,4.2,2.6,3.1,0.8]
+    },
+    mingguan: {
+      labels:['Mg 1','Mg 2','Mg 3','Mg 4'],
+      income:[42,38,55,48],
+      expense:[12,9,15,11]
+    },
+    bulanan: {
+      labels:['Jan','Feb','Mar','Apr','Mei','Jun','Jul','Agu','Sep','Okt','Nov','Des'],
+      income:[32,28,45,48,0,0,0,0,0,0,0,0],
+      expense:[8,7,12,9,0,0,0,0,0,0,0,0]
+    },
+    tahunan: {
+      labels:['2021','2022','2023','2024','2025'],
+      income:[180,220,310,380,284],
+      expense:[55,68,92,110,84]
+    }
+  };
+
+  function switchPeriod(p) {
+    document.querySelectorAll('.period-tab').forEach(t => t.classList.remove('active'));
+    document.getElementById('tab-' + p).classList.add('active');
+    renderChart(p);
+  }
+
+  function renderChart(p) {
+    const d = chartData[p];
+    const maxVal = Math.max(...d.income, ...d.expense);
+    const area = document.getElementById('chart-area');
+    const labels = document.getElementById('chart-labels');
+    area.innerHTML = '';
+    labels.innerHTML = '';
+
+    let tIn = 0, tOut = 0;
+    d.labels.forEach((lbl, i) => {
+      const inH = Math.round((d.income[i] / maxVal) * 100);
+      const outH = Math.round((d.expense[i] / maxVal) * 100);
+      tIn += d.income[i]; tOut += d.expense[i];
+
+      const col = document.createElement('div');
+      col.className = 'flex gap-0.5 items-end flex-1 min-w-[20px]';
+      col.style.height = '100%';
+      col.innerHTML = `
+        <div class="bar-in chart-bar-anim flex-1" style="--h:${inH}%;height:${inH}%" title="Pemasukan: ${d.income[i]}jt"></div>
+        <div class="bar-out chart-bar-anim flex-1" style="--h:${outH}%;height:${outH}%;animation-delay:.05s" title="Pengeluaran: ${d.expense[i]}jt"></div>`;
+      area.appendChild(col);
+
+      const lblEl = document.createElement('div');
+      lblEl.className = 'flex-1 text-center text-[9px] font-bold min-w-[20px]';
+      lblEl.style.color = '#9ca3af';
+      lblEl.textContent = lbl;
+      labels.appendChild(lblEl);
+    });
+
+    const net = tIn - tOut;
+    const fmt = v => v >= 1000 ? `Rp ${(v/1000).toFixed(1)}M` : `Rp ${v.toFixed(0)}jt`;
+    document.getElementById('total-in').textContent = fmt(tIn);
+    document.getElementById('total-out').textContent = fmt(tOut);
+    document.getElementById('total-net').textContent = fmt(net);
+  }
+
+  renderChart('harian');
+</script>
+</body>
+</html>

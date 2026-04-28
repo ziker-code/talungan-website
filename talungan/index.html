@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html class="light" lang="id">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Talungan.id - Lumbung Pangan Digital</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "error-container": "#ffdad6",
+                        "on-secondary-container": "#5d1900",
+                        "inverse-primary": "#57df89",
+                        "tertiary-container": "#43a667",
+                        "secondary": "#ab3500",
+                        "tertiary-fixed": "#94f8b0",
+                        "tertiary": "#006d39",
+                        "outline-variant": "#bccabc",
+                        "on-surface-variant": "#3d4a3f",
+                        "on-tertiary": "#ffffff",
+                        "on-surface": "#1a1a2e",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-fixed": "#00210d",
+                        "secondary-fixed": "#ffdbd0",
+                        "on-tertiary-container": "#003418",
+                        "surface-dim": "#dad7f3",
+                        "tertiary-fixed-dim": "#78db96",
+                        "surface-container": "#efecff",
+                        "on-primary": "#ffffff",
+                        "surface-container-highest": "#e2e0fc",
+                        "surface-variant": "#e2e0fc",
+                        "secondary-fixed-dim": "#ffb59d",
+                        "on-secondary-fixed-variant": "#832600",
+                        "surface-tint": "#006d38",
+                        "primary-container": "#00aa5b",
+                        "surface": "#fcf8ff",
+                        "on-secondary-fixed": "#390c00",
+                        "inverse-on-surface": "#f2efff",
+                        "on-tertiary-fixed-variant": "#005229",
+                        "on-primary-container": "#003518",
+                        "surface-container-lowest": "#ffffff",
+                        "background": "#fcf8ff",
+                        "outline": "#6d7b6e",
+                        "on-error": "#ffffff",
+                        "error": "#ba1a1a",
+                        "primary-fixed-dim": "#57df89",
+                        "on-secondary": "#ffffff",
+                        "surface-container-high": "#e8e5ff",
+                        "primary-fixed": "#76fca3",
+                        "on-primary-fixed-variant": "#005229",
+                        "primary": "#006d38",
+                        "surface-bright": "#fcf8ff",
+                        "secondary-container": "#fe6a34",
+                        "inverse-surface": "#2f2e43",
+                        "on-background": "#1a1a2e",
+                        "on-primary-fixed": "#00210d",
+                        "surface-container-low": "#f5f2ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xl": "32px",
+                        "sm": "12px",
+                        "md": "16px",
+                        "xs": "8px",
+                        "container-padding": "16px",
+                        "base": "4px",
+                        "lg": "24px",
+                        "gutter": "12px"
+                    },
+                    "fontFamily": {
+                        "h2": ["Inter"],
+                        "stats-display": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "h1": ["Inter"]
+                    },
+                    "fontSize": {
+                        "h2": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "stats-display": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+                        "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+                        "h1": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.72);
+            backdrop-filter: blur(16px) saturate(180%);
+            -webkit-backdrop-filter: blur(16px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen relative font-body-md">
+    <!-- TopAppBar -->
+    <header class="sticky top-0 z-50 flex justify-between items-center px-4 h-16 w-full max-w-7xl mx-auto bg-white/72 backdrop-blur-[16px] backdrop-saturate-[1.8] border-b border-white/40 shadow-none font-['Inter'] antialiased">
+        <div class="text-xl font-black tracking-tight text-primary-container">
+            Talungan.id
+        </div>
+        <button class="px-6 py-2 bg-primary-container text-on-primary rounded-full font-label-sm text-label-sm hover:opacity-90 transition-opacity">
+            Masuk
+        </button>
+    </header>
+
+    <main class="w-full max-w-7xl mx-auto px-container-padding pb-32">
+        <!-- Hero Section -->
+        <section class="relative pt-xl pb-24 overflow-hidden rounded-[40px] mt-md bg-gradient-to-br from-primary/10 via-surface to-surface-container flex flex-col items-center text-center">
+            <div class="absolute inset-0 z-0 opacity-10">
+                <img alt="Background" class="w-full h-full object-cover" data-alt="aerial view of lush green rice terraces in indonesia with golden hour sunlight and soft mist" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBchb_JCktUJMLIsJD5wbSx31LQs4oE9-BKM-E8OQndl5Eyf92CM0RK_dyCMzQy5zFFxz0Gv9g6Z9lh5G0xV5eUoX4y_tlVWjlR6YFIEuDW8ZmtO0zpuhV8I4gRdtgnamSfeSuZtkB6XbRfmyZckLKjTA32APT5oZ0Hv87kUvbDGwK356ofnE3wbsgFdLkM32paBTtDKSM5gV9OU2C0SkLrk3LFb2vPSotimuEXan6X20nrPVQkdlbizQM4oqV_3gledUEWVrMXdJ4"/>
+            </div>
+            <div class="relative z-10 max-w-3xl px-4 flex flex-col items-center">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card mb-lg text-primary-container font-label-sm text-label-sm">
+                    <span class="material-symbols-outlined text-[16px]">eco</span>
+                    <span>Modern Food Security</span>
+                </div>
+                <h1 class="font-stats-display text-stats-display text-on-surface mb-md">
+                    Lumbung Pangan <span class="text-primary-container">Digital</span>
+                </h1>
+                <p class="font-body-lg text-body-lg text-on-surface-variant mb-xl max-w-xl">
+                    Jembatani Petani &amp; Konsumen. Kelola stok pangan, tingkatkan transparansi, dan amankan rantai pasok dengan teknologi modern.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 w-full justify-center">
+                    <button class="w-full sm:w-auto px-8 py-3 bg-primary-container text-on-primary rounded-full font-label-sm text-label-sm hover:opacity-90 transition-opacity flex items-center justify-center gap-2">
+                        Daftar Gratis
+                    </button>
+                    <button class="w-full sm:w-auto px-8 py-3 glass-card text-primary-container border-primary-container rounded-full font-label-sm text-label-sm hover:bg-white/50 transition-colors flex items-center justify-center gap-2">
+                        Pelajari
+                        <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Bar -->
+        <section class="relative z-20 -mt-10 mx-auto max-w-4xl px-4">
+            <div class="glass-card rounded-2xl p-6 shadow-[0_10px_30px_rgba(0,0,0,0.04)]">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                    <div class="flex flex-col items-center">
+                        <span class="font-stats-display text-h1 text-primary-container mb-1">1.200</span>
+                        <span class="font-label-sm text-label-sm text-on-surface-variant">Petani</span>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <span class="font-stats-display text-h1 text-primary-container mb-1">48</span>
+                        <span class="font-label-sm text-label-sm text-on-surface-variant">Lumbung</span>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <span class="font-stats-display text-h1 text-primary-container mb-1">320</span>
+                        <span class="font-label-sm text-label-sm text-on-surface-variant">Ton Stok</span>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <span class="font-stats-display text-h1 text-primary-container mb-1">2.100</span>
+                        <span class="font-label-sm text-label-sm text-on-surface-variant">Transaksi</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="mt-24">
+            <div class="text-center mb-12">
+                <h2 class="font-h2 text-h2 text-on-surface mb-2">Untuk Siapa?</h2>
+                <p class="font-body-md text-body-md text-on-surface-variant">Solusi terintegrasi untuk seluruh ekosistem pangan</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Petani Card -->
+                <div class="glass-card rounded-[20px] p-6 flex flex-col items-start hover:-translate-y-1 transition-transform duration-300">
+                    <div class="w-12 h-12 rounded-full bg-primary-container/10 flex items-center justify-center mb-6">
+                        <span class="material-symbols-outlined text-primary-container text-2xl">agriculture</span>
+                    </div>
+                    <h3 class="font-h2 text-[18px] font-semibold text-on-surface mb-3">Petani</h3>
+                    <p class="font-body-md text-body-md text-on-surface-variant mb-6 flex-grow">
+                        Catat hasil panen, pantau harga pasar, dan jual langsung ke lumbung terdekat dengan harga yang adil.
+                    </p>
+                </div>
+                <!-- Admin Card -->
+                <div class="glass-card rounded-[20px] p-6 flex flex-col items-start hover:-translate-y-1 transition-transform duration-300">
+                    <div class="w-12 h-12 rounded-full bg-secondary-container/10 flex items-center justify-center mb-6">
+                        <span class="material-symbols-outlined text-secondary-container text-2xl">warehouse</span>
+                    </div>
+                    <h3 class="font-h2 text-[18px] font-semibold text-on-surface mb-3">Admin Lumbung</h3>
+                    <p class="font-body-md text-body-md text-on-surface-variant mb-6 flex-grow">
+                        Kelola stok gudang secara real-time, pantau kualitas beras (Grade A/B/C), dan optimalkan logistik distribusi.
+                    </p>
+                </div>
+                <!-- Konsumen Card -->
+                <div class="glass-card rounded-[20px] p-6 flex flex-col items-start hover:-translate-y-1 transition-transform duration-300">
+                    <div class="w-12 h-12 rounded-full bg-tertiary-container/10 flex items-center justify-center mb-6">
+                        <span class="material-symbols-outlined text-tertiary-container text-2xl">storefront</span>
+                    </div>
+                    <h3 class="font-h2 text-[18px] font-semibold text-on-surface mb-3">Konsumen</h3>
+                    <p class="font-body-md text-body-md text-on-surface-variant mb-6 flex-grow">
+                        Akses stok beras berkualitas, pantau transparansi asal usul pangan, dan beli dengan harga stabil.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-surface-container-high py-12 px-4 mt-24">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex flex-col items-center md:items-start">
+                <span class="text-xl font-black tracking-tight text-primary-container mb-2">Talungan.id</span>
+                <span class="font-label-sm text-label-sm text-on-surface-variant">© 2024 Talungan.id. All rights reserved.</span>
+            </div>
+            <div class="flex gap-4">
+                <a class="w-10 h-10 rounded-full glass-card flex items-center justify-center text-on-surface-variant hover:text-primary-container transition-colors" href="#">
+                    <span class="material-symbols-outlined text-xl">language</span>
+                </a>
+                <a class="w-10 h-10 rounded-full glass-card flex items-center justify-center text-on-surface-variant hover:text-primary-container transition-colors" href="#">
+                    <span class="material-symbols-outlined text-xl">share</span>
+                </a>
+                <a class="w-10 h-10 rounded-full glass-card flex items-center justify-center text-on-surface-variant hover:text-primary-container transition-colors" href="#">
+                    <span class="material-symbols-outlined text-xl">mail</span>
+                </a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

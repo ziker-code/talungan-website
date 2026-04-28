@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Marketplace — Talungan.id</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../shared.css"/>
+  <style>
+    .product-card { background:rgba(255,255,255,0.88);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,0.8);border-radius:20px;overflow:hidden;box-shadow:0 4px 20px rgba(0,100,50,0.06);transition:transform .2s,box-shadow .2s;cursor:pointer; }
+    .product-card:hover { transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,100,50,0.12); }
+    .search-bar { background:rgba(255,255,255,0.88);backdrop-filter:blur(12px);border:1.5px solid rgba(255,255,255,0.8);border-radius:16px;padding:11px 18px 11px 44px;font-size:14px;font-family:'Inter',sans-serif;outline:none;width:340px;box-shadow:0 2px 12px rgba(0,0,0,0.04); }
+    .search-bar:focus { border-color:#00aa5b; }
+    .cat-chip { display:inline-flex;align-items:center;gap:6px;padding:7px 16px;border-radius:99px;font-size:12px;font-weight:700;cursor:pointer;transition:.15s;border:1.5px solid transparent; }
+  </style>
+</head>
+<body>
+  <div class="blob-bg"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <div class="sidebar-logo-icon">
+        <img src="../assets/logo.png" alt="Talungan" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+        <svg viewBox="0 0 60 60" width="24" height="24" style="display:none"><circle cx="30" cy="30" r="28" fill="rgba(255,255,255,0.2)"/><rect x="22" y="18" width="4" height="18" rx="2" fill="white"/><rect x="29" y="14" width="4" height="22" rx="2" fill="white"/><rect x="36" y="18" width="4" height="18" rx="2" fill="white"/></svg>
+      </div>
+      <div><div class="sidebar-brand">Talungan.id</div><div class="sidebar-role">Konsumen</div></div>
+    </div>
+    <div class="sidebar-user">
+      <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDC3Pnhp3-z-UASINeSJvHHNrXzgaDw2mbywAaQvXCMue4mlO6mxNW0As0o-REv9p2IjD0DXZsRoE1ylNH0YP6dzohp68BYRCEUusVb8C0ww8vZc-X-k20MrlvxDE6Ab7NSyYrlotDvLvfJcpPBNuRGWafLHqQ7rX0GmsddKBWVV4qYtpcNoQDSglmZKioIuJql1pejrXs7rTpJxQAwYmCS7qRLeweor8X7wgkM4KaL2ELvRw3wdNfOT9OBXYvOvrjcswNZAoRdl_w" alt="User"/>
+      <div><div class="name">Siti Rahmawati</div><div class="role">Gold Member</div></div>
+      <div class="dot"></div>
+    </div>
+    <span class="nav-section-title">Menu Utama</span>
+    <a href="home.html" class="nav-item"><span class="material-symbols-outlined text-[20px]">home</span>Beranda</a>
+    <a href="marketplace.html" class="nav-item active"><span class="material-symbols-outlined text-[20px]" style="font-variation-settings:'FILL' 1">storefront</span>Marketplace</a>
+    <a href="tracking.html" class="nav-item"><span class="material-symbols-outlined text-[20px]">local_shipping</span>Pesanan</a>
+    <a href="kontrak.html" class="nav-item"><span class="material-symbols-outlined text-[20px]">description</span>Kontrak</a>
+    <a href="tagihan.html" class="nav-item"><span class="material-symbols-outlined text-[20px]">receipt_long</span>Tagihan</a>
+    <a href="forum.html" class="nav-item"><span class="material-symbols-outlined text-[20px]">forum</span>Forum</a>
+    <div class="nav-spacer"></div>
+    <div class="nav-divider"></div>
+    <a href="profil.html" class="nav-item"><span class="material-symbols-outlined text-[20px]">account_circle</span>Profil Saya</a>
+    <a href="login.html" class="nav-item danger"><span class="material-symbols-outlined text-[20px]">logout</span>Keluar</a>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main-content p-6">
+
+    <!-- Header + Search -->
+    <div class="flex items-center justify-between mb-6 su d1">
+      <div>
+        <p class="text-xs font-bold uppercase tracking-widest mb-1" style="color:#9ca3af">Belanja</p>
+        <h1 class="text-2xl font-black" style="color:#1a1a2e;letter-spacing:-0.5px">Marketplace Komoditas</h1>
+      </div>
+      <div class="flex items-center gap-3">
+        <div class="relative">
+          <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-[18px]">search</span>
+          <input type="text" placeholder="Cari produk, petani, atau daerah..." class="search-bar"/>
+        </div>
+        <div class="relative">
+          <button class="w-11 h-11 rounded-2xl flex items-center justify-center" style="background:rgba(255,255,255,0.88);border:1.5px solid rgba(255,255,255,0.8);box-shadow:0 2px 10px rgba(0,0,0,0.04)">
+            <span class="material-symbols-outlined text-gray-500 text-[20px]">shopping_cart</span>
+            <span class="absolute -top-1 -right-1 w-4 h-4 rounded-full text-[9px] font-black text-white flex items-center justify-center" style="background:#00aa5b">3</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Category Filter -->
+    <div class="flex gap-2 mb-5 su d1" style="overflow-x:auto;padding-bottom:4px;flex-wrap:nowrap">
+      <button class="cat-chip flex-shrink-0" style="background:#00aa5b;color:white">🌾 Semua</button>
+      <button class="cat-chip flex-shrink-0" style="background:rgba(255,255,255,0.88);color:#6b7280;border-color:#e5e7eb">🍚 Beras</button>
+      <button class="cat-chip flex-shrink-0" style="background:rgba(255,255,255,0.88);color:#6b7280;border-color:#e5e7eb">🌽 Jagung</button>
+      <button class="cat-chip flex-shrink-0" style="background:rgba(255,255,255,0.88);color:#6b7280;border-color:#e5e7eb">🫘 Kedelai</button>
+      <button class="cat-chip flex-shrink-0" style="background:rgba(255,255,255,0.88);color:#6b7280;border-color:#e5e7eb">🌶 Cabai</button>
+      <button class="cat-chip flex-shrink-0" style="background:rgba(255,255,255,0.88);color:#6b7280;border-color:#e5e7eb">🥬 Sayuran</button>
+      <button class="cat-chip flex-shrink-0" style="background:rgba(255,255,255,0.88);color:#6b7280;border-color:#e5e7eb">🍍 Buah</button>
+      <button class="cat-chip flex-shrink-0" style="background:rgba(255,255,255,0.88);color:#6b7280;border-color:#e5e7eb">🧅 Rempah</button>
+    </div>
+
+    <!-- Sort Row -->
+    <div class="flex items-center justify-between mb-4 su d2">
+      <p class="text-sm font-semibold" style="color:#9ca3af">Menampilkan <strong style="color:#1a1a2e">248 produk</strong></p>
+      <div class="flex items-center gap-2">
+        <span class="text-xs font-semibold" style="color:#9ca3af">Urutkan:</span>
+        <select style="background:rgba(255,255,255,0.88);border:1.5px solid rgba(0,0,0,0.07);border-radius:12px;padding:7px 12px;font-size:12px;font-family:'Inter',sans-serif;font-weight:600;outline:none;color:#374151">
+          <option>Terpopuler</option>
+          <option>Harga Terendah</option>
+          <option>Rating Tertinggi</option>
+          <option>Terbaru</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Product Grid -->
+    <div class="grid grid-cols-4 gap-4 su d3">
+
+      <!-- Product Card 1 -->
+      <div class="product-card" onclick="window.location.href='kontrak.html'">
+        <div class="relative" style="height:160px;background:linear-gradient(135deg,#1a472a,#2d6a4f)">
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJcXGczgL6Y7ISKYbskSqELGcIwZyi5AzyMSCw4xez0-NZ5f8jWTjsNp91L579oa0wiocypknsjeABBuEPAU_pRaeDg1nLmR0nb98DP6Cx47R2WCs1nAemIvPFFziKa7pUPsTmrtr4zVZFjOFi7_Vbh2Cca7haN9j77fYhJaIIlHG2sfUH9rbF1b1P523rwvlKt2xS75Q7PFhIgSCq5Xb2G9SOHQBSi2DNealhOa_YHPRi2jOChz_BXjKe7kxziwLbgs3FDpXmvsw" class="w-full h-full object-cover" alt="Beras"/>
+          <div class="absolute top-2 left-2">
+            <span class="text-[10px] font-black px-2 py-1 rounded-full text-white" style="background:#00aa5b">★ 4.9</span>
+          </div>
+          <div class="absolute top-2 right-2">
+            <span class="text-[10px] font-black px-2 py-1 rounded-full" style="background:rgba(255,180,0,0.95);color:#1a1a2e">Grade A</span>
+          </div>
+        </div>
+        <div class="p-4">
+          <p class="text-xs font-semibold mb-1" style="color:#9ca3af">🌾 Beras · Lumbung Demak</p>
+          <h3 class="font-black text-sm mb-2" style="color:#1a1a2e;line-height:1.3">Beras Cianjur Pandan Wangi Premium</h3>
+          <div class="flex items-end justify-between">
+            <div>
+              <p class="text-xs font-semibold" style="color:#9ca3af">Min. 100 kg</p>
+              <p class="font-black" style="color:#00aa5b">Rp 14.200<span class="text-xs font-semibold text-gray-400">/kg</span></p>
+            </div>
+            <button class="w-9 h-9 rounded-xl flex items-center justify-center text-white" style="background:linear-gradient(135deg,#00aa5b,#006d38)">
+              <span class="material-symbols-outlined text-[18px]">add_shopping_cart</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product Card 2 -->
+      <div class="product-card">
+        <div class="relative" style="height:160px;background:linear-gradient(135deg,#1a3a00,#2d5c1e)">
+          <div class="w-full h-full flex items-center justify-center text-7xl">🌽</div>
+          <div class="absolute top-2 left-2">
+            <span class="text-[10px] font-black px-2 py-1 rounded-full text-white" style="background:#00aa5b">★ 4.7</span>
+          </div>
+        </div>
+        <div class="p-4">
+          <p class="text-xs font-semibold mb-1" style="color:#9ca3af">🌽 Jagung · Lumbung Magelang</p>
+          <h3 class="font-black text-sm mb-2" style="color:#1a1a2e;line-height:1.3">Jagung Pipil Kering Non GMO</h3>
+          <div class="flex items-end justify-between">
+            <div>
+              <p class="text-xs font-semibold" style="color:#9ca3af">Min. 200 kg</p>
+              <p class="font-black" style="color:#00aa5b">Rp 6.500<span class="text-xs font-semibold text-gray-400">/kg</span></p>
+            </div>
+            <button class="w-9 h-9 rounded-xl flex items-center justify-center text-white" style="background:linear-gradient(135deg,#00aa5b,#006d38)">
+              <span class="material-symbols-outlined text-[18px]">add_shopping_cart</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product Card 3 -->
+      <div class="product-card" style="position:relative">
+        <div class="absolute top-3 left-3 z-10">
+          <span class="text-[10px] font-black px-2 py-1 rounded-full text-white" style="background:#ef4444">🔥 Promo</span>
+        </div>
+        <div class="relative" style="height:160px;background:linear-gradient(135deg,#7f1d1d,#991b1b)">
+          <div class="w-full h-full flex items-center justify-center text-7xl">🌶</div>
+          <div class="absolute top-2 right-2">
+            <span class="text-[10px] font-black px-2 py-1 rounded-full text-white" style="background:#00aa5b">★ 4.8</span>
+          </div>
+        </div>
+        <div class="p-4">
+          <p class="text-xs font-semibold mb-1" style="color:#9ca3af">🌶 Cabai · Lumbung Brebes</p>
+          <h3 class="font-black text-sm mb-2" style="color:#1a1a2e;line-height:1.3">Cabai Merah Keriting Super</h3>
+          <div class="flex items-end justify-between">
+            <div>
+              <p class="text-xs font-semibold line-through" style="color:#d1d5db">Rp 52.000/kg</p>
+              <p class="font-black" style="color:#00aa5b">Rp 45.000<span class="text-xs font-semibold text-gray-400">/kg</span></p>
+            </div>
+            <button class="w-9 h-9 rounded-xl flex items-center justify-center text-white" style="background:linear-gradient(135deg,#00aa5b,#006d38)">
+              <span class="material-symbols-outlined text-[18px]">add_shopping_cart</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product Card 4 -->
+      <div class="product-card">
+        <div class="relative" style="height:160px;background:linear-gradient(135deg,#064e3b,#065f46)">
+          <div class="w-full h-full flex items-center justify-center text-7xl">🫘</div>
+          <div class="absolute top-2 left-2">
+            <span class="text-[10px] font-black px-2 py-1 rounded-full text-white" style="background:#00aa5b">★ 4.6</span>
+          </div>
+        </div>
+        <div class="p-4">
+          <p class="text-xs font-semibold mb-1" style="color:#9ca3af">🫘 Kedelai · Lumbung Jember</p>
+          <h3 class="font-black text-sm mb-2" style="color:#1a1a2e;line-height:1.3">Kedelai Lokal Non Impor</h3>
+          <div class="flex items-end justify-between">
+            <div>
+              <p class="text-xs font-semibold" style="color:#9ca3af">Min. 500 kg</p>
+              <p class="font-black" style="color:#00aa5b">Rp 11.200<span class="text-xs font-semibold text-gray-400">/kg</span></p>
+            </div>
+            <button class="w-9 h-9 rounded-xl flex items-center justify-center text-white" style="background:linear-gradient(135deg,#00aa5b,#006d38)">
+              <span class="material-symbols-outlined text-[18px]">add_shopping_cart</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Row 2 -->
+      <div class="product-card su d4">
+        <div style="height:160px;background:linear-gradient(135deg,#14532d,#166534);display:flex;align-items:center;justify-content:center;font-size:72px">🥬</div>
+        <div class="p-4">
+          <p class="text-xs font-semibold mb-1" style="color:#9ca3af">🥬 Sayuran · Lumbung Bandung</p>
+          <h3 class="font-black text-sm mb-2" style="color:#1a1a2e">Bayam Organik Segar</h3>
+          <div class="flex items-end justify-between">
+            <div><p class="text-xs font-semibold" style="color:#9ca3af">Min. 10 kg</p><p class="font-black" style="color:#00aa5b">Rp 8.000<span class="text-xs font-semibold text-gray-400">/kg</span></p></div>
+            <button class="w-9 h-9 rounded-xl flex items-center justify-center text-white" style="background:linear-gradient(135deg,#00aa5b,#006d38)"><span class="material-symbols-outlined text-[18px]">add_shopping_cart</span></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card su d4" style="animation-delay:.05s">
+        <div style="height:160px;background:linear-gradient(135deg,#7c2d12,#9a3412);display:flex;align-items:center;justify-content:center;font-size:72px">🧅</div>
+        <div class="p-4">
+          <p class="text-xs font-semibold mb-1" style="color:#9ca3af">🧅 Rempah · Lumbung Tegal</p>
+          <h3 class="font-black text-sm mb-2" style="color:#1a1a2e">Bawang Merah Super Kering</h3>
+          <div class="flex items-end justify-between">
+            <div><p class="text-xs font-semibold" style="color:#9ca3af">Min. 50 kg</p><p class="font-black" style="color:#00aa5b">Rp 28.500<span class="text-xs font-semibold text-gray-400">/kg</span></p></div>
+            <button class="w-9 h-9 rounded-xl flex items-center justify-center text-white" style="background:linear-gradient(135deg,#00aa5b,#006d38)"><span class="material-symbols-outlined text-[18px]">add_shopping_cart</span></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card su d4" style="animation-delay:.1s">
+        <div style="height:160px;background:linear-gradient(135deg,#1e3a5f,#1e40af);display:flex;align-items:center;justify-content:center;font-size:72px">🫚</div>
+        <div class="p-4">
+          <p class="text-xs font-semibold mb-1" style="color:#9ca3af">🫚 Minyak · Lumbung Sumsel</p>
+          <h3 class="font-black text-sm mb-2" style="color:#1a1a2e">Minyak Kelapa Murni Virgin</h3>
+          <div class="flex items-end justify-between">
+            <div><p class="text-xs font-semibold" style="color:#9ca3af">Min. 20 L</p><p class="font-black" style="color:#00aa5b">Rp 35.000<span class="text-xs font-semibold text-gray-400">/L</span></p></div>
+            <button class="w-9 h-9 rounded-xl flex items-center justify-center text-white" style="background:linear-gradient(135deg,#00aa5b,#006d38)"><span class="material-symbols-outlined text-[18px]">add_shopping_cart</span></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card su d4" style="animation-delay:.15s">
+        <div style="height:160px;background:linear-gradient(135deg,#2d1b69,#4c1d95);display:flex;align-items:center;justify-content:center;font-size:72px">🍍</div>
+        <div class="p-4">
+          <p class="text-xs font-semibold mb-1" style="color:#9ca3af">🍍 Buah · Lumbung Lampung</p>
+          <h3 class="font-black text-sm mb-2" style="color:#1a1a2e">Nanas Madu Grade Premium</h3>
+          <div class="flex items-end justify-between">
+            <div><p class="text-xs font-semibold" style="color:#9ca3af">Min. 30 kg</p><p class="font-black" style="color:#00aa5b">Rp 9.500<span class="text-xs font-semibold text-gray-400">/kg</span></p></div>
+            <button class="w-9 h-9 rounded-xl flex items-center justify-center text-white" style="background:linear-gradient(135deg,#00aa5b,#006d38)"><span class="material-symbols-outlined text-[18px]">add_shopping_cart</span></button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Load More -->
+    <div class="text-center mt-6 su d5">
+      <button class="font-bold text-sm px-8 py-3 rounded-2xl transition-all active:scale-95" style="background:rgba(0,170,91,0.08);color:#00aa5b;border:1.5px solid rgba(0,170,91,0.2)">
+        Muat Lebih Banyak Produk
+      </button>
+    </div>
+  </main>
+</body>
+</html>
