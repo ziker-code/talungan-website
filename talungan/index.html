@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html class="light" lang="id">
+
 <head>
-    <meta charset="utf-8"/>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>Talungan.id - Lumbung Pangan Digital</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet" />
     <script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
@@ -98,138 +101,747 @@
         }
     </script>
     <style>
+        /* ===== GLASS & BASE ===== */
         .glass-card {
             background: rgba(255, 255, 255, 0.72);
             backdrop-filter: blur(16px) saturate(180%);
             -webkit-backdrop-filter: blur(16px) saturate(180%);
             border: 1px solid rgba(255, 255, 255, 0.4);
         }
+
+        /* ===== FADE IN ANIMATIONS ===== */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(24px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes floatBadge {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-4px);
+            }
+        }
+
+        @keyframes countUp {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes shimmer {
+            0% {
+                background-position: -200% center;
+            }
+
+            100% {
+                background-position: 200% center;
+            }
+        }
+
+        @keyframes pulseGreen {
+
+            0%,
+            100% {
+                box-shadow: 0 0 0 0 rgba(0, 170, 91, 0.3);
+            }
+
+            50% {
+                box-shadow: 0 0 0 8px rgba(0, 170, 91, 0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .animate-fade-up {
+            animation: fadeUp 0.7s ease both;
+        }
+
+        .animate-fade-in {
+            animation: fadeIn 0.6s ease both;
+        }
+
+        .animate-float {
+            animation: floatBadge 3s ease-in-out infinite;
+        }
+
+        .animate-count {
+            animation: countUp 0.6s ease both;
+        }
+
+        .animate-slide-right {
+            animation: slideInRight 0.5s ease both;
+        }
+
+        .delay-100 {
+            animation-delay: 0.1s;
+        }
+
+        .delay-200 {
+            animation-delay: 0.2s;
+        }
+
+        .delay-300 {
+            animation-delay: 0.3s;
+        }
+
+        .delay-400 {
+            animation-delay: 0.4s;
+        }
+
+        .delay-500 {
+            animation-delay: 0.5s;
+        }
+
+        .delay-600 {
+            animation-delay: 0.6s;
+        }
+
+        /* ===== SHIMMER BUTTON ===== */
+        .btn-shimmer {
+            background: linear-gradient(90deg, #00aa5b 0%, #00cc6a 40%, #57df89 60%, #00aa5b 100%);
+            background-size: 200% auto;
+            transition: background-position 0.5s ease, transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .btn-shimmer:hover {
+            background-position: right center;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0, 170, 91, 0.35);
+        }
+
+        .btn-shimmer:active {
+            transform: translateY(0);
+        }
+
+        /* ===== OUTLINE BUTTON ===== */
+        .btn-outline-green {
+            border: 1.5px solid #00aa5b;
+            color: #00aa5b;
+            transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .btn-outline-green:hover {
+            background: rgba(0, 170, 91, 0.08);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(0, 170, 91, 0.15);
+        }
+
+        /* ===== FEATURE CARDS ===== */
+        .feature-card {
+            transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.35s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, transparent 60%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            border-radius: inherit;
+            pointer-events: none;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        .feature-card:hover::before {
+            opacity: 1;
+        }
+
+        /* ===== STAT NUMBER SHIMMER ===== */
+        .stat-number {
+            background: linear-gradient(90deg, #006d38, #00aa5b, #57df89, #00aa5b, #006d38);
+            background-size: 300% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: shimmer 4s linear infinite;
+        }
+
+        /* ===== LIVE BADGE ===== */
+        .live-badge {
+            animation: pulseGreen 2s ease-in-out infinite;
+        }
+
+        /* ===== SCROLL REVEAL ===== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== HEADER SCROLL SHADOW ===== */
+        .header-scrolled {
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.06);
+        }
+
+        /* ===== TRUST STRIP ===== */
+        .trust-strip {
+            background: linear-gradient(135deg, rgba(0, 109, 56, 0.04) 0%, rgba(0, 170, 91, 0.06) 100%);
+            border: 1px solid rgba(0, 170, 91, 0.12);
+        }
+
+        /* ===== HOW IT WORKS ===== */
+        .step-connector {
+            position: absolute;
+            top: 24px;
+            left: calc(50% + 24px);
+            width: calc(100% - 48px);
+            height: 2px;
+            background: linear-gradient(90deg, #00aa5b, #57df89);
+            opacity: 0.3;
+        }
     </style>
 </head>
+
 <body class="bg-background text-on-background min-h-screen relative font-body-md">
-    <!-- TopAppBar -->
-    <header class="sticky top-0 z-50 flex justify-between items-center px-4 h-16 w-full max-w-7xl mx-auto bg-white/72 backdrop-blur-[16px] backdrop-saturate-[1.8] border-b border-white/40 shadow-none font-['Inter'] antialiased">
-        <div class="text-xl font-black tracking-tight text-primary-container">
+
+    <!-- ===== HEADER ===== -->
+    <header id="main-header"
+        class="sticky top-0 z-50 flex justify-between items-center px-4 h-16 w-full max-w-7xl mx-auto bg-white/72 backdrop-blur-[16px] backdrop-saturate-[1.8] border-b border-white/40 transition-shadow duration-300 font-['Inter'] antialiased">
+        <div class="text-xl font-black tracking-tight text-primary-container flex items-center gap-2">
+            <span class="w-7 h-7 rounded-lg bg-primary-container flex items-center justify-center">
+                <span class="material-symbols-outlined text-white text-[16px]">eco</span>
+            </span>
             Talungan.id
         </div>
-        <button class="px-6 py-2 bg-primary-container text-on-primary rounded-full font-label-sm text-label-sm hover:opacity-90 transition-opacity">
-            Masuk
-        </button>
+        <nav class="hidden md:flex items-center gap-6 text-sm font-medium text-on-surface-variant">
+            <a href="#fitur" class="hover:text-primary-container transition-colors">Fitur</a>
+            <a href="#cara-kerja" class="hover:text-primary-container transition-colors">Cara Kerja</a>
+            <a href="#testimoni" class="hover:text-primary-container transition-colors">Testimoni</a>
+        </nav>
+        <div class="flex items-center gap-3">
+            <!-- TOMBOL MASUK → ke login.html -->
+            <a href="/konsumen/login.html"
+                class="btn-outline-green px-5 py-2 rounded-full font-label-sm text-label-sm hidden sm:inline-flex items-center gap-1">
+                <span class="material-symbols-outlined text-[15px]">login</span>
+                Masuk
+            </a>
+            <!-- TOMBOL DAFTAR → ke login.html (bisa diganti ke register.html jika ada) -->
+            <a href="/konsumen/login.html"
+                class="btn-shimmer px-5 py-2 text-white rounded-full font-label-sm text-label-sm inline-flex items-center gap-1">
+                <span class="material-symbols-outlined text-[15px]">person_add</span>
+                Daftar Gratis
+            </a>
+        </div>
     </header>
 
     <main class="w-full max-w-7xl mx-auto px-container-padding pb-32">
-        <!-- Hero Section -->
-        <section class="relative pt-xl pb-24 overflow-hidden rounded-[40px] mt-md bg-gradient-to-br from-primary/10 via-surface to-surface-container flex flex-col items-center text-center">
+
+        <!-- ===== HERO SECTION ===== -->
+        <section
+            class="relative pt-xl pb-28 overflow-hidden rounded-[40px] mt-md bg-gradient-to-br from-primary/10 via-surface to-surface-container flex flex-col items-center text-center">
+            <!-- Background image -->
             <div class="absolute inset-0 z-0 opacity-10">
-                <img alt="Background" class="w-full h-full object-cover" data-alt="aerial view of lush green rice terraces in indonesia with golden hour sunlight and soft mist" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBchb_JCktUJMLIsJD5wbSx31LQs4oE9-BKM-E8OQndl5Eyf92CM0RK_dyCMzQy5zFFxz0Gv9g6Z9lh5G0xV5eUoX4y_tlVWjlR6YFIEuDW8ZmtO0zpuhV8I4gRdtgnamSfeSuZtkB6XbRfmyZckLKjTA32APT5oZ0Hv87kUvbDGwK356ofnE3wbsgFdLkM32paBTtDKSM5gV9OU2C0SkLrk3LFb2vPSotimuEXan6X20nrPVQkdlbizQM4oqV_3gledUEWVrMXdJ4"/>
+                <img alt="Background" class="w-full h-full object-cover"
+                    src="https://lh3.googleusercontent.com/aida-public/AB6AXuBchb_JCktUJMLIsJD5wbSx31LQs4oE9-BKM-E8OQndl5Eyf92CM0RK_dyCMzQy5zFFxz0Gv9g6Z9lh5G0xV5eUoX4y_tlVWjlR6YFIEuDW8ZmtO0zpuhV8I4gRdtgnamSfeSuZtkB6XbRfmyZckLKjTA32APT5oZ0Hv87kUvbDGwK356ofnE3wbsgFdLkM32paBTtDKSM5gV9OU2C0SkLrk3LFb2vPSotimuEXan6X20nrPVQkdlbizQM4oqV_3gledUEWVrMXdJ4" />
             </div>
+
+            <!-- Decorative blobs -->
+            <div
+                class="absolute top-8 right-8 w-64 h-64 rounded-full bg-primary-container/10 blur-3xl pointer-events-none">
+            </div>
+            <div class="absolute bottom-8 left-8 w-48 h-48 rounded-full bg-tertiary/10 blur-2xl pointer-events-none">
+            </div>
+
             <div class="relative z-10 max-w-3xl px-4 flex flex-col items-center">
-                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card mb-lg text-primary-container font-label-sm text-label-sm">
+                <!-- Badge -->
+                <div
+                    class="animate-fade-up animate-float inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card mb-lg text-primary-container font-label-sm text-label-sm">
                     <span class="material-symbols-outlined text-[16px]">eco</span>
                     <span>Modern Food Security</span>
+                    <span class="w-2 h-2 rounded-full bg-primary-container live-badge"></span>
                 </div>
-                <h1 class="font-stats-display text-stats-display text-on-surface mb-md">
+
+                <!-- Heading -->
+                <h1 class="animate-fade-up delay-100 font-stats-display text-stats-display text-on-surface mb-md">
                     Lumbung Pangan <span class="text-primary-container">Digital</span>
                 </h1>
-                <p class="font-body-lg text-body-lg text-on-surface-variant mb-xl max-w-xl">
-                    Jembatani Petani &amp; Konsumen. Kelola stok pangan, tingkatkan transparansi, dan amankan rantai pasok dengan teknologi modern.
+
+                <!-- Subtext -->
+                <p class="animate-fade-up delay-200 font-body-lg text-body-lg text-on-surface-variant mb-xl max-w-xl">
+                    Jembatani Petani &amp; Konsumen. Kelola stok pangan, tingkatkan transparansi, dan amankan rantai
+                    pasok dengan teknologi modern.
                 </p>
-                <div class="flex flex-col sm:flex-row gap-4 w-full justify-center">
-                    <button class="w-full sm:w-auto px-8 py-3 bg-primary-container text-on-primary rounded-full font-label-sm text-label-sm hover:opacity-90 transition-opacity flex items-center justify-center gap-2">
+
+                <!-- CTA Buttons -->
+                <div class="animate-fade-up delay-300 flex flex-col sm:flex-row gap-4 w-full justify-center mb-lg">
+                    <!-- Daftar Gratis → login.html -->
+                    <a href="/konsumen/login.html"
+                        class="btn-shimmer w-full sm:w-auto px-8 py-3 text-white rounded-full font-label-sm text-label-sm flex items-center justify-center gap-2">
+                        <span class="material-symbols-outlined text-[18px]">person_add</span>
                         Daftar Gratis
-                    </button>
-                    <button class="w-full sm:w-auto px-8 py-3 glass-card text-primary-container border-primary-container rounded-full font-label-sm text-label-sm hover:bg-white/50 transition-colors flex items-center justify-center gap-2">
+                    </a>
+                    <!-- Pelajari → scroll ke fitur -->
+                    <a href="#fitur"
+                        class="btn-outline-green w-full sm:w-auto px-8 py-3 glass-card rounded-full font-label-sm text-label-sm flex items-center justify-center gap-2">
                         Pelajari
-                        <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
-                    </button>
+                        <span class="material-symbols-outlined text-[18px]">arrow_downward</span>
+                    </a>
+                </div>
+
+                <!-- Trust line -->
+                <div
+                    class="animate-fade-up delay-400 flex items-center gap-2 text-on-surface-variant font-label-sm text-label-sm">
+                    <span class="material-symbols-outlined text-[14px] text-primary-container">verified</span>
+                    Gratis selamanya untuk petani · Tanpa biaya tersembunyi
                 </div>
             </div>
         </section>
 
-        <!-- Stats Bar -->
+        <!-- ===== STATS BAR ===== -->
         <section class="relative z-20 -mt-10 mx-auto max-w-4xl px-4">
-            <div class="glass-card rounded-2xl p-6 shadow-[0_10px_30px_rgba(0,0,0,0.04)]">
+            <div class="glass-card rounded-2xl p-6 shadow-[0_10px_30px_rgba(0,0,0,0.06)] reveal">
                 <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
                     <div class="flex flex-col items-center">
-                        <span class="font-stats-display text-h1 text-primary-container mb-1">1.200</span>
-                        <span class="font-label-sm text-label-sm text-on-surface-variant">Petani</span>
+                        <span class="stat-number font-stats-display text-h1 mb-1">1.200+</span>
+                        <span class="font-label-sm text-label-sm text-on-surface-variant">Petani Aktif</span>
                     </div>
                     <div class="flex flex-col items-center">
-                        <span class="font-stats-display text-h1 text-primary-container mb-1">48</span>
+                        <span class="stat-number font-stats-display text-h1 mb-1">48</span>
                         <span class="font-label-sm text-label-sm text-on-surface-variant">Lumbung</span>
                     </div>
                     <div class="flex flex-col items-center">
-                        <span class="font-stats-display text-h1 text-primary-container mb-1">320</span>
+                        <span class="stat-number font-stats-display text-h1 mb-1">320</span>
                         <span class="font-label-sm text-label-sm text-on-surface-variant">Ton Stok</span>
                     </div>
                     <div class="flex flex-col items-center">
-                        <span class="font-stats-display text-h1 text-primary-container mb-1">2.100</span>
+                        <span class="stat-number font-stats-display text-h1 mb-1">2.100</span>
                         <span class="font-label-sm text-label-sm text-on-surface-variant">Transaksi</span>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Features Section -->
-        <section class="mt-24">
-            <div class="text-center mb-12">
-                <h2 class="font-h2 text-h2 text-on-surface mb-2">Untuk Siapa?</h2>
-                <p class="font-body-md text-body-md text-on-surface-variant">Solusi terintegrasi untuk seluruh ekosistem pangan</p>
+        <!-- ===== TRUST STRIP ===== -->
+        <section class="mt-12 reveal">
+            <div
+                class="trust-strip rounded-2xl px-6 py-4 flex flex-wrap items-center justify-center gap-6 text-on-surface-variant font-label-sm text-label-sm">
+                <span class="flex items-center gap-1.5">
+                    <span class="material-symbols-outlined text-[16px] text-primary-container">security</span>
+                    Data Terenkripsi
+                </span>
+                <span class="w-1 h-1 rounded-full bg-outline-variant hidden sm:block"></span>
+                <span class="flex items-center gap-1.5">
+                    <span class="material-symbols-outlined text-[16px] text-primary-container">verified_user</span>
+                    Petani Terverifikasi
+                </span>
+                <span class="w-1 h-1 rounded-full bg-outline-variant hidden sm:block"></span>
+                <span class="flex items-center gap-1.5">
+                    <span class="material-symbols-outlined text-[16px] text-primary-container">payments</span>
+                    Pembayaran Aman
+                </span>
+                <span class="w-1 h-1 rounded-full bg-outline-variant hidden sm:block"></span>
+                <span class="flex items-center gap-1.5">
+                    <span class="material-symbols-outlined text-[16px] text-primary-container">support_agent</span>
+                    Dukungan 24/7
+                </span>
             </div>
+        </section>
+
+        <!-- ===== FEATURES SECTION ===== -->
+        <section id="fitur" class="mt-24 scroll-mt-20">
+            <div class="text-center mb-12 reveal">
+                <div
+                    class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-container/10 text-primary-container font-label-sm text-label-sm mb-4">
+                    <span class="material-symbols-outlined text-[14px]">groups</span>
+                    Untuk Siapa
+                </div>
+                <h2 class="font-h2 text-h2 text-on-surface mb-2">Solusi untuk Semua</h2>
+                <p class="font-body-md text-body-md text-on-surface-variant">Solusi terintegrasi untuk seluruh ekosistem
+                    pangan</p>
+            </div>
+
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <!-- Petani Card -->
-                <div class="glass-card rounded-[20px] p-6 flex flex-col items-start hover:-translate-y-1 transition-transform duration-300">
+                <div class="glass-card feature-card rounded-[20px] p-6 flex flex-col items-start reveal">
                     <div class="w-12 h-12 rounded-full bg-primary-container/10 flex items-center justify-center mb-6">
                         <span class="material-symbols-outlined text-primary-container text-2xl">agriculture</span>
                     </div>
                     <h3 class="font-h2 text-[18px] font-semibold text-on-surface mb-3">Petani</h3>
                     <p class="font-body-md text-body-md text-on-surface-variant mb-6 flex-grow">
-                        Catat hasil panen, pantau harga pasar, dan jual langsung ke lumbung terdekat dengan harga yang adil.
+                        Catat hasil panen, pantau harga pasar, dan jual langsung ke lumbung terdekat dengan harga yang
+                        adil.
                     </p>
+                    <ul class="space-y-2 text-body-md text-on-surface-variant mb-6 w-full">
+                        <li class="flex items-center gap-2"><span
+                                class="material-symbols-outlined text-primary-container text-[16px]">check_circle</span>
+                            Pencatatan panen digital</li>
+                        <li class="flex items-center gap-2"><span
+                                class="material-symbols-outlined text-primary-container text-[16px]">check_circle</span>
+                            Pantau harga real-time</li>
+                        <li class="flex items-center gap-2"><span
+                                class="material-symbols-outlined text-primary-container text-[16px]">check_circle</span>
+                            Jual langsung ke lumbung</li>
+                    </ul>
+                    <a href="/konsumen/login.html"
+                        class="mt-auto inline-flex items-center gap-1 text-primary-container font-label-sm text-label-sm hover:gap-2 transition-all">
+                        Mulai sebagai Petani <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+                    </a>
                 </div>
+
                 <!-- Admin Card -->
-                <div class="glass-card rounded-[20px] p-6 flex flex-col items-start hover:-translate-y-1 transition-transform duration-300">
+                <div class="glass-card feature-card rounded-[20px] p-6 flex flex-col items-start reveal delay-200">
                     <div class="w-12 h-12 rounded-full bg-secondary-container/10 flex items-center justify-center mb-6">
                         <span class="material-symbols-outlined text-secondary-container text-2xl">warehouse</span>
                     </div>
                     <h3 class="font-h2 text-[18px] font-semibold text-on-surface mb-3">Admin Lumbung</h3>
                     <p class="font-body-md text-body-md text-on-surface-variant mb-6 flex-grow">
-                        Kelola stok gudang secara real-time, pantau kualitas beras (Grade A/B/C), dan optimalkan logistik distribusi.
+                        Kelola stok gudang secara real-time, pantau kualitas beras (Grade A/B/C), dan optimalkan
+                        logistik distribusi.
                     </p>
+                    <ul class="space-y-2 text-body-md text-on-surface-variant mb-6 w-full">
+                        <li class="flex items-center gap-2"><span
+                                class="material-symbols-outlined text-secondary-container text-[16px]">check_circle</span>
+                            Manajemen stok real-time</li>
+                        <li class="flex items-center gap-2"><span
+                                class="material-symbols-outlined text-secondary-container text-[16px]">check_circle</span>
+                            Grading kualitas otomatis</li>
+                        <li class="flex items-center gap-2"><span
+                                class="material-symbols-outlined text-secondary-container text-[16px]">check_circle</span>
+                            Laporan distribusi</li>
+                    </ul>
+                    <a href="/konsumen/login.html"
+                        class="mt-auto inline-flex items-center gap-1 text-secondary-container font-label-sm text-label-sm hover:gap-2 transition-all">
+                        Akses Admin <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+                    </a>
                 </div>
+
                 <!-- Konsumen Card -->
-                <div class="glass-card rounded-[20px] p-6 flex flex-col items-start hover:-translate-y-1 transition-transform duration-300">
+                <div class="glass-card feature-card rounded-[20px] p-6 flex flex-col items-start reveal delay-400">
                     <div class="w-12 h-12 rounded-full bg-tertiary-container/10 flex items-center justify-center mb-6">
                         <span class="material-symbols-outlined text-tertiary-container text-2xl">storefront</span>
                     </div>
                     <h3 class="font-h2 text-[18px] font-semibold text-on-surface mb-3">Konsumen</h3>
                     <p class="font-body-md text-body-md text-on-surface-variant mb-6 flex-grow">
-                        Akses stok beras berkualitas, pantau transparansi asal usul pangan, dan beli dengan harga stabil.
+                        Akses stok beras berkualitas, pantau transparansi asal usul pangan, dan beli dengan harga
+                        stabil.
                     </p>
+                    <ul class="space-y-2 text-body-md text-on-surface-variant mb-6 w-full">
+                        <li class="flex items-center gap-2"><span
+                                class="material-symbols-outlined text-tertiary-container text-[16px]">check_circle</span>
+                            Beli langsung dari sumber</li>
+                        <li class="flex items-center gap-2"><span
+                                class="material-symbols-outlined text-tertiary-container text-[16px]">check_circle</span>
+                            Transparansi asal pangan</li>
+                        <li class="flex items-center gap-2"><span
+                                class="material-symbols-outlined text-tertiary-container text-[16px]">check_circle</span>
+                            Harga terjamin stabil</li>
+                    </ul>
+                    <a href="/konsumen/login.html"
+                        class="mt-auto inline-flex items-center gap-1 text-tertiary-container font-label-sm text-label-sm hover:gap-2 transition-all">
+                        Belanja Sekarang <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== HOW IT WORKS ===== -->
+        <section id="cara-kerja" class="mt-24 scroll-mt-20">
+            <div class="text-center mb-12 reveal">
+                <div
+                    class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-container/10 text-primary-container font-label-sm text-label-sm mb-4">
+                    <span class="material-symbols-outlined text-[14px]">route</span>
+                    Cara Kerja
+                </div>
+                <h2 class="font-h2 text-h2 text-on-surface mb-2">Mudah dalam 3 Langkah</h2>
+                <p class="font-body-md text-body-md text-on-surface-variant">Mulai dalam hitungan menit</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 relative">
+                <!-- Step 1 -->
+                <div class="flex flex-col items-center text-center reveal">
+                    <div class="relative mb-6">
+                        <div
+                            class="w-14 h-14 rounded-full bg-primary-container flex items-center justify-center text-white font-black text-xl shadow-lg shadow-primary-container/30">
+                            1</div>
+                        <div class="hidden md:block step-connector"></div>
+                    </div>
+                    <h3 class="font-semibold text-on-surface mb-2">Daftar Akun</h3>
+                    <p class="font-body-md text-body-md text-on-surface-variant">Buat akun gratis sebagai Petani, Admin,
+                        atau Konsumen dalam 2 menit.</p>
+                </div>
+                <!-- Step 2 -->
+                <div class="flex flex-col items-center text-center reveal delay-200">
+                    <div class="relative mb-6">
+                        <div
+                            class="w-14 h-14 rounded-full bg-primary-container flex items-center justify-center text-white font-black text-xl shadow-lg shadow-primary-container/30">
+                            2</div>
+                        <div class="hidden md:block step-connector"></div>
+                    </div>
+                    <h3 class="font-semibold text-on-surface mb-2">Kelola atau Beli</h3>
+                    <p class="font-body-md text-body-md text-on-surface-variant">Petani catat panen, Admin kelola stok,
+                        Konsumen temukan beras berkualitas.</p>
+                </div>
+                <!-- Step 3 -->
+                <div class="flex flex-col items-center text-center reveal delay-400">
+                    <div
+                        class="w-14 h-14 rounded-full bg-primary-container flex items-center justify-center text-white font-black text-xl shadow-lg shadow-primary-container/30 mb-6">
+                        3</div>
+                    <h3 class="font-semibold text-on-surface mb-2">Transaksi Aman</h3>
+                    <p class="font-body-md text-body-md text-on-surface-variant">Pembayaran terproteksi, pengiriman
+                        terlacak, semua tersedia dalam satu platform.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== TESTIMONIALS ===== -->
+        <section id="testimoni" class="mt-24 scroll-mt-20">
+            <div class="text-center mb-12 reveal">
+                <div
+                    class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-container/10 text-primary-container font-label-sm text-label-sm mb-4">
+                    <span class="material-symbols-outlined text-[14px]">format_quote</span>
+                    Testimoni
+                </div>
+                <h2 class="font-h2 text-h2 text-on-surface mb-2">Kata Mereka</h2>
+                <p class="font-body-md text-body-md text-on-surface-variant">Dipercaya oleh ribuan pengguna</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="glass-card rounded-[20px] p-6 reveal">
+                    <div class="flex items-center gap-1 mb-4">
+                        <span class="material-symbols-outlined text-yellow-400 text-[18px]"
+                            style="-webkit-text-fill-color: #facc15;">star</span>
+                        <span class="material-symbols-outlined text-yellow-400 text-[18px]"
+                            style="-webkit-text-fill-color: #facc15;">star</span>
+                        <span class="material-symbols-outlined text-yellow-400 text-[18px]"
+                            style="-webkit-text-fill-color: #facc15;">star</span>
+                        <span class="material-symbols-outlined text-yellow-400 text-[18px]"
+                            style="-webkit-text-fill-color: #facc15;">star</span>
+                        <span class="material-symbols-outlined text-yellow-400 text-[18px]"
+                            style="-webkit-text-fill-color: #facc15;">star</span>
+                    </div>
+                    <p class="font-body-md text-body-md text-on-surface-variant mb-4">"Sekarang saya bisa jual panen
+                        langsung tanpa perantara. Harga lebih adil dan prosesnya sangat mudah!"</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-9 h-9 rounded-full bg-primary-container/20 flex items-center justify-center">
+                            <span class="material-symbols-outlined text-primary-container text-[18px]">person</span>
+                        </div>
+                        <div>
+                            <p class="font-semibold text-on-surface text-sm">Pak Suharto</p>
+                            <p class="text-on-surface-variant font-label-sm text-label-sm">Petani Padi, Jawa Barat</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-card rounded-[20px] p-6 reveal delay-200">
+                    <div class="flex items-center gap-1 mb-4">
+                        <span class="material-symbols-outlined text-yellow-400 text-[18px]"
+                            style="-webkit-text-fill-color: #facc15;">star</span>
+                        <span class="material-symbols-outlined text-yellow-400 text-[18px]"
+                            style="-webkit-text-fill-color: #facc15;">star</span>
+                        <span class="material-symbols-outlined text-yellow-400 text-[18px]"
+                            style="-webkit-text-fill-color: #facc15;">star</span>
+                        <span class="material-symbols-outlined text-yellow-400 text-[18px]"
+                            style="-webkit-text-fill-color: #facc15;">star</span>
+                        <span class="material-symbols-outlined text-yellow-400 text-[18px]"
+                            style="-webkit-text-fill-color: #facc15;">star</span>
+                    </div>
+                    <p class="font-body-md text-body-md text-on-surface-variant mb-4">"Dashboard admin sangat membantu
+                        mengelola stok lumbung kami. Real-time dan akurat!"</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-9 h-9 rounded-full bg-secondary-container/20 flex items-center justify-center">
+                            <span class="material-symbols-outlined text-secondary-container text-[18px]">person</span>
+                        </div>
+                        <div>
+                            <p class="font-semibold text-on-surface text-sm">Bu Ratna</p>
+                            <p class="text-on-surface-variant font-label-sm text-label-sm">Admin Lumbung Sukabumi</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-card rounded-[20px] p-6 reveal delay-400">
+                    <div class="flex items-center gap-1 mb-4">
+                        <span class="material-symbols-outlined text-yellow-400 text-[18px]"
+                            style="-webkit-text-fill-color: #facc15;">star</span>
+                        <span class="material-symbols-outlined text-yellow-400 text-[18px]"
+                            style="-webkit-text-fill-color: #facc15;">star</span>
+                        <span class="material-symbols-outlined text-yellow-400 text-[18px]"
+                            style="-webkit-text-fill-color: #facc15;">star</span>
+                        <span class="material-symbols-outlined text-yellow-400 text-[18px]"
+                            style="-webkit-text-fill-color: #facc15;">star</span>
+                        <span class="material-symbols-outlined text-yellow-400 text-[18px]"
+                            style="-webkit-text-fill-color: #facc15;">star</span>
+                    </div>
+                    <p class="font-body-md text-body-md text-on-surface-variant mb-4">"Bisa tahu asal-usul beras yang
+                        saya beli. Lebih tenang karena transparan dan terjamin kualitasnya."</p>
+                    <div class="flex items-center gap-3">
+                        <div class="w-9 h-9 rounded-full bg-tertiary-container/20 flex items-center justify-center">
+                            <span class="material-symbols-outlined text-tertiary-container text-[18px]">person</span>
+                        </div>
+                        <div>
+                            <p class="font-semibold text-on-surface text-sm">Ibu Dewi</p>
+                            <p class="text-on-surface-variant font-label-sm text-label-sm">Konsumen, Bandung</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== CTA BANNER ===== -->
+        <section class="mt-24 reveal">
+            <div
+                class="relative overflow-hidden rounded-[28px] bg-gradient-to-br from-primary to-primary-container p-10 text-center text-white">
+                <div class="absolute inset-0 opacity-10">
+                    <div
+                        class="absolute top-0 left-0 w-64 h-64 rounded-full bg-white blur-3xl -translate-x-1/2 -translate-y-1/2">
+                    </div>
+                    <div
+                        class="absolute bottom-0 right-0 w-48 h-48 rounded-full bg-white blur-2xl translate-x-1/2 translate-y-1/2">
+                    </div>
+                </div>
+                <div class="relative z-10">
+                    <h2 class="font-h2 text-h2 text-white mb-3">Siap Bergabung?</h2>
+                    <p class="font-body-lg text-body-lg text-white/80 mb-8 max-w-md mx-auto">
+                        Mulai perjalanan pangan digital kamu sekarang. Gratis, cepat, dan aman.
+                    </p>
+                    <a href="/konsumen/login.html"
+                        class="inline-flex items-center gap-2 px-8 py-3 bg-white text-primary-container rounded-full font-label-sm text-label-sm hover:bg-white/90 hover:-translate-y-1 hover:shadow-xl transition-all duration-200">
+                        <span class="material-symbols-outlined text-[18px]">rocket_launch</span>
+                        Mulai Gratis Sekarang
+                    </a>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- Footer -->
+    <!-- ===== FOOTER ===== -->
     <footer class="bg-surface-container-high py-12 px-4 mt-24">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
-            <div class="flex flex-col items-center md:items-start">
-                <span class="text-xl font-black tracking-tight text-primary-container mb-2">Talungan.id</span>
-                <span class="font-label-sm text-label-sm text-on-surface-variant">© 2024 Talungan.id. All rights reserved.</span>
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-start gap-8 mb-8">
+                <div class="flex flex-col items-start">
+                    <div class="flex items-center gap-2 mb-2">
+                        <span class="w-7 h-7 rounded-lg bg-primary-container flex items-center justify-center">
+                            <span class="material-symbols-outlined text-white text-[16px]">eco</span>
+                        </span>
+                        <span class="text-xl font-black tracking-tight text-primary-container">Talungan.id</span>
+                    </div>
+                    <span class="font-body-md text-body-md text-on-surface-variant max-w-xs">Lumbung pangan digital
+                        untuk ketahanan pangan Indonesia.</span>
+                </div>
+                <div class="grid grid-cols-2 gap-8 text-sm">
+                    <div>
+                        <p class="font-semibold text-on-surface mb-3">Platform</p>
+                        <ul class="space-y-2 text-on-surface-variant">
+                            <li><a href="/konsumen/login.html"
+                                    class="hover:text-primary-container transition-colors">Untuk Konsumen</a></li>
+                            <li><a href="/konsumen/login.html"
+                                    class="hover:text-primary-container transition-colors">Untuk Petani</a></li>
+                            <li><a href="/konsumen/login.html"
+                                    class="hover:text-primary-container transition-colors">Untuk Admin</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <p class="font-semibold text-on-surface mb-3">Akun</p>
+                        <ul class="space-y-2 text-on-surface-variant">
+                            <li><a href="/konsumen/login.html"
+                                    class="hover:text-primary-container transition-colors">Masuk</a></li>
+                            <li><a href="/konsumen/login.html"
+                                    class="hover:text-primary-container transition-colors">Daftar Gratis</a></li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-            <div class="flex gap-4">
-                <a class="w-10 h-10 rounded-full glass-card flex items-center justify-center text-on-surface-variant hover:text-primary-container transition-colors" href="#">
-                    <span class="material-symbols-outlined text-xl">language</span>
-                </a>
-                <a class="w-10 h-10 rounded-full glass-card flex items-center justify-center text-on-surface-variant hover:text-primary-container transition-colors" href="#">
-                    <span class="material-symbols-outlined text-xl">share</span>
-                </a>
-                <a class="w-10 h-10 rounded-full glass-card flex items-center justify-center text-on-surface-variant hover:text-primary-container transition-colors" href="#">
-                    <span class="material-symbols-outlined text-xl">mail</span>
-                </a>
+            <div
+                class="border-t border-outline-variant pt-6 flex flex-col md:flex-row justify-between items-center gap-4">
+                <span class="font-label-sm text-label-sm text-on-surface-variant">© 2024 Talungan.id. All rights
+                    reserved.</span>
+                <div class="flex gap-4">
+                    <a class="w-10 h-10 rounded-full glass-card flex items-center justify-center text-on-surface-variant hover:text-primary-container transition-colors"
+                        href="#">
+                        <span class="material-symbols-outlined text-xl">language</span>
+                    </a>
+                    <a class="w-10 h-10 rounded-full glass-card flex items-center justify-center text-on-surface-variant hover:text-primary-container transition-colors"
+                        href="#">
+                        <span class="material-symbols-outlined text-xl">share</span>
+                    </a>
+                    <a class="w-10 h-10 rounded-full glass-card flex items-center justify-center text-on-surface-variant hover:text-primary-container transition-colors"
+                        href="#">
+                        <span class="material-symbols-outlined text-xl">mail</span>
+                    </a>
+                </div>
             </div>
         </div>
     </footer>
+
+    <script>
+        // Header shadow on scroll
+        const header = document.getElementById('main-header');
+        window.addEventListener('scroll', () => {
+            header.classList.toggle('header-scrolled', window.scrollY > 10);
+        });
+
+        // Scroll reveal
+        const reveals = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12 });
+        reveals.forEach(el => observer.observe(el));
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', e => {
+                const target = document.querySelector(a.getAttribute('href'));
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
 </body>
+
 </html>

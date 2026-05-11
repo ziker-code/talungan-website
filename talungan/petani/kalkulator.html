@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kalkulator Keuntungan — Talungan.id</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../shared.css"/>
+  <style>
+    .form-input { background:#f8fafc;border:2px solid #e2e8f0;border-radius:12px;padding:12px 16px;font-size:14px;font-family:'Inter',sans-serif;outline:none;transition:.2s;width:100%;font-weight:600; }
+    .form-input:focus { border-color:#00aa5b;background:white; }
+    .calc-card { background:rgba(255,255,255,0.88);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,0.8);border-radius:24px;padding:24px;box-shadow:0 12px 40px rgba(0,100,50,0.08); }
+    .result-box { background:linear-gradient(135deg,#00aa5b,#006d38);border-radius:20px;padding:24px;color:white;box-shadow:0 12px 30px rgba(0,170,91,0.25); }
+  </style>
+</head>
+<body>
+  <div class="blob-bg"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <div class="sidebar-logo-icon"><img src="../assets/logo.png.jpeg" alt="" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/><svg viewBox="0 0 60 60" width="24" height="24" style="display:none"><circle cx="30" cy="30" r="28" fill="rgba(255,255,255,0.2)"/><rect x="22" y="18" width="4" height="18" rx="2" fill="white"/><rect x="29" y="14" width="4" height="22" rx="2" fill="white"/><rect x="36" y="18" width="4" height="18" rx="2" fill="white"/></svg></div>
+      <div><div class="sidebar-brand">Talungan.id</div><div class="sidebar-role">Petani</div></div>
+    </div>
+    <div class="sidebar-user">
+      <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZgSlafW9-9bp2CtuNc_-84duckOPOFLkJ_1VX_XH4iZJju339wMLuJOSLI96HDTqOEv5UrxkkJLiFr7gSYaAj9mO4AmSGUcFA3tD2pF7Xs6TWk-UoJvQSfWFETuMPKo6bOn8hnrHhq9O9jnqQjmYti5HljvFjH4OATc82GV7FuENCGrUtQoohpibu4gJKUgxvkzij1VKiiHThBFuPy_-YGhmrWopXQu-mpS93ws33II9sgQ0gdSdP4dFU_HtfitqndkpGys5zLmI" alt="Budi"/>
+      <div><div class="name">Budi Santoso</div><div class="role">Petani Terverifikasi</div></div>
+      <div class="dot"></div>
+    </div>
+    <span class="nav-section-title">Menu Petani</span>
+    <a href="dashboard.html" class="nav-item"><span class="material-symbols-outlined text-[20px]">dashboard</span>Beranda</a>
+    <a href="stok.html" class="nav-item"><span class="material-symbols-outlined text-[20px]">inventory_2</span>Stok Komoditas</a>
+    <a href="pasar.html" class="nav-item"><span class="material-symbols-outlined text-[20px]">trending_up</span>Harga Pasar</a>
+    <a href="transaksi.html" class="nav-item"><span class="material-symbols-outlined text-[20px]">receipt_long</span>Transaksi</a>
+    <a href="logistik.html" class="nav-item"><span class="material-symbols-outlined text-[20px]">local_shipping</span>Logistik</a>
+    <a href="statistik.html" class="nav-item"><span class="material-symbols-outlined text-[20px]">bar_chart</span>Statistik</a>
+    <a href="kalkulator.html" class="nav-item active"><span class="material-symbols-outlined text-[20px]" style="font-variation-settings:'FILL' 1">calculate</span>Kalkulator Usaha</a>
+    <a href="forum.html" class="nav-item"><span class="material-symbols-outlined text-[20px]">forum</span>Forum Tani</a>
+    <a href="edukasi.html" class="nav-item"><span class="material-symbols-outlined text-[20px]">school</span>Edukasi</a>
+    <div class="nav-spacer"></div>
+    <div class="nav-divider"></div>
+    <a href="profil.html" class="nav-item"><span class="material-symbols-outlined text-[20px]">account_circle</span>Profil Saya</a>
+    <a href="../konsumen/login.html" class="nav-item danger"><span class="material-symbols-outlined text-[20px]">logout</span>Keluar</a>
+  </aside>
+
+  <main class="main-content p-6 flex justify-center">
+    <div class="w-full max-w-4xl">
+      <!-- Header -->
+      <div class="mb-6 su d1">
+        <p class="text-xs font-bold uppercase tracking-widest mb-1" style="color:#9ca3af">Alat Bantu</p>
+        <h1 class="text-2xl font-black" style="color:#1a1a2e;letter-spacing:-0.5px">Kalkulator Keuntungan Tani</h1>
+        <p class="text-sm font-semibold mt-1" style="color:#6b7280">Hitung estimasi modal, biaya operasional, dan potensi keuntungan bersih Anda (Profit Margin).</p>
+      </div>
+
+      <div class="grid grid-cols-5 gap-6 su d2">
+        <!-- Form Input -->
+        <div class="col-span-3 calc-card">
+          <h2 class="font-black text-lg mb-5" style="color:#1a1a2e">Masukkan Data Produksi</h2>
+          
+          <div class="flex flex-col gap-4">
+            <!-- Pemasukan -->
+            <div class="p-4 rounded-2xl" style="background:rgba(0,170,91,0.05);border:1px solid rgba(0,170,91,0.1)">
+              <h3 class="font-bold text-sm mb-3 flex items-center gap-2" style="color:#00aa5b"><span class="material-symbols-outlined text-[18px]">payments</span>Estimasi Pemasukan</h3>
+              <div class="grid grid-cols-2 gap-3">
+                <div>
+                  <label class="block text-xs font-bold mb-1.5" style="color:#6b7280">Estimasi Panen (kg)</label>
+                  <input type="number" id="inputPanen" placeholder="Contoh: 5000" class="form-input" oninput="hitungKeuntungan()"/>
+                </div>
+                <div>
+                  <label class="block text-xs font-bold mb-1.5" style="color:#6b7280">Harga Jual per kg (Rp)</label>
+                  <input type="number" id="inputHarga" placeholder="Contoh: 12000" class="form-input" oninput="hitungKeuntungan()"/>
+                </div>
+              </div>
+            </div>
+
+            <!-- Pengeluaran Modal -->
+            <div class="p-4 rounded-2xl" style="background:rgba(251,191,36,0.05);border:1px solid rgba(251,191,36,0.2)">
+              <h3 class="font-bold text-sm mb-3 flex items-center gap-2" style="color:#d97706"><span class="material-symbols-outlined text-[18px]">inventory</span>Biaya Modal (CAPEX)</h3>
+              <div class="grid grid-cols-2 gap-3">
+                <div>
+                  <label class="block text-xs font-bold mb-1.5" style="color:#6b7280">Bibit / Benih (Rp)</label>
+                  <input type="number" id="inputBibit" placeholder="0" class="form-input" oninput="hitungKeuntungan()"/>
+                </div>
+                <div>
+                  <label class="block text-xs font-bold mb-1.5" style="color:#6b7280">Pupuk Dasar (Rp)</label>
+                  <input type="number" id="inputPupuk" placeholder="0" class="form-input" oninput="hitungKeuntungan()"/>
+                </div>
+              </div>
+            </div>
+
+            <!-- Biaya Operasional -->
+            <div class="p-4 rounded-2xl" style="background:rgba(239,68,68,0.05);border:1px solid rgba(239,68,68,0.1)">
+              <h3 class="font-bold text-sm mb-3 flex items-center gap-2" style="color:#dc2626"><span class="material-symbols-outlined text-[18px]">build</span>Biaya Operasional (OPEX)</h3>
+              <div class="grid grid-cols-2 gap-3 mb-3">
+                <div>
+                  <label class="block text-xs font-bold mb-1.5" style="color:#6b7280">Tenaga Kerja (Rp)</label>
+                  <input type="number" id="inputPekerja" placeholder="0" class="form-input" oninput="hitungKeuntungan()"/>
+                </div>
+                <div>
+                  <label class="block text-xs font-bold mb-1.5" style="color:#6b7280">Pestisida / Obat (Rp)</label>
+                  <input type="number" id="inputObat" placeholder="0" class="form-input" oninput="hitungKeuntungan()"/>
+                </div>
+              </div>
+              <div>
+                <label class="block text-xs font-bold mb-1.5" style="color:#6b7280">Biaya Lainnya (Sewa, Transport, dll)</label>
+                <input type="number" id="inputLainnya" placeholder="0" class="form-input" oninput="hitungKeuntungan()"/>
+              </div>
+            </div>
+            
+            <button onclick="resetKalkulator()" class="text-sm font-bold mt-2 py-2 text-gray-500 hover:text-gray-800 transition-colors">Reset Data</button>
+          </div>
+        </div>
+
+        <!-- Result -->
+        <div class="col-span-2">
+          <div class="result-box su d3 sticky top-6">
+            <h2 class="font-black text-lg mb-6 opacity-90 flex items-center gap-2"><span class="material-symbols-outlined">analytics</span>Hasil Analisis</h2>
+            
+            <div class="mb-5">
+              <p class="text-xs font-bold uppercase tracking-wider opacity-80 mb-1">Total Pemasukan Kotor</p>
+              <p class="text-2xl font-black" id="outPemasukan">Rp 0</p>
+            </div>
+            
+            <div class="mb-5">
+              <p class="text-xs font-bold uppercase tracking-wider opacity-80 mb-1">Total Biaya (Modal + Operasional)</p>
+              <p class="text-2xl font-black text-yellow-300" id="outBiaya">Rp 0</p>
+            </div>
+
+            <div class="h-px bg-white/20 w-full mb-5"></div>
+            
+            <div class="mb-6">
+              <p class="text-xs font-bold uppercase tracking-wider opacity-80 mb-1">Keuntungan Bersih (Net Profit)</p>
+              <p class="text-4xl font-black mb-1" id="outProfit">Rp 0</p>
+              <div class="inline-flex items-center gap-1.5 px-3 py-1 bg-white/20 rounded-full mt-2">
+                <span class="text-xs font-bold">Margin Keuntungan:</span>
+                <span class="text-sm font-black text-yellow-300" id="outMargin">0%</span>
+              </div>
+            </div>
+
+            <div class="p-4 bg-black/10 rounded-xl" id="outStatusBox">
+              <p class="text-xs font-bold opacity-90 leading-relaxed" id="outStatusText">Silakan masukkan data produksi untuk melihat estimasi kelayakan bisnis Anda.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <script>
+    function formatRp(angka) {
+      return 'Rp ' + angka.toLocaleString('id-ID');
+    }
+
+    function getVal(id) {
+      const val = parseInt(document.getElementById(id).value);
+      return isNaN(val) ? 0 : val;
+    }
+
+    function hitungKeuntungan() {
+      const panen = getVal('inputPanen');
+      const harga = getVal('inputHarga');
+      
+      const bibit = getVal('inputBibit');
+      const pupuk = getVal('inputPupuk');
+      const pekerja = getVal('inputPekerja');
+      const obat = getVal('inputObat');
+      const lainnya = getVal('inputLainnya');
+
+      const pemasukan = panen * harga;
+      const totalBiaya = bibit + pupuk + pekerja + obat + lainnya;
+      const profit = pemasukan - totalBiaya;
+      
+      let margin = 0;
+      if (pemasukan > 0) {
+        margin = (profit / pemasukan) * 100;
+      }
+
+      document.getElementById('outPemasukan').innerText = formatRp(pemasukan);
+      document.getElementById('outBiaya').innerText = formatRp(totalBiaya);
+      document.getElementById('outProfit').innerText = formatRp(profit);
+      document.getElementById('outMargin').innerText = margin.toFixed(1) + '%';
+
+      const statusBox = document.getElementById('outStatusBox');
+      const statusText = document.getElementById('outStatusText');
+
+      if (pemasukan === 0 && totalBiaya === 0) {
+        statusText.innerText = 'Silakan masukkan data produksi untuk melihat estimasi kelayakan bisnis Anda.';
+        statusBox.style.background = 'rgba(0,0,0,0.1)';
+      } else if (profit > 0) {
+        if (margin >= 30) {
+          statusText.innerText = 'Sangat Layak! Margin keuntungan Anda di atas 30%. Usaha tani ini sangat direkomendasikan.';
+        } else {
+          statusText.innerText = 'Cukup Menguntungkan. Namun Anda mungkin bisa menekan biaya operasional untuk meningkatkan margin.';
+        }
+        statusBox.style.background = 'rgba(255,255,255,0.15)';
+      } else {
+        statusText.innerText = 'Rugi! Biaya yang dikeluarkan lebih besar dari potensi pendapatan. Evaluasi kembali harga jual atau efisiensi biaya.';
+        statusBox.style.background = 'rgba(220,38,38,0.4)'; // Reddish background
+      }
+    }
+
+    function resetKalkulator() {
+      document.getElementById('inputPanen').value = '';
+      document.getElementById('inputHarga').value = '';
+      document.getElementById('inputBibit').value = '';
+      document.getElementById('inputPupuk').value = '';
+      document.getElementById('inputPekerja').value = '';
+      document.getElementById('inputObat').value = '';
+      document.getElementById('inputLainnya').value = '';
+      hitungKeuntungan();
+    }
+  </script>
+</body>
+</html>

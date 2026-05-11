@@ -4,345 +4,214 @@
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Laporan & Analitik — Admin · Talungan.id</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="../shared.css"/>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            primary: '#006d38', 'primary-container': '#00aa5b',
-            secondary: '#ab3500', 'secondary-container': '#fe6a34',
-            surface: '#fcf8ff', 'on-surface': '#1a1a2e',
-            error: '#ba1a1a',
-          }
-        }
-      }
-    }
-  </script>
   <style>
-    * { -webkit-tap-highlight-color: transparent; }
-    body { font-family: 'Inter', sans-serif; background: #f7f8fa; }
-
-    /* Sidebar */
-    .sidebar { width: 256px; flex-shrink: 0; }
-    .nav-item { display: flex; align-items: center; gap: 12px; padding: 10px 16px; border-radius: 12px; font-size: 14px; font-weight: 500; color: #6b7280; cursor: pointer; transition: all .15s; text-decoration: none; }
-    .nav-item:hover { background: rgba(0,170,91,0.06); color: #00aa5b; }
-    .nav-item.active { background: rgba(0,170,91,0.1); color: #00aa5b; font-weight: 700; }
-
-    /* Cards */
-    .card { background: white; border-radius: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.03); border: 1px solid rgba(0,0,0,0.02); }
-    
-    @keyframes slideUp { from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);} }
-    .su { animation: slideUp 0.4s cubic-bezier(0.34,1.2,0.64,1) both; }
-    .d1{animation-delay:.05s}.d2{animation-delay:.1s}.d3{animation-delay:.15s}.d4{animation-delay:.2s}
-
-    /* Bar Chart Animation */
-    .bar-grow { transition: height 1s cubic-bezier(0.34,1.2,0.64,1); }
-    
-    /* Custom Table */
-    .table-row { transition: background 0.2s; cursor: pointer; }
-    .table-row:hover { background: #f8fafc; }
+    .chart-bar { animation: barGrow 1s cubic-bezier(0.34,1.2,0.64,1) forwards; border-radius: 6px 6px 0 0; transition: filter .2s; }
+    .chart-bar:hover { filter: brightness(1.1); }
+    .bar-in  { background:linear-gradient(to top,#00aa5b,#78db96); border-radius:6px 6px 0 0; }
+    .bar-out { background:linear-gradient(to top,#fe6a34,#fca574); border-radius:6px 6px 0 0; }
+    @keyframes barGrow { from{height:0}to{height:var(--h)} }
+    .chart-bar-anim { animation:barGrow .6s cubic-bezier(0.34,1.2,0.64,1) both; }
+    .period-tab.active { background:#00aa5b;color:white; }
+    .period-tab { background:transparent;color:#6b7280;border-radius:10px;padding:6px 12px;font-size:12px;font-weight:700;cursor:pointer;transition:.15s; }
   </style>
 </head>
-<body class="min-h-screen antialiased flex">
-<div class="blob-bg"><div class="blob b1"></div><div class="blob b2"></div></div>
+<body>
+  <div class="blob-bg"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
 
-  <!-- ===== SIDEBAR ===== -->
-  <aside class="sidebar hidden md:flex flex-col h-screen fixed left-0 top-0 bg-white border-r border-gray-100 shadow-[4px_0_20px_rgba(0,0,0,0.04)] z-40 p-5">
-    <div class="flex items-center gap-3 mb-8">
-      <div class="w-9 h-9 rounded-xl bg-primary-container flex items-center justify-center">
-        <span class="material-symbols-outlined text-white text-[20px]" style="font-variation-settings:'FILL' 1">eco</span>
+  <!-- SIDEBAR ADMIN -->
+  <aside class="sidebar">
+    <div class="sidebar-logo">
+      <div class="sidebar-logo-icon">
+        <img src="../assets/logo.png.jpeg" alt="Talungan" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
+        <svg viewBox="0 0 60 60" width="24" height="24" style="display:none"><circle cx="30" cy="30" r="28" fill="rgba(255,255,255,0.2)"/><rect x="22" y="18" width="4" height="18" rx="2" fill="white"/><rect x="29" y="14" width="4" height="22" rx="2" fill="white"/><rect x="36" y="18" width="4" height="18" rx="2" fill="white"/></svg>
       </div>
-      <div>
-        <h1 class="text-base font-black text-primary-container leading-tight">Talungan.id</h1>
-        <p class="text-[10px] text-gray-400 font-medium">Admin Panel</p>
-      </div>
+      <div><div class="sidebar-brand">Talungan.id</div><div class="sidebar-role">Administrator</div></div>
     </div>
-
-    <div class="flex items-center gap-3 p-3 bg-gray-50 rounded-2xl mb-6">
-      <div class="w-9 h-9 rounded-full bg-primary-container flex items-center justify-center font-bold text-white text-sm">AP</div>
-      <div class="flex-1 min-w-0">
-        <p class="text-sm font-bold text-on-surface truncate">Admin Pusat</p>
-        <p class="text-[11px] text-gray-400">Regional Controller</p>
-      </div>
+    <div class="sidebar-user">
+      <div style="width:36px;height:36px;background:linear-gradient(135deg,#00aa5b,#006d38);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:900;color:white;font-size:14px;flex-shrink:0">A</div>
+      <div><div class="name">Admin Pusat</div><div class="role">Super Admin</div></div>
+      <div class="dot"></div>
     </div>
-
-    <nav class="flex flex-col gap-1 flex-1">
-      <a href="admin_dashboard.html" class="nav-item"><span class="material-symbols-outlined text-[20px]">dashboard</span>Dashboard</a>
-      <a href="admin_verifikasi.html" class="nav-item"><span class="material-symbols-outlined text-[20px]">fact_check</span>Verifikasi Petani</a>
-      <a href="admin_gudang.html" class="nav-item"><span class="material-symbols-outlined text-[20px]">warehouse</span>Manajemen Gudang</a>
-      <a href="admin_peta.html" class="nav-item"><span class="material-symbols-outlined text-[20px]">map</span>Peta Distribusi</a>
-      <a href="admin_logistik.html" class="nav-item"><span class="material-symbols-outlined text-[20px]">local_shipping</span>Logistik</a>
-      <a href="#" class="nav-item active"><span class="material-symbols-outlined text-[20px]" style="font-variation-settings:'FILL' 1">analytics</span>Laporan & Analitik</a>
-    </nav>
-    <div class="border-t border-gray-100 pt-4 flex flex-col gap-1">
-      <a href="../konsumen/login.html" class="nav-item" style="color:#ba1a1a"><span class="material-symbols-outlined text-[20px]">logout</span>Keluar</a>
-    </div>
+    <span class="nav-section-title">Manajemen</span>
+    <a href="admin_dashboard.html" class="nav-item"><span class="material-symbols-outlined text-[20px]">dashboard</span>Dashboard</a>
+    <a href="admin_verifikasi.html" class="nav-item"><span class="material-symbols-outlined text-[20px]">verified_user</span>Verifikasi Petani<span class="badge">8</span></a>
+    <a href="admin_gudang.html" class="nav-item"><span class="material-symbols-outlined text-[20px]">warehouse</span>Manajemen Gudang</a>
+    <span class="nav-section-title">Operasional</span>
+    <a href="admin_peta.html" class="nav-item"><span class="material-symbols-outlined text-[20px]">map</span>Peta Distribusi</a>
+    <a href="admin_logistik.html" class="nav-item"><span class="material-symbols-outlined text-[20px]">local_shipping</span>Logistik</a>
+    <a href="admin_laporan.html" class="nav-item active"><span class="material-symbols-outlined text-[20px]" style="font-variation-settings:'FILL' 1">bar_chart</span>Laporan & Analitik</a>
+    <div class="nav-spacer"></div>
+    <div class="nav-divider"></div>
+    <a href="../konsumen/login.html" class="nav-item danger"><span class="material-symbols-outlined text-[20px]">logout</span>Keluar</a>
   </aside>
 
-  <!-- ===== MAIN CONTENT ===== -->
-  <main class="md:ml-64 flex-1 p-6 lg:p-8 max-w-[1400px] mx-auto w-full">
-    
-    <!-- Header -->
-    <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+  <!-- MAIN -->
+  <main class="main-content p-6">
+    <div class="flex items-center justify-between mb-6 su d1">
       <div>
-        <div class="flex items-center gap-2 text-primary-container text-xs font-bold uppercase tracking-widest mb-2">
-          <span class="material-symbols-outlined text-[14px]">assessment</span>Laporan Platform
-        </div>
-        <h1 class="text-2xl lg:text-3xl font-black text-on-surface mb-1">Analitik & Performa</h1>
-        <p class="text-sm text-gray-500">Tinjauan komprehensif metrik ketahanan pangan dan operasional.</p>
+        <p class="text-xs font-bold uppercase tracking-widest mb-1" style="color:#9ca3af">Laporan Platform</p>
+        <h1 class="text-2xl font-black" style="color:#1a1a2e;letter-spacing:-0.5px">Analitik & Performa</h1>
       </div>
-      <div class="flex items-center gap-3">
-        <div class="card flex items-center px-4 py-2.5 gap-2 hover:bg-gray-50 cursor-pointer transition-colors">
-          <span class="material-symbols-outlined text-gray-400 text-[18px]">calendar_today</span>
-          <span class="text-sm font-semibold text-on-surface">Okt 01 - Okt 31, 2026</span>
-          <span class="material-symbols-outlined text-gray-400 text-[18px]">arrow_drop_down</span>
+      <div class="flex gap-2">
+        <div class="px-4 py-2 rounded-xl border border-gray-200 text-sm font-semibold flex items-center gap-2" style="background:rgba(255,255,255,0.88);color:#1a1a2e">
+          <span class="material-symbols-outlined text-[18px]">calendar_today</span> Okt 01 - Okt 31, 2026
         </div>
-        <button class="bg-primary-container text-white rounded-xl px-5 py-2.5 text-sm font-bold flex items-center gap-2 hover:bg-primary transition-colors shadow-md shadow-green-200 active:scale-95">
-          <span class="material-symbols-outlined text-[18px]">download</span>Export PDF
+        <button class="px-4 py-2 rounded-xl text-sm font-bold flex items-center gap-2" style="background:#00aa5b;color:white">
+          <span class="material-symbols-outlined text-[18px]">download</span> Export PDF
         </button>
       </div>
     </div>
 
-    <!-- 4 Stats Cards -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-      
-      <div class="card p-5 su d1">
-        <div class="flex items-start justify-between mb-2">
-          <div>
-            <p class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">Food Loss Rate</p>
-            <p class="text-3xl font-black text-on-surface">2.4%</p>
-          </div>
-          <div class="w-10 h-10 rounded-full bg-green-50 flex items-center justify-center">
-            <span class="material-symbols-outlined text-primary-container text-[20px]">compost</span>
-          </div>
-        </div>
-        <div class="flex items-center gap-1.5 mt-3">
-          <span class="material-symbols-outlined text-green-500 text-[16px]">trending_down</span>
-          <span class="text-xs font-bold text-green-500">-0.5% vs Bulan lalu</span>
-        </div>
+    <!-- Stats -->
+    <div class="grid grid-cols-4 gap-4 mb-6 su d1">
+      <div class="card p-5">
+        <p class="text-xs font-bold uppercase tracking-wider mb-2 flex justify-between" style="color:#9ca3af">Food Loss Rate <span class="material-symbols-outlined text-[16px]">compost</span></p>
+        <p class="text-3xl font-black" style="color:#1a1a2e">2.4%</p>
+        <p class="text-xs font-semibold mt-1" style="color:#22c55e">↓ -0.5% vs bulan lalu</p>
       </div>
-
-      <div class="card p-5 su d2">
-        <div class="flex items-start justify-between mb-2">
-          <div>
-            <p class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">Total Pendapatan</p>
-            <p class="text-3xl font-black text-on-surface">Rp142jt</p>
-          </div>
-          <div class="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center">
-            <span class="material-symbols-outlined text-blue-600 text-[20px]">payments</span>
-          </div>
-        </div>
-        <div class="flex items-center gap-1.5 mt-3">
-          <span class="material-symbols-outlined text-green-500 text-[16px]">trending_up</span>
-          <span class="text-xs font-bold text-green-500">+12.4% vs Bulan lalu</span>
-        </div>
+      <div class="card p-5">
+        <p class="text-xs font-bold uppercase tracking-wider mb-2 flex justify-between" style="color:#9ca3af">Total Pendapatan <span class="material-symbols-outlined text-[16px]">payments</span></p>
+        <p class="text-3xl font-black" style="color:#1a1a2e">Rp 142jt</p>
+        <p class="text-xs font-semibold mt-1" style="color:#22c55e">↑ +12.4% vs bulan lalu</p>
       </div>
-
-      <div class="card p-5 su d3">
-        <div class="flex items-start justify-between mb-2">
-          <div>
-            <p class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">Distribusi Aktif</p>
-            <p class="text-3xl font-black text-on-surface">156</p>
-          </div>
-          <div class="w-10 h-10 rounded-full bg-orange-50 flex items-center justify-center">
-            <span class="material-symbols-outlined text-secondary-container text-[20px]">route</span>
-          </div>
-        </div>
-        <div class="flex items-center gap-1.5 mt-3">
-          <span class="text-xs font-bold text-gray-400">Truk sedang beroperasi</span>
-        </div>
+      <div class="card p-5">
+        <p class="text-xs font-bold uppercase tracking-wider mb-2 flex justify-between" style="color:#9ca3af">Distribusi Aktif <span class="material-symbols-outlined text-[16px]">route</span></p>
+        <p class="text-3xl font-black" style="color:#1a1a2e">156</p>
+        <p class="text-xs font-semibold mt-1" style="color:#f59e0b">Truk sedang beroperasi</p>
       </div>
-
-      <div class="card p-5 su d4">
-        <div class="flex items-start justify-between mb-2">
-          <div>
-            <p class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">Pengurangan Limbah</p>
-            <p class="text-3xl font-black text-on-surface">1.2<span class="text-lg text-gray-400">Ton</span></p>
-          </div>
-          <div class="w-10 h-10 rounded-full bg-purple-50 flex items-center justify-center">
-            <span class="material-symbols-outlined text-purple-600 text-[20px]">recycling</span>
-          </div>
-        </div>
-        <div class="flex items-center gap-1.5 mt-3">
-          <span class="material-symbols-outlined text-green-500 text-[16px]">check_circle</span>
-          <span class="text-xs font-bold text-green-500">Target Tercapai</span>
-        </div>
+      <div class="card p-5">
+        <p class="text-xs font-bold uppercase tracking-wider mb-2 flex justify-between" style="color:#9ca3af">Pengurangan Limbah <span class="material-symbols-outlined text-[16px]">recycling</span></p>
+        <p class="text-3xl font-black" style="color:#1a1a2e">1.2 Ton</p>
+        <p class="text-xs font-semibold mt-1" style="color:#22c55e">Target tercapai</p>
       </div>
     </div>
 
     <!-- Charts -->
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
-      
+    <div class="grid grid-cols-3 gap-5 su d2">
       <!-- Bar Chart -->
-      <div class="card p-6 lg:col-span-2 flex flex-col su d4">
-        <div class="flex items-center justify-between mb-8">
-          <h2 class="text-lg font-black text-on-surface">Tren Pendapatan Mingguan</h2>
-          <button class="text-gray-400 hover:text-gray-600"><span class="material-symbols-outlined">more_horiz</span></button>
+      <div class="col-span-2 card p-5 su d2">
+        <div class="flex items-center justify-between mb-4">
+          <h2 class="font-black text-base" style="color:#1a1a2e">Tren Pendapatan & Analitik</h2>
+          <div class="flex items-center gap-1 p-1 rounded-xl" style="background:#f1f5f9">
+            <button class="period-tab active" id="tab-harian" onclick="switchPeriod('harian')">Harian</button>
+            <button class="period-tab" id="tab-mingguan" onclick="switchPeriod('mingguan')">Mingguan</button>
+            <button class="period-tab" id="tab-bulanan" onclick="switchPeriod('bulanan')">Bulanan</button>
+            <button class="period-tab" id="tab-tahunan" onclick="switchPeriod('tahunan')">Tahunan</button>
+          </div>
         </div>
-        <div class="flex-1 flex items-end justify-between gap-2 border-b border-gray-100 pb-2 relative h-[250px]">
-          <!-- Y-Axis -->
-          <div class="absolute left-0 top-0 bottom-0 flex flex-col justify-between text-xs text-gray-400 pb-8 uppercase font-semibold">
-            <span>100jt</span><span>50jt</span><span>0</span>
-          </div>
-          
-          <!-- Bars -->
-          <div class="w-full h-full flex justify-around items-end pl-12 pr-2">
-            <div class="flex flex-col items-center gap-2 group w-[12%]">
-              <div class="w-full bg-[#94f8b0] rounded-t-lg bar-grow relative hover:brightness-95 cursor-pointer" style="height:40%">
-                <div class="opacity-0 group-hover:opacity-100 absolute -top-8 left-1/2 -translate-x-1/2 bg-gray-800 text-white text-[10px] font-bold py-1 px-2 rounded-md transition-opacity">45jt</div>
-              </div>
-              <span class="text-xs font-semibold text-gray-400">Min 1</span>
-            </div>
-            <div class="flex flex-col items-center gap-2 group w-[12%]">
-              <div class="w-full bg-[#00aa5b] rounded-t-lg bar-grow relative hover:brightness-110 cursor-pointer" style="height:60%">
-                <div class="opacity-0 group-hover:opacity-100 absolute -top-8 left-1/2 -translate-x-1/2 bg-gray-800 text-white text-[10px] font-bold py-1 px-2 rounded-md transition-opacity">68jt</div>
-              </div>
-              <span class="text-xs font-semibold text-gray-400">Min 2</span>
-            </div>
-            <div class="flex flex-col items-center gap-2 group w-[12%]">
-              <div class="w-full bg-[#94f8b0] rounded-t-lg bar-grow relative hover:brightness-95 cursor-pointer" style="height:48%"></div>
-              <span class="text-xs font-semibold text-gray-400">Min 3</span>
-            </div>
-            <div class="flex flex-col items-center gap-2 group w-[12%]">
-              <div class="w-full bg-[#006d38] rounded-t-lg bar-grow relative hover:brightness-125 cursor-pointer shadow-[0_0_15px_rgba(0,170,91,0.3)]" style="height:92%">
-                <div class="opacity-0 group-hover:opacity-100 absolute -top-8 left-1/2 -translate-x-1/2 bg-gray-800 text-white text-[10px] font-bold py-1 px-2 rounded-md transition-opacity">95jt</div>
-              </div>
-              <span class="text-xs font-semibold text-gray-800">Min 4</span>
-            </div>
-          </div>
+        <div class="flex items-center gap-4 mb-4">
+          <span class="flex items-center gap-1.5 text-xs font-semibold" style="color:#6b7280"><span style="width:10px;height:10px;border-radius:3px;background:#00aa5b;display:inline-block"></span>Pemasukan</span>
+          <span class="flex items-center gap-1.5 text-xs font-semibold" style="color:#6b7280"><span style="width:10px;height:10px;border-radius:3px;background:#fe6a34;display:inline-block"></span>Pengeluaran</span>
+        </div>
+        <div id="chart-area" class="flex items-end gap-1.5 overflow-x-auto pb-2" style="height:140px;min-height:140px">
+        </div>
+        <div id="chart-labels" class="flex gap-1.5 mt-1" style="overflow:hidden"></div>
+        <div class="flex gap-4 mt-4 pt-4" style="border-top:1px solid #f1f5f9">
+          <div><p class="text-[10px] font-bold uppercase tracking-wide" style="color:#9ca3af">Total Pemasukan</p><p class="font-black text-lg" style="color:#00aa5b" id="total-in">-</p></div>
+          <div><p class="text-[10px] font-bold uppercase tracking-wide" style="color:#9ca3af">Total Pengeluaran</p><p class="font-black text-lg" style="color:#fe6a34" id="total-out">-</p></div>
+          <div><p class="text-[10px] font-bold uppercase tracking-wide" style="color:#9ca3af">Keuntungan Bersih</p><p class="font-black text-lg" style="color:#1a1a2e" id="total-net">-</p></div>
         </div>
       </div>
 
-      <!-- Progress List -->
-      <div class="card p-6 su d4">
-        <h2 class="text-lg font-black text-on-surface mb-6">Food Loss per Komoditas</h2>
+      <!-- Food Loss Distribution -->
+      <div class="card p-5">
+        <h2 class="font-black text-base mb-6" style="color:#1a1a2e">Food Loss per Komoditas</h2>
         <div class="flex flex-col gap-5">
           <div>
-            <div class="flex justify-between text-sm font-bold mb-2">
-              <span class="text-on-surface">Padi (Beras)</span>
-              <span class="text-primary-container">45%</span>
-            </div>
-            <div class="h-2.5 bg-gray-100 rounded-full overflow-hidden">
-              <div class="h-full bg-primary-container rounded-full" style="width:45%"></div>
-            </div>
+            <div class="flex justify-between text-sm font-bold mb-1"><span style="color:#1a1a2e">Padi (Beras)</span><span style="color:#00aa5b">45%</span></div>
+            <div class="h-2 rounded-full" style="background:#e5e7eb"><div class="h-full rounded-full" style="width:45%;background:#00aa5b"></div></div>
           </div>
           <div>
-            <div class="flex justify-between text-sm font-bold mb-2">
-              <span class="text-on-surface">Jagung</span>
-              <span class="text-[#78db96]">30%</span>
-            </div>
-            <div class="h-2.5 bg-gray-100 rounded-full overflow-hidden">
-              <div class="h-full bg-[#78db96] rounded-full" style="width:30%"></div>
-            </div>
+            <div class="flex justify-between text-sm font-bold mb-1"><span style="color:#1a1a2e">Jagung</span><span style="color:#22c55e">30%</span></div>
+            <div class="h-2 rounded-full" style="background:#e5e7eb"><div class="h-full rounded-full" style="width:30%;background:#22c55e"></div></div>
           </div>
           <div>
-            <div class="flex justify-between text-sm font-bold mb-2">
-              <span class="text-on-surface">Kedelai</span>
-              <span class="text-secondary-container">15%</span>
-            </div>
-            <div class="h-2.5 bg-gray-100 rounded-full overflow-hidden">
-              <div class="h-full bg-secondary-container rounded-full" style="width:15%"></div>
-            </div>
+            <div class="flex justify-between text-sm font-bold mb-1"><span style="color:#1a1a2e">Kedelai</span><span style="color:#fe6a34">15%</span></div>
+            <div class="h-2 rounded-full" style="background:#e5e7eb"><div class="h-full rounded-full" style="width:15%;background:#fe6a34"></div></div>
           </div>
           <div>
-            <div class="flex justify-between text-sm font-bold mb-2">
-              <span class="text-on-surface">Lainnya</span>
-              <span class="text-gray-400">10%</span>
-            </div>
-            <div class="h-2.5 bg-gray-100 rounded-full overflow-hidden">
-              <div class="h-full bg-gray-300 rounded-full" style="width:10%"></div>
-            </div>
+            <div class="flex justify-between text-sm font-bold mb-1"><span style="color:#1a1a2e">Lainnya</span><span style="color:#9ca3af">10%</span></div>
+            <div class="h-2 rounded-full" style="background:#e5e7eb"><div class="h-full rounded-full" style="width:10%;background:#9ca3af"></div></div>
           </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Data Table -->
-    <div class="card overflow-hidden su d5">
-      <div class="p-5 border-b border-gray-100 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-        <h2 class="text-lg font-black text-on-surface">Ringkasan Laporan Regional</h2>
-        <div class="flex items-center gap-2">
-          <div class="relative">
-            <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-[18px]">search</span>
-            <input type="text" placeholder="Cari desa/region..." class="bg-gray-50 border border-gray-100 rounded-xl pl-9 pr-4 py-2 text-sm focus:border-primary-container outline-none transition-colors w-full sm:w-48"/>
-          </div>
-          <button class="bg-gray-50 border border-gray-100 p-2 rounded-xl text-gray-500 hover:bg-gray-100 transition-colors">
-            <span class="material-symbols-outlined text-[20px]">filter_list</span>
-          </button>
-        </div>
-      </div>
-      <div class="overflow-x-auto">
-        <table class="w-full text-left border-collapse min-w-[600px]">
-          <thead>
-            <tr class="bg-gray-50/50">
-              <th class="py-3 px-5 text-xs font-bold text-gray-400 uppercase tracking-wider">Region (Desa)</th>
-              <th class="py-3 px-5 text-xs font-bold text-gray-400 uppercase tracking-wider">Total Stok</th>
-              <th class="py-3 px-5 text-xs font-bold text-gray-400 uppercase tracking-wider">Food Loss Rate</th>
-              <th class="py-3 px-5 text-xs font-bold text-gray-400 uppercase tracking-wider text-right">Pendapatan</th>
-            </tr>
-          </thead>
-          <tbody class="divide-y divide-gray-100">
-            <tr class="table-row">
-              <td class="py-4 px-5">
-                <div class="flex items-center gap-2.5">
-                  <div class="w-2.5 h-2.5 rounded-full bg-primary-container"></div>
-                  <span class="font-bold text-sm text-on-surface">Sukamaju Raya</span>
-                </div>
-              </td>
-              <td class="py-4 px-5 text-sm">45.2 Ton</td>
-              <td class="py-4 px-5">
-                <span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold text-[11px] bg-green-50 text-green-700 border border-green-100">1.8%</span>
-              </td>
-              <td class="py-4 px-5 text-sm font-bold text-primary-container text-right">Rp 42.100.000</td>
-            </tr>
-            <tr class="table-row">
-              <td class="py-4 px-5">
-                <div class="flex items-center gap-2.5">
-                  <div class="w-2.5 h-2.5 rounded-full bg-secondary-container"></div>
-                  <span class="font-bold text-sm text-on-surface">Karanganyar Kidul</span>
-                </div>
-              </td>
-              <td class="py-4 px-5 text-sm">28.5 Ton</td>
-              <td class="py-4 px-5">
-                <span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold text-[11px] bg-orange-50 text-orange-600 border border-orange-100">3.2%</span>
-              </td>
-              <td class="py-4 px-5 text-sm font-bold text-on-surface text-right">Rp 28.400.000</td>
-            </tr>
-            <tr class="table-row">
-              <td class="py-4 px-5">
-                <div class="flex items-center gap-2.5">
-                  <div class="w-2.5 h-2.5 rounded-full bg-primary-container"></div>
-                  <span class="font-bold text-sm text-on-surface">Tani Makmur</span>
-                </div>
-              </td>
-              <td class="py-4 px-5 text-sm">62.0 Ton</td>
-              <td class="py-4 px-5">
-                <span class="inline-flex items-center px-2.5 py-1 rounded-full font-bold text-[11px] bg-green-50 text-green-700 border border-green-100">1.1%</span>
-              </td>
-              <td class="py-4 px-5 text-sm font-bold text-primary-container text-right">Rp 72.050.000</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="p-4 border-t border-gray-100 flex items-center justify-between">
-        <span class="text-xs font-semibold text-gray-400">Menampilkan 1-3 dari 24 region</span>
-        <div class="flex gap-2">
-          <button class="w-8 h-8 rounded-full border border-gray-200 flex items-center justify-center text-gray-400 hover:bg-gray-50" disabled>
-            <span class="material-symbols-outlined text-[18px]">chevron_left</span>
-          </button>
-          <button class="w-8 h-8 rounded-full border border-gray-200 flex items-center justify-center text-on-surface hover:bg-gray-50">
-            <span class="material-symbols-outlined text-[18px]">chevron_right</span>
-          </button>
         </div>
       </div>
     </div>
   </main>
+<script>
+  const chartData = {
+    harian: {
+      labels:['Sen','Sel','Rab','Kam','Jum','Sab','Min'],
+      income:[120, 150, 110, 180, 140, 160, 90],
+      expense:[40, 50, 30, 60, 45, 55, 20]
+    },
+    mingguan: {
+      labels:['Mg 1','Mg 2','Mg 3','Mg 4'],
+      income:[850, 920, 780, 1050],
+      expense:[280, 310, 250, 340]
+    },
+    bulanan: {
+      labels:['Jan','Feb','Mar','Apr','Mei','Jun','Jul','Agu','Sep','Okt','Nov','Des'],
+      income:[3200,2800,4500,4800,0,0,0,0,0,0,0,0],
+      expense:[800,700,1200,900,0,0,0,0,0,0,0,0]
+    },
+    tahunan: {
+      labels:['2021','2022','2023','2024','2025'],
+      income:[25000, 32000, 41000, 48000, 52000],
+      expense:[8000, 9500, 12000, 14000, 15000]
+    }
+  };
 
+  function switchPeriod(p) {
+    document.querySelectorAll('.period-tab').forEach(t => t.classList.remove('active'));
+    document.getElementById('tab-' + p).classList.add('active');
+    renderChart(p);
+  }
+
+  function renderChart(p) {
+    const d = chartData[p];
+    const maxVal = Math.max(...d.income, ...d.expense);
+    const area = document.getElementById('chart-area');
+    const labels = document.getElementById('chart-labels');
+    if(!area || !labels) return;
+    area.innerHTML = '';
+    labels.innerHTML = '';
+
+    let tIn = 0, tOut = 0;
+    d.labels.forEach((lbl, i) => {
+      const inH = Math.round((d.income[i] / maxVal) * 100);
+      const outH = Math.round((d.expense[i] / maxVal) * 100);
+      tIn += d.income[i]; tOut += d.expense[i];
+
+      const col = document.createElement('div');
+      col.className = 'flex gap-0.5 items-end flex-1 min-w-[20px]';
+      col.style.height = '100%';
+      col.innerHTML = `
+        <div class="bar-in chart-bar-anim flex-1" style="--h:${inH}%;height:${inH}%" title="Pemasukan: ${d.income[i]}jt"></div>
+        <div class="bar-out chart-bar-anim flex-1" style="--h:${outH}%;height:${outH}%;animation-delay:.05s" title="Pengeluaran: ${d.expense[i]}jt"></div>`;
+      area.appendChild(col);
+
+      const lblEl = document.createElement('div');
+      lblEl.className = 'flex-1 text-center text-[9px] font-bold min-w-[20px]';
+      lblEl.style.color = '#9ca3af';
+      lblEl.textContent = lbl;
+      labels.appendChild(lblEl);
+    });
+
+    const net = tIn - tOut;
+    const fmt = v => v >= 1000 ? `Rp ${(v/1000).toFixed(1)}M` : `Rp ${v.toFixed(0)}jt`;
+    document.getElementById('total-in').textContent = fmt(tIn);
+    document.getElementById('total-out').textContent = fmt(tOut);
+    document.getElementById('total-net').textContent = fmt(net);
+  }
+
+  // Init chart on load
+  document.addEventListener("DOMContentLoaded", () => {
+    switchPeriod('harian');
+  });
+</script>
 </body>
 </html>
