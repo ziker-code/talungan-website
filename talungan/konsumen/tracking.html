@@ -1,48 +1,100 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pesanan — Talungan.id</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+    rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="../shared.css"/>
+  <link rel="stylesheet" href="../shared.css" />
   <style>
-    .step-dot { width:12px;height:12px;border-radius:50%;flex-shrink:0;margin-top:3px; }
-    .step-line { width:2px;flex-grow:1;min-height:28px;margin-left:5px; }
-    .order-card { background:rgba(255,255,255,0.88);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,0.8);border-radius:20px;padding:20px;box-shadow:0 4px 20px rgba(0,100,50,0.06);transition:transform .15s; }
-    .order-card:hover { transform:translateY(-1px); }
+    .step-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+
+    .step-line {
+      width: 2px;
+      flex-grow: 1;
+      min-height: 28px;
+      margin-left: 5px;
+    }
+
+    .order-card {
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: 0 4px 20px rgba(0, 100, 50, 0.06);
+      transition: transform .15s;
+    }
+
+    .order-card:hover {
+      transform: translateY(-1px);
+    }
   </style>
 </head>
+
 <body>
-  <div class="blob-bg"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+  <div class="blob-bg">
+    <div class="blob b1"></div>
+    <div class="blob b2"></div>
+    <div class="blob b3"></div>
+  </div>
 
   <!-- SIDEBAR -->
   <aside class="sidebar">
     <div class="sidebar-logo">
       <div class="sidebar-logo-icon">
-        <img src="../assets/logo.png.jpeg" alt="Talungan" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
-        <svg viewBox="0 0 60 60" width="24" height="24" style="display:none"><circle cx="30" cy="30" r="28" fill="rgba(255,255,255,0.2)"/><rect x="22" y="18" width="4" height="18" rx="2" fill="white"/><rect x="29" y="14" width="4" height="22" rx="2" fill="white"/><rect x="36" y="18" width="4" height="18" rx="2" fill="white"/></svg>
+        <img src="../assets/logo.png.jpeg" alt="Talungan"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+        <svg viewBox="0 0 60 60" width="24" height="24" style="display:none">
+          <circle cx="30" cy="30" r="28" fill="rgba(255,255,255,0.2)" />
+          <rect x="22" y="18" width="4" height="18" rx="2" fill="white" />
+          <rect x="29" y="14" width="4" height="22" rx="2" fill="white" />
+          <rect x="36" y="18" width="4" height="18" rx="2" fill="white" />
+        </svg>
       </div>
-      <div><div class="sidebar-brand">Talungan.id</div><div class="sidebar-role">Konsumen</div></div>
+      <div>
+        <div class="sidebar-brand">Talungan.id</div>
+        <div class="sidebar-role">Konsumen</div>
+      </div>
     </div>
     <div class="sidebar-user">
-      <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDC3Pnhp3-z-UASINeSJvHHNrXzgaDw2mbywAaQvXCMue4mlO6mxNW0As0o-REv9p2IjD0DXZsRoE1ylNH0YP6dzohp68BYRCEUusVb8C0ww8vZc-X-k20MrlvxDE6Ab7NSyYrlotDvLvfJcpPBNuRGWafLHqQ7rX0GmsddKBWVV4qYtpcNoQDSglmZKioIuJql1pejrXs7rTpJxQAwYmCS7qRLeweor8X7wgkM4KaL2ELvRw3wdNfOT9OBXYvOvrjcswNZAoRdl_w" alt="User"/>
-      <div><div class="name">Siti Rahmawati</div><div class="role">Gold Member</div></div>
+      <img
+        src="https://images.unsplash.com/photo-1534945773093-1119ae5684ab?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        alt="User" />
+      <div>
+        <div class="name">Siti Rahmawati</div>
+        <div class="role">Gold Member</div>
+      </div>
       <div class="dot"></div>
     </div>
     <span class="nav-section-title">Menu Utama</span>
     <a href="home.html" class="nav-item"><span class="material-symbols-outlined text-[20px]">home</span>Beranda</a>
-    <a href="marketplace.html" class="nav-item"><span class="material-symbols-outlined text-[20px]">storefront</span>Marketplace</a>
-    <a href="tracking.html" class="nav-item active"><span class="material-symbols-outlined text-[20px]" style="font-variation-settings:'FILL' 1">local_shipping</span>Pesanan</a>
-    <a href="kontrak.html" class="nav-item"><span class="material-symbols-outlined text-[20px]">description</span>Kontrak</a>
-    <a href="tagihan.html" class="nav-item"><span class="material-symbols-outlined text-[20px]">receipt_long</span>Tagihan</a>
+    <a href="marketplace.html" class="nav-item"><span
+        class="material-symbols-outlined text-[20px]">storefront</span>Marketplace</a>
+    <a href="tracking.html" class="nav-item active"><span class="material-symbols-outlined text-[20px]"
+        style="font-variation-settings:'FILL' 1">local_shipping</span>Pesanan</a>
+    <a href="kontrak.html" class="nav-item"><span
+        class="material-symbols-outlined text-[20px]">description</span>Kontrak</a>
+    <a href="tagihan.html" class="nav-item"><span
+        class="material-symbols-outlined text-[20px]">receipt_long</span>Tagihan</a>
     <a href="forum.html" class="nav-item"><span class="material-symbols-outlined text-[20px]">forum</span>Forum</a>
     <div class="nav-spacer"></div>
     <div class="nav-divider"></div>
-    <a href="profil.html" class="nav-item"><span class="material-symbols-outlined text-[20px]">account_circle</span>Profil Saya</a>
-    <a href="login.html" class="nav-item danger"><span class="material-symbols-outlined text-[20px]">logout</span>Keluar</a>
+    <a href="profil.html" class="nav-item"><span
+        class="material-symbols-outlined text-[20px]">account_circle</span>Profil Saya</a>
+    <a href="login.html" class="nav-item danger"><span
+        class="material-symbols-outlined text-[20px]">logout</span>Keluar</a>
   </aside>
 
   <!-- MAIN -->
@@ -56,8 +108,10 @@
       </div>
       <div class="flex gap-2">
         <button class="px-4 py-2 rounded-full text-sm font-bold" style="background:#00aa5b;color:white">Aktif</button>
-        <button class="px-4 py-2 rounded-full text-sm font-bold border border-gray-200" style="background:rgba(255,255,255,0.88);color:#6b7280">Selesai</button>
-        <button class="px-4 py-2 rounded-full text-sm font-bold border border-gray-200" style="background:rgba(255,255,255,0.88);color:#6b7280">Semua</button>
+        <button class="px-4 py-2 rounded-full text-sm font-bold border border-gray-200"
+          style="background:rgba(255,255,255,0.88);color:#6b7280">Selesai</button>
+        <button class="px-4 py-2 rounded-full text-sm font-bold border border-gray-200"
+          style="background:rgba(255,255,255,0.88);color:#6b7280">Semua</button>
       </div>
     </div>
 
@@ -93,7 +147,9 @@
         <div class="flex items-start justify-between mb-4">
           <div class="flex items-start gap-4">
             <div class="w-14 h-14 rounded-2xl overflow-hidden flex-shrink-0">
-              <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJcXGczgL6Y7ISKYbskSqELGcIwZyi5AzyMSCw4xez0-NZ5f8jWTjsNp91L579oa0wiocypknsjeABBuEPAU_pRaeDg1nLmR0nb98DP6Cx47R2WCs1nAemIvPFFziKa7pUPsTmrtr4zVZFjOFi7_Vbh2Cca7haN9j77fYhJaIIlHG2sfUH9rbF1b1P523rwvlKt2xS75Q7PFhIgSCq5Xb2G9SOHQBSi2DNealhOa_YHPRi2jOChz_BXjKe7kxziwLbgs3FDpXmvsw" class="w-full h-full object-cover" alt="Beras"/>
+              <img
+                src="https://images.unsplash.com/photo-1635562985686-4f8bb9c0d3bf?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                class="w-full h-full object-cover" alt="Beras" />
             </div>
             <div>
               <p class="font-black text-base" style="color:#1a1a2e">Beras Cianjur Pandan Wangi</p>
@@ -102,7 +158,8 @@
             </div>
           </div>
           <div class="text-right">
-            <span class="text-[11px] font-black px-3 py-1.5 rounded-full" style="background:#fff7ed;color:#c2410c;border:1px solid #fed7aa">🚛 Dalam Perjalanan</span>
+            <span class="text-[11px] font-black px-3 py-1.5 rounded-full"
+              style="background:#fff7ed;color:#c2410c;border:1px solid #fed7aa">🚛 Dalam Perjalanan</span>
             <p class="text-xs font-semibold mt-2" style="color:#9ca3af">ETA: 30 Apr 2026</p>
           </div>
         </div>
@@ -111,7 +168,8 @@
         <div class="flex items-center gap-3 mb-4 px-2">
           <div class="flex-1 relative">
             <div class="h-2 rounded-full" style="background:#e5e7eb">
-              <div class="h-full rounded-full" style="width:65%;background:linear-gradient(90deg,#00aa5b,#fbbf24)"></div>
+              <div class="h-full rounded-full" style="width:65%;background:linear-gradient(90deg,#00aa5b,#fbbf24)">
+              </div>
             </div>
             <div class="flex justify-between mt-1">
               <span class="text-[10px] font-bold" style="color:#00aa5b">Dikirim</span>
@@ -124,24 +182,43 @@
         <!-- Tracking Steps -->
         <div class="grid grid-cols-3 gap-4 p-4 rounded-2xl mb-4" style="background:#f8fafc">
           <div class="flex items-start gap-2">
-            <div class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style="background:#00aa5b"><span class="material-symbols-outlined text-white text-[12px]" style="font-variation-settings:'FILL' 1">check</span></div>
-            <div><p class="text-xs font-bold" style="color:#1a1a2e">Dikonfirmasi</p><p class="text-[10px]" style="color:#9ca3af">27 Apr, 09:00</p></div>
+            <div class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"
+              style="background:#00aa5b"><span class="material-symbols-outlined text-white text-[12px]"
+                style="font-variation-settings:'FILL' 1">check</span></div>
+            <div>
+              <p class="text-xs font-bold" style="color:#1a1a2e">Dikonfirmasi</p>
+              <p class="text-[10px]" style="color:#9ca3af">27 Apr, 09:00</p>
+            </div>
           </div>
           <div class="flex items-start gap-2">
-            <div class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style="background:#00aa5b"><span class="material-symbols-outlined text-white text-[12px]" style="font-variation-settings:'FILL' 1">check</span></div>
-            <div><p class="text-xs font-bold" style="color:#1a1a2e">Dimuat Truk</p><p class="text-[10px]" style="color:#9ca3af">28 Apr, 06:30</p></div>
+            <div class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"
+              style="background:#00aa5b"><span class="material-symbols-outlined text-white text-[12px]"
+                style="font-variation-settings:'FILL' 1">check</span></div>
+            <div>
+              <p class="text-xs font-bold" style="color:#1a1a2e">Dimuat Truk</p>
+              <p class="text-[10px]" style="color:#9ca3af">28 Apr, 06:30</p>
+            </div>
           </div>
           <div class="flex items-start gap-2">
-            <div class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5" style="background:#fbbf24;animation:pulse 2s infinite"><span class="material-symbols-outlined text-white text-[12px]">local_shipping</span></div>
-            <div><p class="text-xs font-bold" style="color:#1a1a2e">Di Jalan</p><p class="text-[10px]" style="color:#d97706">Checkpoint Purwokerto</p></div>
+            <div class="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"
+              style="background:#fbbf24;animation:pulse 2s infinite"><span
+                class="material-symbols-outlined text-white text-[12px]">local_shipping</span></div>
+            <div>
+              <p class="text-xs font-bold" style="color:#1a1a2e">Di Jalan</p>
+              <p class="text-[10px]" style="color:#d97706">Checkpoint Purwokerto</p>
+            </div>
           </div>
         </div>
 
         <div class="flex items-center justify-between">
           <p class="font-black text-lg" style="color:#00aa5b">Rp 62.500.000</p>
           <div class="flex gap-2">
-            <button class="flex items-center gap-1 text-xs font-bold px-3 py-2 rounded-xl" style="background:rgba(0,170,91,0.08);color:#00aa5b;border:1.5px solid rgba(0,170,91,0.15)"><span class="material-symbols-outlined text-[14px]">share_location</span>Live Track</button>
-            <button class="flex items-center gap-1 text-xs font-bold px-3 py-2 rounded-xl" style="background:rgba(0,170,91,0.08);color:#00aa5b;border:1.5px solid rgba(0,170,91,0.15)"><span class="material-symbols-outlined text-[14px]">chat</span>Hubungi Driver</button>
+            <button class="flex items-center gap-1 text-xs font-bold px-3 py-2 rounded-xl"
+              style="background:rgba(0,170,91,0.08);color:#00aa5b;border:1.5px solid rgba(0,170,91,0.15)"><span
+                class="material-symbols-outlined text-[14px]">share_location</span>Live Track</button>
+            <button class="flex items-center gap-1 text-xs font-bold px-3 py-2 rounded-xl"
+              style="background:rgba(0,170,91,0.08);color:#00aa5b;border:1.5px solid rgba(0,170,91,0.15)"><span
+                class="material-symbols-outlined text-[14px]">chat</span>Hubungi Driver</button>
           </div>
         </div>
       </div>
@@ -150,7 +227,8 @@
       <div class="order-card su d3">
         <div class="flex items-start justify-between">
           <div class="flex items-start gap-4">
-            <div class="w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0 text-3xl" style="background:#f0fdf4">🌽</div>
+            <div class="w-14 h-14 rounded-2xl flex items-center justify-center flex-shrink-0 text-3xl"
+              style="background:#f0fdf4">🌽</div>
             <div>
               <p class="font-black text-base" style="color:#1a1a2e">Jagung Pipil Kering</p>
               <p class="text-xs font-semibold mt-0.5" style="color:#9ca3af">200 kg · ID: #TLG-2026-X84A</p>
@@ -158,17 +236,21 @@
             </div>
           </div>
           <div class="text-right">
-            <span class="text-[11px] font-black px-3 py-1.5 rounded-full" style="background:#dcfce7;color:#166534;border:1px solid #bbf7d0">✓ Selesai</span>
+            <span class="text-[11px] font-black px-3 py-1.5 rounded-full"
+              style="background:#dcfce7;color:#166534;border:1px solid #bbf7d0">✓ Selesai</span>
             <p class="font-black mt-2" style="color:#1a1a2e">Rp 1.300.000</p>
           </div>
         </div>
         <div class="flex justify-end mt-4 gap-2">
-          <button class="text-xs font-bold px-3 py-2 rounded-xl" style="background:#f8fafc;color:#6b7280;border:1px solid #e5e7eb">Beli Lagi</button>
-          <button class="text-xs font-bold px-3 py-2 rounded-xl" style="background:#f8fafc;color:#6b7280;border:1px solid #e5e7eb">Beri Ulasan</button>
+          <button class="text-xs font-bold px-3 py-2 rounded-xl"
+            style="background:#f8fafc;color:#6b7280;border:1px solid #e5e7eb">Beli Lagi</button>
+          <button class="text-xs font-bold px-3 py-2 rounded-xl"
+            style="background:#f8fafc;color:#6b7280;border:1px solid #e5e7eb">Beri Ulasan</button>
         </div>
       </div>
 
     </div>
   </main>
 </body>
+
 </html>

@@ -1,48 +1,100 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Pengajuan Kontrak — Talungan.id</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+    rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="../shared.css"/>
+  <link rel="stylesheet" href="../shared.css" />
   <style>
-    .form-input { background:#f8fafc;border:2px solid #e2e8f0;border-radius:14px;padding:12px 16px;font-size:14px;font-family:'Inter',sans-serif;outline:none;transition:.2s;width:100%; }
-    .form-input:focus { background:white;border-color:#00aa5b;box-shadow:0 0 0 4px rgba(0,170,91,0.1); }
-    .radio-card input:checked + div { background:rgba(0,170,91,0.05);border-color:#00aa5b; }
-    .radio-card input:checked + div .chk { opacity:1; }
+    .form-input {
+      background: #f8fafc;
+      border: 2px solid #e2e8f0;
+      border-radius: 14px;
+      padding: 12px 16px;
+      font-size: 14px;
+      font-family: 'Inter', sans-serif;
+      outline: none;
+      transition: .2s;
+      width: 100%;
+    }
+
+    .form-input:focus {
+      background: white;
+      border-color: #00aa5b;
+      box-shadow: 0 0 0 4px rgba(0, 170, 91, 0.1);
+    }
+
+    .radio-card input:checked+div {
+      background: rgba(0, 170, 91, 0.05);
+      border-color: #00aa5b;
+    }
+
+    .radio-card input:checked+div .chk {
+      opacity: 1;
+    }
   </style>
 </head>
+
 <body>
-  <div class="blob-bg"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+  <div class="blob-bg">
+    <div class="blob b1"></div>
+    <div class="blob b2"></div>
+    <div class="blob b3"></div>
+  </div>
 
   <!-- SIDEBAR -->
   <aside class="sidebar">
     <div class="sidebar-logo">
       <div class="sidebar-logo-icon">
-        <img src="../assets/logo.png.jpeg" alt="Talungan" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
-        <svg viewBox="0 0 60 60" width="24" height="24" style="display:none"><circle cx="30" cy="30" r="28" fill="rgba(255,255,255,0.2)"/><rect x="22" y="18" width="4" height="18" rx="2" fill="white"/><rect x="29" y="14" width="4" height="22" rx="2" fill="white"/><rect x="36" y="18" width="4" height="18" rx="2" fill="white"/><ellipse cx="20" cy="38" rx="8" ry="5" fill="rgba(255,255,255,0.7)" transform="rotate(-25,20,38)"/><ellipse cx="40" cy="38" rx="8" ry="5" fill="rgba(255,255,255,0.5)" transform="rotate(25,40,38)"/></svg>
+        <img src="../assets/logo.png.jpeg" alt="Talungan"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+        <svg viewBox="0 0 60 60" width="24" height="24" style="display:none">
+          <circle cx="30" cy="30" r="28" fill="rgba(255,255,255,0.2)" />
+          <rect x="22" y="18" width="4" height="18" rx="2" fill="white" />
+          <rect x="29" y="14" width="4" height="22" rx="2" fill="white" />
+          <rect x="36" y="18" width="4" height="18" rx="2" fill="white" />
+          <ellipse cx="20" cy="38" rx="8" ry="5" fill="rgba(255,255,255,0.7)" transform="rotate(-25,20,38)" />
+          <ellipse cx="40" cy="38" rx="8" ry="5" fill="rgba(255,255,255,0.5)" transform="rotate(25,40,38)" />
+        </svg>
       </div>
-      <div><div class="sidebar-brand">Talungan.id</div><div class="sidebar-role">Konsumen</div></div>
+      <div>
+        <div class="sidebar-brand">Talungan.id</div>
+        <div class="sidebar-role">Konsumen</div>
+      </div>
     </div>
     <div class="sidebar-user">
-      <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDC3Pnhp3-z-UASINeSJvHHNrXzgaDw2mbywAaQvXCMue4mlO6mxNW0As0o-REv9p2IjD0DXZsRoE1ylNH0YP6dzohp68BYRCEUusVb8C0ww8vZc-X-k20MrlvxDE6Ab7NSyYrlotDvLvfJcpPBNuRGWafLHqQ7rX0GmsddKBWVV4qYtpcNoQDSglmZKioIuJql1pejrXs7rTpJxQAwYmCS7qRLeweor8X7wgkM4KaL2ELvRw3wdNfOT9OBXYvOvrjcswNZAoRdl_w" alt="User"/>
-      <div><div class="name">Siti Rahmawati</div><div class="role">Gold Member</div></div>
+      <img
+        src="https://images.unsplash.com/photo-1534945773093-1119ae5684ab?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        alt="User" />
+      <div>
+        <div class="name">Siti Rahmawati</div>
+        <div class="role">Gold Member</div>
+      </div>
       <div class="dot"></div>
     </div>
     <span class="nav-section-title">Menu Utama</span>
     <a href="home.html" class="nav-item"><span class="material-symbols-outlined text-[20px]">home</span>Beranda</a>
-    <a href="marketplace.html" class="nav-item"><span class="material-symbols-outlined text-[20px]">storefront</span>Marketplace</a>
-    <a href="tracking.html" class="nav-item"><span class="material-symbols-outlined text-[20px]">local_shipping</span>Pesanan</a>
-    <a href="kontrak.html" class="nav-item active"><span class="material-symbols-outlined text-[20px]">description</span>Kontrak</a>
-    <a href="tagihan.html" class="nav-item"><span class="material-symbols-outlined text-[20px]">receipt_long</span>Tagihan</a>
+    <a href="marketplace.html" class="nav-item"><span
+        class="material-symbols-outlined text-[20px]">storefront</span>Marketplace</a>
+    <a href="tracking.html" class="nav-item"><span
+        class="material-symbols-outlined text-[20px]">local_shipping</span>Pesanan</a>
+    <a href="kontrak.html" class="nav-item active"><span
+        class="material-symbols-outlined text-[20px]">description</span>Kontrak</a>
+    <a href="tagihan.html" class="nav-item"><span
+        class="material-symbols-outlined text-[20px]">receipt_long</span>Tagihan</a>
     <a href="forum.html" class="nav-item"><span class="material-symbols-outlined text-[20px]">forum</span>Forum</a>
     <div class="nav-spacer"></div>
     <div class="nav-divider"></div>
-    <a href="profil.html" class="nav-item"><span class="material-symbols-outlined text-[20px]">account_circle</span>Profil Saya</a>
-    <a href="login.html" class="nav-item danger"><span class="material-symbols-outlined text-[20px]">logout</span>Keluar</a>
+    <a href="profil.html" class="nav-item"><span
+        class="material-symbols-outlined text-[20px]">account_circle</span>Profil Saya</a>
+    <a href="login.html" class="nav-item danger"><span
+        class="material-symbols-outlined text-[20px]">logout</span>Keluar</a>
   </aside>
 
   <!-- MAIN -->
@@ -51,21 +103,26 @@
       <div class="mb-6 su d1">
         <p class="text-xs font-bold uppercase tracking-widest mb-1" style="color:#9ca3af">Pengadaan B2B</p>
         <h1 class="text-2xl font-black" style="color:#1a1a2e;letter-spacing:-0.5px">Pengajuan Kontrak Baru</h1>
-        <p class="text-sm font-medium mt-1" style="color:#9ca3af">Amankan rantai pasok perusahaan Anda dengan petani lokal berkualitas.</p>
+        <p class="text-sm font-medium mt-1" style="color:#9ca3af">Amankan rantai pasok perusahaan Anda dengan petani
+          lokal berkualitas.</p>
       </div>
 
       <div class="card p-6 su d2">
         <!-- Product info -->
         <div class="flex items-start gap-4 p-4 rounded-2xl mb-6" style="background:#f8fafc;border:1px solid #e5e7eb">
           <div class="w-20 h-20 rounded-xl overflow-hidden flex-shrink-0">
-            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJcXGczgL6Y7ISKYbskSqELGcIwZyi5AzyMSCw4xez0-NZ5f8jWTjsNp91L579oa0wiocypknsjeABBuEPAU_pRaeDg1nLmR0nb98DP6Cx47R2WCs1nAemIvPFFziKa7pUPsTmrtr4zVZFjOFi7_Vbh2Cca7haN9j77fYhJaIIlHG2sfUH9rbF1b1P523rwvlKt2xS75Q7PFhIgSCq5Xb2G9SOHQBSi2DNealhOa_YHPRi2jOChz_BXjKe7kxziwLbgs3FDpXmvsw" class="w-full h-full object-cover" alt="Beras"/>
+            <img
+              src="https://images.unsplash.com/photo-1635562985686-4f8bb9c0d3bf?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              class="w-full h-full object-cover" alt="Beras" />
           </div>
           <div class="flex-1">
             <h2 class="font-black text-lg" style="color:#1a1a2e">Beras Cianjur Pandan Wangi</h2>
             <p class="text-xs font-semibold mb-2" style="color:#9ca3af">Pasokan dari: Lumbung Demak</p>
             <div class="flex items-center gap-2">
-              <span class="px-3 py-1 rounded-full text-[11px] font-black text-white" style="background:#00aa5b">★ Grade A Premium</span>
-              <span class="px-3 py-1 rounded-full text-[11px] font-bold" style="background:#f0fdf4;color:#166534;border:1px solid #bbf7d0">📦 50 Ton/bln tersedia</span>
+              <span class="px-3 py-1 rounded-full text-[11px] font-black text-white" style="background:#00aa5b">★ Grade
+                A Premium</span>
+              <span class="px-3 py-1 rounded-full text-[11px] font-bold"
+                style="background:#f0fdf4;color:#166534;border:1px solid #bbf7d0">📦 50 Ton/bln tersedia</span>
             </div>
           </div>
         </div>
@@ -74,26 +131,31 @@
 
           <!-- Tipe Kontrak -->
           <div class="col-span-2">
-            <label class="block text-xs font-bold uppercase tracking-wide mb-3" style="color:#6b7280">Tipe Kontrak</label>
+            <label class="block text-xs font-bold uppercase tracking-wide mb-3" style="color:#6b7280">Tipe
+              Kontrak</label>
             <div class="grid grid-cols-2 gap-4">
               <label class="radio-card cursor-pointer">
-                <input type="radio" name="ctype" class="sr-only" checked/>
+                <input type="radio" name="ctype" class="sr-only" checked />
                 <div class="border-2 rounded-2xl p-4 transition-all" style="border-color:#e5e7eb">
                   <div class="flex justify-between items-start mb-2">
                     <span class="font-bold" style="color:#1a1a2e">Berlangganan (Subskripsi)</span>
-                    <span class="material-symbols-outlined chk transition-opacity opacity-0" style="color:#00aa5b;font-variation-settings:'FILL' 1">check_circle</span>
+                    <span class="material-symbols-outlined chk transition-opacity opacity-0"
+                      style="color:#00aa5b;font-variation-settings:'FILL' 1">check_circle</span>
                   </div>
-                  <p class="text-xs font-medium" style="color:#9ca3af">Pengiriman rutin & otomatis. Prioritas stok & diskon 5%.</p>
+                  <p class="text-xs font-medium" style="color:#9ca3af">Pengiriman rutin & otomatis. Prioritas stok &
+                    diskon 5%.</p>
                 </div>
               </label>
               <label class="radio-card cursor-pointer">
-                <input type="radio" name="ctype" class="sr-only"/>
+                <input type="radio" name="ctype" class="sr-only" />
                 <div class="border-2 rounded-2xl p-4 transition-all" style="border-color:#e5e7eb">
                   <div class="flex justify-between items-start mb-2">
                     <span class="font-bold" style="color:#1a1a2e">Pembelian Lepas (Bulk)</span>
-                    <span class="material-symbols-outlined chk transition-opacity opacity-0" style="color:#00aa5b;font-variation-settings:'FILL' 1">check_circle</span>
+                    <span class="material-symbols-outlined chk transition-opacity opacity-0"
+                      style="color:#00aa5b;font-variation-settings:'FILL' 1">check_circle</span>
                   </div>
-                  <p class="text-xs font-medium" style="color:#9ca3af">Kirim sekaligus, fleksibel waktu, tidak ada komitmen lanjutan.</p>
+                  <p class="text-xs font-medium" style="color:#9ca3af">Kirim sekaligus, fleksibel waktu, tidak ada
+                    komitmen lanjutan.</p>
                 </div>
               </label>
             </div>
@@ -101,9 +163,10 @@
 
           <!-- Volume -->
           <div>
-            <label class="block text-xs font-bold uppercase tracking-wide mb-2" style="color:#6b7280">Volume per Pengiriman</label>
+            <label class="block text-xs font-bold uppercase tracking-wide mb-2" style="color:#6b7280">Volume per
+              Pengiriman</label>
             <div class="relative">
-              <input type="number" value="5" min="1" class="form-input" style="padding-right:48px"/>
+              <input type="number" value="5" min="1" class="form-input" style="padding-right:48px" />
               <span class="absolute right-4 top-1/2 -translate-y-1/2 text-xs font-bold" style="color:#9ca3af">Ton</span>
             </div>
           </div>
@@ -117,43 +180,54 @@
                 <option>2x Sebulan</option>
                 <option selected>1x Sebulan</option>
               </select>
-              <span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400">expand_more</span>
+              <span
+                class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400">expand_more</span>
             </div>
           </div>
 
           <!-- Durasi -->
           <div>
-            <label class="block text-xs font-bold uppercase tracking-wide mb-2" style="color:#6b7280">Durasi Kontrak</label>
+            <label class="block text-xs font-bold uppercase tracking-wide mb-2" style="color:#6b7280">Durasi
+              Kontrak</label>
             <div class="relative">
               <select class="form-input appearance-none" style="padding-right:40px">
                 <option>3 Bulan</option>
                 <option selected>6 Bulan</option>
                 <option>1 Tahun (Harga Mengikat)</option>
               </select>
-              <span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400">expand_more</span>
+              <span
+                class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400">expand_more</span>
             </div>
           </div>
 
           <!-- Alamat -->
           <div>
-            <label class="block text-xs font-bold uppercase tracking-wide mb-2" style="color:#6b7280">Alamat Pengiriman</label>
-            <input type="text" placeholder="Jl. Industri No.12, Jakarta" class="form-input"/>
+            <label class="block text-xs font-bold uppercase tracking-wide mb-2" style="color:#6b7280">Alamat
+              Pengiriman</label>
+            <input type="text" placeholder="Jl. Industri No.12, Jakarta" class="form-input" />
           </div>
 
           <!-- Cost Estimate -->
-          <div class="col-span-2 rounded-2xl p-5" style="background:linear-gradient(135deg,#f0fdf4,#ecfdf5);border:1px solid #bbf7d0">
+          <div class="col-span-2 rounded-2xl p-5"
+            style="background:linear-gradient(135deg,#f0fdf4,#ecfdf5);border:1px solid #bbf7d0">
             <div class="flex items-center justify-between mb-4 pb-4" style="border-bottom:1px solid #bbf7d0">
-              <h3 class="font-bold flex items-center gap-2" style="color:#166534"><span class="material-symbols-outlined text-[18px]">receipt_long</span>Estimasi Biaya</h3>
-              <span class="text-[10px] font-black px-2 py-0.5 rounded-full" style="background:#00aa5b;color:white">Berlangganan</span>
+              <h3 class="font-bold flex items-center gap-2" style="color:#166534"><span
+                  class="material-symbols-outlined text-[18px]">receipt_long</span>Estimasi Biaya</h3>
+              <span class="text-[10px] font-black px-2 py-0.5 rounded-full"
+                style="background:#00aa5b;color:white">Berlangganan</span>
             </div>
             <div class="space-y-2 text-sm">
-              <div class="flex justify-between"><span style="color:#6b7280">Dasar (Rp 12.500/kg × 5 Ton)</span><span class="font-bold" style="color:#1a1a2e">Rp 62.500.000/bln</span></div>
-              <div class="flex justify-between"><span style="color:#6b7280">Total Volume (x 6 pengiriman)</span><span class="font-bold" style="color:#1a1a2e">30 Ton</span></div>
-              <div class="flex justify-between" style="color:#00aa5b"><span>Diskon Kontrak (5%)</span><span class="font-bold">- Rp 18.750.000</span></div>
+              <div class="flex justify-between"><span style="color:#6b7280">Dasar (Rp 12.500/kg × 5 Ton)</span><span
+                  class="font-bold" style="color:#1a1a2e">Rp 62.500.000/bln</span></div>
+              <div class="flex justify-between"><span style="color:#6b7280">Total Volume (x 6 pengiriman)</span><span
+                  class="font-bold" style="color:#1a1a2e">30 Ton</span></div>
+              <div class="flex justify-between" style="color:#00aa5b"><span>Diskon Kontrak (5%)</span><span
+                  class="font-bold">- Rp 18.750.000</span></div>
             </div>
             <div class="flex items-end justify-between pt-4 mt-4" style="border-top:1px solid #bbf7d0">
               <div>
-                <p class="text-[10px] font-black uppercase tracking-widest" style="color:#166534;opacity:.7">Total Nilai Kontrak</p>
+                <p class="text-[10px] font-black uppercase tracking-widest" style="color:#166534;opacity:.7">Total Nilai
+                  Kontrak</p>
                 <p class="text-[10px] font-medium" style="color:#166534">*Dapat dibayar bertahap per bulan.</p>
               </div>
               <p class="text-2xl font-black" style="color:#166534">Rp 356.250.000</p>
@@ -162,11 +236,16 @@
 
           <!-- Actions -->
           <div class="col-span-2 flex items-center gap-3 justify-end">
-            <button type="button" class="font-bold text-sm px-5 py-3 rounded-2xl transition-colors" style="color:#9ca3af">Simpan Draf</button>
-            <a href="chat_sales.html" class="flex items-center gap-2 font-bold text-sm px-5 py-3 rounded-2xl transition-all" style="color:#00aa5b;background:#f0fdf4;border:1.5px solid #bbf7d0">
+            <button type="button" class="font-bold text-sm px-5 py-3 rounded-2xl transition-colors"
+              style="color:#9ca3af">Simpan Draf</button>
+            <a href="chat_sales.html"
+              class="flex items-center gap-2 font-bold text-sm px-5 py-3 rounded-2xl transition-all"
+              style="color:#00aa5b;background:#f0fdf4;border:1.5px solid #bbf7d0">
               <span class="material-symbols-outlined text-[18px]">chat</span>Tanya Sales
             </a>
-            <button type="submit" class="flex items-center gap-2 font-bold text-sm px-6 py-3 rounded-2xl text-white transition-all active:scale-95" style="background:linear-gradient(135deg,#00aa5b,#006d38);box-shadow:0 4px 15px rgba(0,170,91,0.3)">
+            <button type="submit"
+              class="flex items-center gap-2 font-bold text-sm px-6 py-3 rounded-2xl text-white transition-all active:scale-95"
+              style="background:linear-gradient(135deg,#00aa5b,#006d38);box-shadow:0 4px 15px rgba(0,170,91,0.3)">
               Ajukan Kontrak<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
             </button>
           </div>
@@ -178,27 +257,34 @@
   <!-- Success Modal -->
   <div class="modal-bg" id="successModal">
     <div class="modal-box p-8 text-center">
-      <div class="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4" style="background:linear-gradient(135deg,#00aa5b,#006d38)">
-        <span class="material-symbols-outlined text-white text-[32px]" style="font-variation-settings:'FILL' 1">check_circle</span>
+      <div class="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4"
+        style="background:linear-gradient(135deg,#00aa5b,#006d38)">
+        <span class="material-symbols-outlined text-white text-[32px]"
+          style="font-variation-settings:'FILL' 1">check_circle</span>
       </div>
       <h2 class="text-xl font-black mb-2" style="color:#1a1a2e">Pengajuan Berhasil! 🎉</h2>
-      <p class="text-sm font-medium mb-2" style="color:#6b7280">Kontrak Beras Cianjur 5 Ton/bulan — 6 bulan telah diajukan.</p>
+      <p class="text-sm font-medium mb-2" style="color:#6b7280">Kontrak Beras Cianjur 5 Ton/bulan — 6 bulan telah
+        diajukan.</p>
       <p class="text-sm font-bold mb-6" style="color:#00aa5b">ID Pengajuan: <strong>#KTR-2026-089</strong></p>
       <div class="p-4 rounded-2xl mb-6" style="background:#f0fdf4;border:1px solid #bbf7d0">
-        <p class="text-sm font-semibold" style="color:#166534">Tim kami akan menghubungi Anda dalam <strong>1×24 jam</strong> untuk konfirmasi dan tanda tangan digital kontrak.</p>
+        <p class="text-sm font-semibold" style="color:#166534">Tim kami akan menghubungi Anda dalam <strong>1×24
+            jam</strong> untuk konfirmasi dan tanda tangan digital kontrak.</p>
       </div>
       <div class="flex gap-3">
-        <a href="home.html" class="flex-1 font-bold py-3 rounded-2xl border-2 border-gray-200 text-sm text-center" style="color:#6b7280">Kembali ke Beranda</a>
-        <a href="chat_sales.html" class="flex-1 font-bold py-3 rounded-2xl text-sm text-center text-white" style="background:linear-gradient(135deg,#00aa5b,#006d38)">Chat Sales</a>
+        <a href="home.html" class="flex-1 font-bold py-3 rounded-2xl border-2 border-gray-200 text-sm text-center"
+          style="color:#6b7280">Kembali ke Beranda</a>
+        <a href="chat_sales.html" class="flex-1 font-bold py-3 rounded-2xl text-sm text-center text-white"
+          style="background:linear-gradient(135deg,#00aa5b,#006d38)">Chat Sales</a>
       </div>
     </div>
   </div>
 
-<script>
-  function submitContract(ev) {
-    ev.preventDefault();
-    document.getElementById('successModal').classList.add('open');
-  }
-</script>
+  <script>
+    function submitContract(ev) {
+      ev.preventDefault();
+      document.getElementById('successModal').classList.add('open');
+    }
+  </script>
 </body>
+
 </html>
