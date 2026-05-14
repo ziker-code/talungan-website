@@ -1,54 +1,106 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Beranda Konsumen — Talungan.id</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+    rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="../shared.css"/>
+  <link rel="stylesheet" href="../shared.css" />
   <style>
-    .stat-card-alt { background: rgba(255,255,255,0.88); backdrop-filter: blur(12px); border: 1px solid rgba(0,170,91,0.1); border-radius: 20px; padding: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.04); }
-    .product-thumb { height: 120px; border-radius: 16px; object-fit: cover; width: 100%; }
-    .ticker-item { animation: ticker 20s linear infinite; }
-    @keyframes ticker { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+    .stat-card-alt {
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(0, 170, 91, 0.1);
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+    }
+
+    .product-thumb {
+      height: 120px;
+      border-radius: 16px;
+      object-fit: cover;
+      width: 100%;
+    }
+
+    .ticker-item {
+      animation: ticker 20s linear infinite;
+    }
+
+    @keyframes ticker {
+      from {
+        transform: translateX(0)
+      }
+
+      to {
+        transform: translateX(-50%)
+      }
+    }
   </style>
 </head>
+
 <body>
   <!-- Animated Background -->
   <div class="blob-bg">
-    <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+    <div class="blob b1"></div>
+    <div class="blob b2"></div>
+    <div class="blob b3"></div>
   </div>
 
   <!-- SIDEBAR -->
   <aside class="sidebar">
     <div class="sidebar-logo">
       <div class="sidebar-logo-icon">
-        <img src="../assets/logo.png.jpeg" alt="Talungan" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"/>
-        <svg viewBox="0 0 60 60" width="24" height="24" style="display:none"><circle cx="30" cy="30" r="28" fill="rgba(255,255,255,0.2)"/><rect x="22" y="18" width="4" height="18" rx="2" fill="white"/><rect x="29" y="14" width="4" height="22" rx="2" fill="white"/><rect x="36" y="18" width="4" height="18" rx="2" fill="white"/></svg>
+        <img src="../assets/logo.png.jpeg" alt="Talungan"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" />
+        <svg viewBox="0 0 60 60" width="24" height="24" style="display:none">
+          <circle cx="30" cy="30" r="28" fill="rgba(255,255,255,0.2)" />
+          <rect x="22" y="18" width="4" height="18" rx="2" fill="white" />
+          <rect x="29" y="14" width="4" height="22" rx="2" fill="white" />
+          <rect x="36" y="18" width="4" height="18" rx="2" fill="white" />
+        </svg>
       </div>
-      <div><div class="sidebar-brand">Talungan.id</div><div class="sidebar-role">Konsumen</div></div>
+      <div>
+        <div class="sidebar-brand">Talungan.id</div>
+        <div class="sidebar-role">Konsumen</div>
+      </div>
     </div>
 
     <div class="sidebar-user">
-      <img src="https://images.unsplash.com/photo-1534945773093-1119ae5684ab?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="User"/>
-      <div><div class="name">Siti Rahmawati</div><div class="role">Gold Member</div></div>
+      <img
+        src="https://images.unsplash.com/photo-1534945773093-1119ae5684ab?q=80&w=880&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        alt="User" />
+      <div>
+        <div class="name">Siti Rahmawati</div>
+        <div class="role">Gold Member</div>
+      </div>
       <div class="dot"></div>
     </div>
 
     <span class="nav-section-title">Menu Utama</span>
-    <a href="home.html" class="nav-item active"><span class="material-symbols-outlined text-[20px]" style="font-variation-settings:'FILL' 1">home</span>Beranda</a>
-    <a href="marketplace.html" class="nav-item"><span class="material-symbols-outlined text-[20px]">storefront</span>Marketplace</a>
-    <a href="tracking.html" class="nav-item"><span class="material-symbols-outlined text-[20px]">local_shipping</span>Pesanan<span class="badge">2</span></a>
-    <a href="kontrak.html" class="nav-item"><span class="material-symbols-outlined text-[20px]">description</span>Kontrak</a>
-    <a href="tagihan.html" class="nav-item"><span class="material-symbols-outlined text-[20px]">receipt_long</span>Tagihan</a>
+    <a href="home.html" class="nav-item active"><span class="material-symbols-outlined text-[20px]"
+        style="font-variation-settings:'FILL' 1">home</span>Beranda</a>
+    <a href="marketplace.html" class="nav-item"><span
+        class="material-symbols-outlined text-[20px]">storefront</span>Marketplace</a>
+    <a href="tracking.html" class="nav-item"><span
+        class="material-symbols-outlined text-[20px]">local_shipping</span>Pesanan<span class="badge">2</span></a>
+    <a href="kontrak.html" class="nav-item"><span
+        class="material-symbols-outlined text-[20px]">description</span>Kontrak</a>
+    <a href="tagihan.html" class="nav-item"><span
+        class="material-symbols-outlined text-[20px]">receipt_long</span>Tagihan</a>
     <a href="forum.html" class="nav-item"><span class="material-symbols-outlined text-[20px]">forum</span>Forum</a>
 
     <div class="nav-spacer"></div>
     <div class="nav-divider"></div>
-    <a href="profil.html" class="nav-item"><span class="material-symbols-outlined text-[20px]">account_circle</span>Profil Saya</a>
-    <a href="login.html" class="nav-item danger"><span class="material-symbols-outlined text-[20px]">logout</span>Keluar</a>
+    <a href="profil.html" class="nav-item"><span
+        class="material-symbols-outlined text-[20px]">account_circle</span>Profil Saya</a>
+    <a href="login.html" class="nav-item danger"><span
+        class="material-symbols-outlined text-[20px]">logout</span>Keluar</a>
   </aside>
 
   <!-- MAIN CONTENT -->
@@ -62,10 +114,13 @@
       </div>
       <div class="flex items-center gap-3">
         <div class="relative">
-          <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-[18px]">search</span>
-          <input type="text" placeholder="Cari komoditas..." style="background:rgba(255,255,255,0.9);border:1px solid rgba(0,0,0,0.08);border-radius:14px;padding:10px 16px 10px 40px;font-size:13px;width:260px;outline:none;font-family:'Inter',sans-serif"/>
+          <span
+            class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 text-[18px]">search</span>
+          <input type="text" placeholder="Cari komoditas..."
+            style="background:rgba(255,255,255,0.9);border:1px solid rgba(0,0,0,0.08);border-radius:14px;padding:10px 16px 10px 40px;font-size:13px;width:260px;outline:none;font-family:'Inter',sans-serif" />
         </div>
-        <button class="relative w-10 h-10 rounded-full flex items-center justify-center" style="background:rgba(255,255,255,0.9);border:1px solid rgba(0,0,0,0.08)">
+        <button class="relative w-10 h-10 rounded-full flex items-center justify-center"
+          style="background:rgba(255,255,255,0.9);border:1px solid rgba(0,0,0,0.08)">
           <span class="material-symbols-outlined text-gray-500 text-[20px]">notifications</span>
           <span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-red-500 border border-white"></span>
         </button>
@@ -96,7 +151,8 @@
       <div class="stat-card-alt su d2">
         <div class="flex justify-between items-start mb-3">
           <p class="text-xs font-bold uppercase tracking-wider" style="color:#9ca3af">Total Belanja</p>
-          <div class="w-9 h-9 rounded-xl flex items-center justify-center" style="background:rgba(0,170,91,0.1)"><span class="material-symbols-outlined text-[18px]" style="color:#00aa5b">payments</span></div>
+          <div class="w-9 h-9 rounded-xl flex items-center justify-center" style="background:rgba(0,170,91,0.1)"><span
+              class="material-symbols-outlined text-[18px]" style="color:#00aa5b">payments</span></div>
         </div>
         <p class="text-2xl font-black mb-1" style="color:#1a1a2e">Rp 356jt</p>
         <p class="text-xs font-semibold" style="color:#22c55e">↑ +12.4% bulan ini</p>
@@ -104,7 +160,8 @@
       <div class="stat-card-alt su d2">
         <div class="flex justify-between items-start mb-3">
           <p class="text-xs font-bold uppercase tracking-wider" style="color:#9ca3af">Pesanan Aktif</p>
-          <div class="w-9 h-9 rounded-xl flex items-center justify-center" style="background:rgba(254,106,52,0.1)"><span class="material-symbols-outlined text-[18px]" style="color:#fe6a34">local_shipping</span></div>
+          <div class="w-9 h-9 rounded-xl flex items-center justify-center" style="background:rgba(254,106,52,0.1)"><span
+              class="material-symbols-outlined text-[18px]" style="color:#fe6a34">local_shipping</span></div>
         </div>
         <p class="text-2xl font-black mb-1" style="color:#1a1a2e">2</p>
         <p class="text-xs font-semibold" style="color:#fe6a34">Sedang dalam perjalanan</p>
@@ -112,7 +169,8 @@
       <div class="stat-card-alt su d3">
         <div class="flex justify-between items-start mb-3">
           <p class="text-xs font-bold uppercase tracking-wider" style="color:#9ca3af">Kontrak Aktif</p>
-          <div class="w-9 h-9 rounded-xl flex items-center justify-center" style="background:rgba(0,170,91,0.1)"><span class="material-symbols-outlined text-[18px]" style="color:#00aa5b">description</span></div>
+          <div class="w-9 h-9 rounded-xl flex items-center justify-center" style="background:rgba(0,170,91,0.1)"><span
+              class="material-symbols-outlined text-[18px]" style="color:#00aa5b">description</span></div>
         </div>
         <p class="text-2xl font-black mb-1" style="color:#1a1a2e">3</p>
         <p class="text-xs font-semibold" style="color:#9ca3af">Kontrak berjalan</p>
@@ -120,7 +178,9 @@
       <div class="stat-card-alt su d3">
         <div class="flex justify-between items-start mb-3">
           <p class="text-xs font-bold uppercase tracking-wider" style="color:#9ca3af">Loyalty Points</p>
-          <div class="w-9 h-9 rounded-xl flex items-center justify-center" style="background:rgba(251,191,36,0.15)"><span class="material-symbols-outlined text-[18px]" style="color:#d97706">loyalty</span></div>
+          <div class="w-9 h-9 rounded-xl flex items-center justify-center" style="background:rgba(251,191,36,0.15)">
+            <span class="material-symbols-outlined text-[18px]" style="color:#d97706">loyalty</span>
+          </div>
         </div>
         <p class="text-2xl font-black mb-1" style="color:#1a1a2e">2.450</p>
         <p class="text-xs font-semibold" style="color:#d97706">🥇 Tier Gold</p>
@@ -136,17 +196,33 @@
           <a href="marketplace.html" class="text-sm font-bold" style="color:#00aa5b">Lihat Semua →</a>
         </div>
         <div class="grid grid-cols-3 gap-4">
-          <a href="marketplace.html" class="block rounded-2xl overflow-hidden border border-gray-100 hover:shadow-md transition-shadow">
-            <img src="https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=500&q=80" class="product-thumb" alt="Beras"/>
-            <div class="p-3"><p class="text-xs font-bold leading-tight mb-1" style="color:#1a1a2e">Beras Pandan Wangi</p><p class="text-sm font-black" style="color:#00aa5b">Rp 14.200/kg</p></div>
+          <a href="marketplace.html"
+            class="block rounded-2xl overflow-hidden border border-gray-100 hover:shadow-md transition-shadow">
+            <img src="https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&w=500&q=80"
+              class="product-thumb" alt="Beras" />
+            <div class="p-3">
+              <p class="text-xs font-bold leading-tight mb-1" style="color:#1a1a2e">Beras Pandan Wangi</p>
+              <p class="text-sm font-black" style="color:#00aa5b">Rp 14.200/kg</p>
+            </div>
           </a>
-          <a href="marketplace.html" class="block rounded-2xl overflow-hidden border border-gray-100 hover:shadow-md transition-shadow">
-            <img src="https://images.unsplash.com/photo-1551754655-cd27e38d2076?auto=format&fit=crop&w=500&q=80" class="product-thumb" alt="Jagung"/>
-            <div class="p-3"><p class="text-xs font-bold leading-tight mb-1" style="color:#1a1a2e">Jagung Pipil Kering</p><p class="text-sm font-black" style="color:#00aa5b">Rp 6.500/kg</p></div>
+          <a href="marketplace.html"
+            class="block rounded-2xl overflow-hidden border border-gray-100 hover:shadow-md transition-shadow">
+            <img src="https://images.unsplash.com/photo-1551754655-cd27e38d2076?auto=format&fit=crop&w=500&q=80"
+              class="product-thumb" alt="Jagung" />
+            <div class="p-3">
+              <p class="text-xs font-bold leading-tight mb-1" style="color:#1a1a2e">Jagung Pipil Kering</p>
+              <p class="text-sm font-black" style="color:#00aa5b">Rp 6.500/kg</p>
+            </div>
           </a>
-          <a href="marketplace.html" class="block rounded-2xl overflow-hidden border border-gray-100 hover:shadow-md transition-shadow">
-            <img src="file:///C:/Users/LENOVO/.gemini/antigravity/brain/c8d54a83-655c-4899-adde-610b991fe92d/cabai_merah_1778496008091.png" class="product-thumb" style="object-fit:cover" alt="Cabai"/>
-            <div class="p-3"><p class="text-xs font-bold leading-tight mb-1" style="color:#1a1a2e">Cabai Merah Keriting</p><p class="text-sm font-black" style="color:#00aa5b">Rp 45.000/kg</p></div>
+          <a href="marketplace.html"
+            class="block rounded-2xl overflow-hidden border border-gray-100 hover:shadow-md transition-shadow">
+            <img
+              src="https://images.unsplash.com/photo-1546860255-95536c19724e?q=80&w=708&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              class="product-thumb" style="object-fit:cover" alt="Cabai" />
+            <div class="p-3">
+              <p class="text-xs font-bold leading-tight mb-1" style="color:#1a1a2e">Cabai Merah Keriting</p>
+              <p class="text-sm font-black" style="color:#00aa5b">Rp 45.000/kg</p>
+            </div>
           </a>
         </div>
       </div>
@@ -161,18 +237,21 @@
           <div class="p-3 rounded-xl" style="background:#fff8f0;border:1px solid #fed7aa">
             <div class="flex items-center justify-between mb-2">
               <span class="text-xs font-black">#TLG-2026-X89B</span>
-              <span class="text-[10px] font-bold px-2 py-0.5 rounded-full" style="background:#fe6a34;color:white">Di Jalan</span>
+              <span class="text-[10px] font-bold px-2 py-0.5 rounded-full" style="background:#fe6a34;color:white">Di
+                Jalan</span>
             </div>
             <p class="text-sm font-semibold mb-1" style="color:#1a1a2e">Beras Cianjur 5 Ton</p>
             <p class="text-xs" style="color:#9ca3af">ETA: Hari ini 14:30 WIB</p>
             <div class="mt-2 h-1.5 rounded-full" style="background:#e5e7eb">
-              <div class="h-full rounded-full" style="width:65%;background:linear-gradient(90deg,#fe6a34,#ab3500)"></div>
+              <div class="h-full rounded-full" style="width:65%;background:linear-gradient(90deg,#fe6a34,#ab3500)">
+              </div>
             </div>
           </div>
           <div class="p-3 rounded-xl" style="background:#f0fdf4;border:1px solid #bbf7d0">
             <div class="flex items-center justify-between mb-2">
               <span class="text-xs font-black">#TLG-2026-X77C</span>
-              <span class="text-[10px] font-bold px-2 py-0.5 rounded-full" style="background:#00aa5b;color:white">Dikemas</span>
+              <span class="text-[10px] font-bold px-2 py-0.5 rounded-full"
+                style="background:#00aa5b;color:white">Dikemas</span>
             </div>
             <p class="text-sm font-semibold mb-1" style="color:#1a1a2e">Jagung Pipil 200kg</p>
             <p class="text-xs" style="color:#9ca3af">Jadwal: Besok pagi</p>
@@ -183,4 +262,5 @@
 
   </main>
 </body>
+
 </html>
